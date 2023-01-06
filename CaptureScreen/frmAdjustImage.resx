@@ -1,0 +1,135 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="picCapturedImage.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="picBackGround.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnColorPicker.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnColorPicker.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABUAAAAeCAIAAABMssICAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAAQFJREFUSEtj+PrtOyVoVD+GEEloqOi/8eS9QcVm9ZItQPTs7We4OFH6IZpj5lzK
+        XnE7aNpZzaJ1cCnC+tE0a5RukU9bCJfFpx+iE11z1iqZiC64Gnz6gTrtWg9gar7//B1cDT79rz98Nard
+        hUczEOHU//bd+927d////x8YWrg0AxF2/RDNv37/fv/p66mLN4ABJp+2GNnbcIRFP5rm3t5eoLVYLQci
+        dP2Yml+9foOmBhmh6Idovv/669XHH9YfvERQMxAh9JOhGYgQ+m/dvgPUT5JmIELoB2q+/PAdUCfxmoEI
+        of/Y8RNAnUBXEK8ZiFDCjww05PUDcwglYGD1//8PABMkxp31buoIAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="picWhite.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="picGreen.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnClearArea.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="btnClearArea.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABwAAAAbCAYAAABvCO8sAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAATJJREFUSEvt1M1LAkEYx/H+1g5dysyIxTB3YZMQCrHW3umQ9HKpLtEGnqXGETp0
+        81+QDhKY0MFfjsvEWM+4M7Z02sP3NDPPZ4aFnet/DPCfpWDipSAZyzt4LvnoXl3gvdkk9+iyBgX2eRCM
+        6wdVvFW2owt4G+je3ZBn1KxAFaN6Wndwu7xInpUZg3FYmM2AewXce0XyvMwINMXqC/PodTrkDFksaIqN
+        XzfaS81QmwpaYdklcsbPtCA7CzB8vAQvu2gV81Oxh5UMOYNKC/K9EoaN6+94xUfLL/wJE5EgO6xOYGri
+        Iq9lP8JydpiIBHkw+To1sfay6c6EifTf8GgH7f2tX2DoriGcERNpQRk73UW7FsHidQ1nldxnWiwoY+cn
+        YMej/yexZpMxmFQpmHgpmHADfAH3WQPW+DKQIwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="btnDrawRect.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="btnDrawRect.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABsAAAAaCAYAAABGiCfwAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAAXxJREFUSEvt0s9LAkEAhuH+paBuHbMgMOgeIV40Mb0YZEGQkmGKov0UT5ZBBaVW
+        VhpRgaB1EDyIFSqSh8yiXddW69IXEwgRg+2qBIWH9zLzwcPAdPCVKn6rNtaS/i6Wv7yintdqCcaWOJxN
+        6BGSyxFfW6duSE1jBIpGI7iZNyOjGcOOVIrUQZC6bQpjWBbKWQUsG3YUH4pIulwIqtXULalhjGFYJLZk
+        CO150anrhWHZAJ9vl7qt1RBW4sqIuIdQTs4BuPgEu5U91O3XRGNc+QVB+yCe4wbg1Qf+zgyrqou6/Z4o
+        jGFLCJgHkD/VAvwmKjmTYIgkGCMv8kxKkD1SAU8O8Gm9KIgkCCPQ8YIWKb8MeLTi7VojGiIJws69U7gN
+        6PCes4FPKhqCSD9iJ6FDZPzTQMINLmzEtnGYuhNSXey+UMD+4jgQsyG2MgqPRUvdCa0u5nQ6EF7SYnVq
+        BFaziboRU11M0tcPo2EG6UyWei82QR+kVbWxlvRfsSo+AG2GYaLPIZjeAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="groupBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnSaveToClip.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="btnSaveToClip.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAAH1JREFUSEvt0MENwCAIQFF2YAj3H8JVWMOGAwkxtIISD9bDP2gwLwJE1HZ1sZR+
+        iAGAGSK2Wqv5ZtQnZt0zVEqZAsMYNwu6MVljX2StIUyf9b33lymYd60pmMQrtWakZUw3mrnYYVifNacb
+        zbxifWdjnqy3khvL6GIpbcSoPRrSy01F/kiMAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+</root>
