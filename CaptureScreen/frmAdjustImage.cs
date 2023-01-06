@@ -72,7 +72,6 @@ namespace CaptureScreen
                     selectHeight = e.Y - selectY;
                     var location = new PointF() { X = selectX, Y = selectY };
                     var size = new SizeF() { Width = selectWidth, Height = selectHeight };
-                    Console.WriteLine($"{location} {size}");
                     var rectFToFill = new RectangleF(location, size);
                     Bitmap _img = new(currentImage);
                     using Graphics g = Graphics.FromImage(_img);
@@ -126,7 +125,21 @@ namespace CaptureScreen
 
         private void btnSaveToClip_Click(object sender, EventArgs e)
         {
+            SaveOriginImageAndExit();
+        }
 
+        private void frmAdjustImage_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+            {
+                SaveOriginImageAndExit();
+            }
+        }
+
+        private void SaveOriginImageAndExit()
+        {
+            Clipboard.SetImage(currentImage);
+            Application.Exit();
         }
     }
 }

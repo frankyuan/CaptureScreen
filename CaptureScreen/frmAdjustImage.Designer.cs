@@ -150,12 +150,14 @@
             this.Controls.Add(this.btnClearArea);
             this.Controls.Add(this.picCapturedImage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAdjustImage";
             this.Text = "Adjust Image";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmAdjustImage_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmAdjustImage_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.picCapturedImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBackGround)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWhite)).EndInit();
