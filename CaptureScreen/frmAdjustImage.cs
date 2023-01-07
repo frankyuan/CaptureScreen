@@ -6,13 +6,15 @@ namespace CaptureScreen
     {
         CleanArea,
         DrawLine,
-        DrawRect
+        DrawRect,
+        Unknown
     }
 
     public partial class frmAdjustImage : Form
     {
         private EditMode currentMode = EditMode.CleanArea;
         private static readonly Color FocusColor = SystemColors.Info;
+        private Stack<Image> imageHistory = new Stack<Image>();
 
         #region These variables control the mouse position other than draw line
         private int selectX;
@@ -30,6 +32,19 @@ namespace CaptureScreen
 
         bool start = false;
 
+        public Image CurrentImage
+        {
+            get => currentImage;
+            set 
+            {
+                currentImage = value;
+                if (currentMode != EditMode.DrawLine)
+                {
+                    imageHistory.Push(currentImage);
+                }
+            }
+        }
+
         public frmAdjustImage()
         {
             InitializeComponent();
@@ -38,7 +53,8 @@ namespace CaptureScreen
         private void frmAdjustImage_Load(object sender, EventArgs e)
         {
             originalImage = Clipboard.GetImage();
-            ResetImage();
+            CurrentImage = originalImage;
+            picCapturedImage.Image = CurrentImage;
 
             var lastBackground = Properties.Settings.Default;
             picBackGround.BackColor = Color.FromArgb(
@@ -98,12 +114,12 @@ namespace CaptureScreen
                     var location = new PointF() { X = selectX, Y = selectY };
                     var size = new SizeF() { Width = selectWidth, Height = selectHeight };
                     var rectFToFill = new RectangleF(location, size);
-                    Bitmap _img = new(currentImage);
+                    Bitmap _img = new(CurrentImage);
                     using Graphics g = Graphics.FromImage(_img);
                     SolidBrush shadowBrush = new(picBackGround.BackColor);
                     g.FillRectangles(shadowBrush, new RectangleF[] { rectFToFill });
-                    currentImage = _img;
-                    picCapturedImage.Image = currentImage;
+                    CurrentImage = _img;
+                    picCapturedImage.Image = CurrentImage;
                 }
                 start = false;
             }
@@ -137,7 +153,7 @@ namespace CaptureScreen
                     picCapturedImage.Refresh();
                     selectWidth = e.X - selectX;
                     selectHeight = e.Y - selectY;
-                    Bitmap _img = new(currentImage);
+                    Bitmap _img = new(CurrentImage);
                     using Graphics g = Graphics.FromImage(_img);
                     g.DrawRectangle(
                         selectPen,
@@ -145,8 +161,8 @@ namespace CaptureScreen
                         selectY,
                         selectWidth,
                         selectHeight);
-                    currentImage = _img;
-                    picCapturedImage.Image = currentImage;
+                    CurrentImage = _img;
+                    picCapturedImage.Image = CurrentImage;
                 }
                 start = false;
             }
@@ -167,6 +183,10 @@ namespace CaptureScreen
             {
                 start = false;
                 lastPoint = Point.Empty;
+                var tmpCurrentMode = currentMode;
+                currentMode = EditMode.Unknown;
+                CurrentImage = picCapturedImage.Image;
+                currentMode = tmpCurrentMode;
             }
         }
 
@@ -232,35 +252,31 @@ namespace CaptureScreen
 
         private void DrawLine_MouseMove(MouseEventArgs e)
         {
-            if (!start || lastPoint == Point.Empty || currentImage == null)
+            if (!start || lastPoint == Point.Empty || CurrentImage == null)
             {
                 return;
             }
 
-            Bitmap _img = new(currentImage);
+            Bitmap _img = new(CurrentImage);
             using Graphics g = Graphics.FromImage(_img);
             g.DrawLine(selectPen, lastPoint, e.Location);
             g.SmoothingMode = SmoothingMode.AntiAlias;
             picCapturedImage.Invalidate();
             lastPoint = e.Location;
-            currentImage = _img;
-            picCapturedImage.Image = currentImage;
-        }
-
-        private void picCapturedImage_MouseUp(object sender, MouseEventArgs e)
-        {
-            //if (currentMode != EditMode.DrawLine)
-            //{
-            //    return;
-            //}
-
-            //start = false;
-            //lastPoint = Point.Empty;
+            CurrentImage = _img;
+            picCapturedImage.Image = CurrentImage;
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
         {
-            ResetImage();
+            if (imageHistory.Count == 1)
+            {
+                return;
+            }
+
+            imageHistory.Pop();
+            currentImage = imageHistory.Peek();
+            picCapturedImage.Image = currentImage;
         }
 
         private void picRed_Click(object sender, EventArgs e)
@@ -304,7 +320,7 @@ namespace CaptureScreen
 
         private void SaveOriginImageAndExit()
         {
-            Clipboard.SetImage(currentImage);
+            Clipboard.SetImage(CurrentImage);
             Application.Exit();
         }
 
@@ -357,12 +373,6 @@ namespace CaptureScreen
             this.btnClearArea.BackColor = this.BackColor;
             this.btnDrawLine.BackColor = this.BackColor;
             this.btnDrawRect.BackColor = this.BackColor;
-        }
-
-        private void ResetImage()
-        {
-            currentImage = originalImage;
-            picCapturedImage.Image = currentImage;
         }
     }
 }

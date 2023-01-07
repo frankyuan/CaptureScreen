@@ -60,6 +60,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CaptureScreen";
+            this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmCaptureScreen_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCaptureScreen_KeyDown);
