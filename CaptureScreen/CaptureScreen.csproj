@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Resources\screen.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,6 +31,10 @@
 
   <ItemGroup>
     <EditorConfigFiles Remove="E:\code\git\WindowsTools\CaptureScreen\CaptureScreen\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\screen.ico" />
   </ItemGroup>
 
   <ItemGroup>
