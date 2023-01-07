@@ -140,7 +140,7 @@ namespace CaptureScreen
                 {
                     selectX = e.X;
                     selectY = e.Y;
-                    selectPen = new Pen(picLineColor.BackColor, 1)
+                    selectPen = new Pen(picLineColor.BackColor, 3)
                     {
                         DashStyle = DashStyle.Solid
                     };
