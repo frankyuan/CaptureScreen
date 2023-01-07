@@ -56,6 +56,9 @@ namespace CaptureScreen
             CurrentImage = originalImage;
             picCapturedImage.Image = CurrentImage;
 
+            saveFileDialog1.Filter = "Images (*.png,*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            saveFileDialog1.DefaultExt = "png";
+            saveFileDialog1.AddExtension = true;
             var lastBackground = Properties.Settings.Default;
             picBackGround.BackColor = Color.FromArgb(
                 int.Parse(lastBackground.BackgroundColorR),
