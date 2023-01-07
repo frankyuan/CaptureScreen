@@ -39,6 +39,7 @@
             this.btnDrawRect = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSaveToClip = new System.Windows.Forms.Button();
+            this.btnRect = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picCapturedImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBackGround)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWhite)).BeginInit();
@@ -52,9 +53,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picCapturedImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picCapturedImage.Location = new System.Drawing.Point(-1, 56);
+            this.picCapturedImage.Location = new System.Drawing.Point(-1, 71);
             this.picCapturedImage.Name = "picCapturedImage";
-            this.picCapturedImage.Size = new System.Drawing.Size(1514, 694);
+            this.picCapturedImage.Size = new System.Drawing.Size(1514, 679);
             this.picCapturedImage.TabIndex = 0;
             this.picCapturedImage.TabStop = false;
             this.picCapturedImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picCapturedImage_MouseDown);
@@ -65,16 +66,16 @@
             this.picBackGround.BackColor = System.Drawing.Color.White;
             this.picBackGround.Location = new System.Drawing.Point(6, 15);
             this.picBackGround.Name = "picBackGround";
-            this.picBackGround.Size = new System.Drawing.Size(23, 23);
+            this.picBackGround.Size = new System.Drawing.Size(48, 48);
             this.picBackGround.TabIndex = 1;
             this.picBackGround.TabStop = false;
             // 
             // btnColorPicker
             // 
             this.btnColorPicker.Image = ((System.Drawing.Image)(resources.GetObject("btnColorPicker.Image")));
-            this.btnColorPicker.Location = new System.Drawing.Point(35, 15);
+            this.btnColorPicker.Location = new System.Drawing.Point(60, 15);
             this.btnColorPicker.Name = "btnColorPicker";
-            this.btnColorPicker.Size = new System.Drawing.Size(23, 23);
+            this.btnColorPicker.Size = new System.Drawing.Size(48, 48);
             this.btnColorPicker.TabIndex = 2;
             this.btnColorPicker.UseVisualStyleBackColor = true;
             this.btnColorPicker.Click += new System.EventHandler(this.btnColorPicker_Click);
@@ -82,9 +83,9 @@
             // picWhite
             // 
             this.picWhite.BackColor = System.Drawing.Color.White;
-            this.picWhite.Location = new System.Drawing.Point(73, 15);
+            this.picWhite.Location = new System.Drawing.Point(141, 16);
             this.picWhite.Name = "picWhite";
-            this.picWhite.Size = new System.Drawing.Size(23, 23);
+            this.picWhite.Size = new System.Drawing.Size(48, 48);
             this.picWhite.TabIndex = 3;
             this.picWhite.TabStop = false;
             this.picWhite.Click += new System.EventHandler(this.picWhite_Click);
@@ -92,9 +93,9 @@
             // picGreen
             // 
             this.picGreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(238)))), ((int)(((byte)(221)))));
-            this.picGreen.Location = new System.Drawing.Point(102, 15);
+            this.picGreen.Location = new System.Drawing.Point(195, 16);
             this.picGreen.Name = "picGreen";
-            this.picGreen.Size = new System.Drawing.Size(23, 23);
+            this.picGreen.Size = new System.Drawing.Size(48, 48);
             this.picGreen.TabIndex = 4;
             this.picGreen.TabStop = false;
             this.picGreen.Click += new System.EventHandler(this.picGreen_Click);
@@ -102,18 +103,18 @@
             // btnClearArea
             // 
             this.btnClearArea.Image = ((System.Drawing.Image)(resources.GetObject("btnClearArea.Image")));
-            this.btnClearArea.Location = new System.Drawing.Point(7, 16);
+            this.btnClearArea.Location = new System.Drawing.Point(7, 10);
             this.btnClearArea.Name = "btnClearArea";
-            this.btnClearArea.Size = new System.Drawing.Size(23, 23);
+            this.btnClearArea.Size = new System.Drawing.Size(48, 48);
             this.btnClearArea.TabIndex = 5;
             this.btnClearArea.UseVisualStyleBackColor = true;
             // 
             // btnDrawRect
             // 
             this.btnDrawRect.Image = ((System.Drawing.Image)(resources.GetObject("btnDrawRect.Image")));
-            this.btnDrawRect.Location = new System.Drawing.Point(191, 16);
+            this.btnDrawRect.Location = new System.Drawing.Point(339, 10);
             this.btnDrawRect.Name = "btnDrawRect";
-            this.btnDrawRect.Size = new System.Drawing.Size(23, 23);
+            this.btnDrawRect.Size = new System.Drawing.Size(48, 48);
             this.btnDrawRect.TabIndex = 6;
             this.btnDrawRect.UseVisualStyleBackColor = true;
             // 
@@ -123,39 +124,49 @@
             this.groupBox1.Controls.Add(this.btnColorPicker);
             this.groupBox1.Controls.Add(this.picWhite);
             this.groupBox1.Controls.Add(this.picGreen);
-            this.groupBox1.Location = new System.Drawing.Point(36, 1);
+            this.groupBox1.Location = new System.Drawing.Point(61, -6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(134, 45);
+            this.groupBox1.Size = new System.Drawing.Size(251, 71);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
             // btnSaveToClip
             // 
             this.btnSaveToClip.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveToClip.Image")));
-            this.btnSaveToClip.Location = new System.Drawing.Point(241, 16);
+            this.btnSaveToClip.Location = new System.Drawing.Point(477, 10);
             this.btnSaveToClip.Name = "btnSaveToClip";
-            this.btnSaveToClip.Size = new System.Drawing.Size(23, 23);
+            this.btnSaveToClip.Size = new System.Drawing.Size(48, 48);
             this.btnSaveToClip.TabIndex = 8;
             this.btnSaveToClip.UseVisualStyleBackColor = true;
             this.btnSaveToClip.Click += new System.EventHandler(this.btnSaveToClip_Click);
+            // 
+            // btnRect
+            // 
+            this.btnRect.Image = ((System.Drawing.Image)(resources.GetObject("btnRect.Image")));
+            this.btnRect.Location = new System.Drawing.Point(393, 10);
+            this.btnRect.Name = "btnRect";
+            this.btnRect.Size = new System.Drawing.Size(48, 48);
+            this.btnRect.TabIndex = 9;
+            this.btnRect.UseVisualStyleBackColor = true;
             // 
             // frmAdjustImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1511, 746);
+            this.Controls.Add(this.btnRect);
             this.Controls.Add(this.btnSaveToClip);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDrawRect);
             this.Controls.Add(this.btnClearArea);
             this.Controls.Add(this.picCapturedImage);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAdjustImage";
-            this.Text = "Adjust Image";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Text = "Capture Screen";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAdjustImage_FormClosed);
             this.Load += new System.EventHandler(this.frmAdjustImage_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmAdjustImage_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.picCapturedImage)).EndInit();
@@ -179,5 +190,6 @@
         private Button btnDrawRect;
         private GroupBox groupBox1;
         private Button btnSaveToClip;
+        private Button btnRect;
     }
 }

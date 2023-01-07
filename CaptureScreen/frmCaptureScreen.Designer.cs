@@ -28,30 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.picCaptureScreen = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picCaptureScreen)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // picCaptureScreen
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.picCaptureScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1585, 862);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.picCaptureScreen.Location = new System.Drawing.Point(0, 3);
+            this.picCaptureScreen.Name = "picCaptureScreen";
+            this.picCaptureScreen.Size = new System.Drawing.Size(1585, 862);
+            this.picCaptureScreen.TabIndex = 0;
+            this.picCaptureScreen.TabStop = false;
+            this.picCaptureScreen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picCaptureScreen_MouseDown);
+            this.picCaptureScreen.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picCaptureScreen_MouseMove);
+            this.picCaptureScreen.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.picCaptureScreen_PreviewKeyDown);
             // 
             // frmCaptureScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1586, 865);
-            this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Controls.Add(this.picCaptureScreen);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmCaptureScreen";
@@ -60,13 +62,14 @@
             this.Text = "CaptureScreen";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmCaptureScreen_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCaptureScreen_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.picCaptureScreen)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private PictureBox picCaptureScreen;
     }
 }

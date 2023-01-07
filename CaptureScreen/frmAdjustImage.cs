@@ -86,19 +86,20 @@ namespace CaptureScreen
 
         private void picCapturedImage_MouseMove(object sender, MouseEventArgs e)
         {
-            //validate if there is an image
             if (picCapturedImage.Image == null)
                 return;
-            //validate if right-click was trigger
+
             if (start)
             {
                 picCapturedImage.Refresh();
-                //set corner square to mouse coordinates
                 selectWidth = e.X - selectX;
                 selectHeight = e.Y - selectY;
-                //draw dotted rectangle
-                picCapturedImage.CreateGraphics().DrawRectangle(selectPen,
-                          selectX, selectY, selectWidth, selectHeight);
+                picCapturedImage.CreateGraphics().DrawRectangle(
+                    selectPen,
+                    selectX,
+                    selectY,
+                    selectWidth,
+                    selectHeight);
             }
         }
 
@@ -139,6 +140,11 @@ namespace CaptureScreen
         private void SaveOriginImageAndExit()
         {
             Clipboard.SetImage(currentImage);
+            Application.Exit();
+        }
+
+        private void frmAdjustImage_FormClosed(object sender, FormClosedEventArgs e)
+        {
             Application.Exit();
         }
     }
