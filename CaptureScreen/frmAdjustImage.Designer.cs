@@ -39,7 +39,7 @@
             this.btnDrawLine = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.picRed = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLineColorPicker = new System.Windows.Forms.Button();
             this.picLineColor = new System.Windows.Forms.PictureBox();
             this.btnSaveToClip = new System.Windows.Forms.Button();
             this.btnDrawRect = new System.Windows.Forms.Button();
@@ -130,7 +130,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.picRed);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnLineColorPicker);
             this.groupBox1.Controls.Add(this.picLineColor);
             this.groupBox1.Controls.Add(this.picBackGround);
             this.groupBox1.Controls.Add(this.btnBackColorPicker);
@@ -145,21 +145,22 @@
             // picRed
             // 
             this.picRed.BackColor = System.Drawing.Color.Red;
-            this.picRed.Location = new System.Drawing.Point(126, 17);
+            this.picRed.Location = new System.Drawing.Point(121, 17);
             this.picRed.Name = "picRed";
             this.picRed.Size = new System.Drawing.Size(48, 48);
             this.picRed.TabIndex = 12;
             this.picRed.TabStop = false;
             this.picRed.Click += new System.EventHandler(this.picRed_Click);
             // 
-            // button1
+            // btnLineColorPicker
             // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(60, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(48, 48);
-            this.button1.TabIndex = 11;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnLineColorPicker.Image = ((System.Drawing.Image)(resources.GetObject("btnLineColorPicker.Image")));
+            this.btnLineColorPicker.Location = new System.Drawing.Point(60, 16);
+            this.btnLineColorPicker.Name = "btnLineColorPicker";
+            this.btnLineColorPicker.Size = new System.Drawing.Size(48, 48);
+            this.btnLineColorPicker.TabIndex = 11;
+            this.btnLineColorPicker.UseVisualStyleBackColor = true;
+            this.btnLineColorPicker.Click += new System.EventHandler(this.btnLineColorPicker_Click);
             // 
             // picLineColor
             // 
@@ -247,7 +248,7 @@
         private Button btnDrawRect;
         private PictureBox picLineColor;
         private PictureBox picRed;
-        private Button button1;
+        private Button btnLineColorPicker;
         private Button btnUndo;
     }
 }

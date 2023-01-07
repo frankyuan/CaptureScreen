@@ -38,8 +38,7 @@ namespace CaptureScreen
         private void frmAdjustImage_Load(object sender, EventArgs e)
         {
             originalImage = Clipboard.GetImage();
-            currentImage = originalImage;
-            picCapturedImage.Image = currentImage;
+            ResetImage();
 
             var lastBackground = Properties.Settings.Default;
             picBackGround.BackColor = Color.FromArgb(
@@ -118,7 +117,7 @@ namespace CaptureScreen
                 {
                     selectX = e.X;
                     selectY = e.Y;
-                    selectPen = new Pen(Color.Red, 1)
+                    selectPen = new Pen(picLineColor.BackColor, 1)
                     {
                         DashStyle = DashStyle.Solid
                     };
@@ -155,12 +154,20 @@ namespace CaptureScreen
 
         private void DrawLine_MouseDown(MouseEventArgs e)
         {
-            lastPoint = e.Location;
-            start = true;
-            selectPen = new Pen(Color.Red, 5)
+            if (!start)
             {
-                DashStyle = DashStyle.Solid
-            };
+                lastPoint = e.Location;
+                start = true;
+                selectPen = new Pen(picLineColor.BackColor, 5)
+                {
+                    DashStyle = DashStyle.Solid
+                };
+            }
+            else
+            {
+                start = false;
+                lastPoint = Point.Empty;
+            }
         }
 
         private void picCapturedImage_MouseMove(object sender, MouseEventArgs e)
@@ -225,7 +232,7 @@ namespace CaptureScreen
 
         private void DrawLine_MouseMove(MouseEventArgs e)
         {
-            if (!start || lastPoint == Point.Empty || e.Button != MouseButtons.Left || currentImage == null)
+            if (!start || lastPoint == Point.Empty || currentImage == null)
             {
                 return;
             }
@@ -242,18 +249,18 @@ namespace CaptureScreen
 
         private void picCapturedImage_MouseUp(object sender, MouseEventArgs e)
         {
-            if (currentMode != EditMode.DrawLine)
-            {
-                return;
-            }
+            //if (currentMode != EditMode.DrawLine)
+            //{
+            //    return;
+            //}
 
-            start = false;
-            lastPoint = Point.Empty;
+            //start = false;
+            //lastPoint = Point.Empty;
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
         {
-            picCapturedImage.Image = originalImage;
+            ResetImage();
         }
 
         private void picRed_Click(object sender, EventArgs e)
@@ -336,11 +343,26 @@ namespace CaptureScreen
             }
         }
 
+        private void btnLineColorPicker_Click(object sender, EventArgs e)
+        {
+            var result = colorDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                picLineColor.BackColor = colorDialog.Color;
+            }
+        }
+
         private void ClearEditModeStyle()
         {
             this.btnClearArea.BackColor = this.BackColor;
             this.btnDrawLine.BackColor = this.BackColor;
             this.btnDrawRect.BackColor = this.BackColor;
+        }
+
+        private void ResetImage()
+        {
+            currentImage = originalImage;
+            picCapturedImage.Image = currentImage;
         }
     }
 }
