@@ -14,12 +14,17 @@ namespace CaptureScreen
         private EditMode currentMode = EditMode.CleanArea;
         private static readonly Color FocusColor = SystemColors.Info;
 
-        //These variables control the mouse position
+        #region These variables control the mouse position other than draw line
         private int selectX;
         private int selectY;
         private int selectWidth;
         private int selectHeight;
         private Pen selectPen;
+        #endregion
+
+        #region Variables which control status when drawing line
+        private Point lastPoint = Point.Empty;
+        #endregion
         private Image originalImage;
         private Image currentImage;
 
@@ -55,6 +60,11 @@ namespace CaptureScreen
             if (currentMode == EditMode.DrawRect)
             {
                 DrawRect_MouseDown(e);
+            }
+
+            if (currentMode == EditMode.DrawLine)
+            {
+                DrawLine_MouseDown(e);
             }
         }
 
@@ -143,6 +153,16 @@ namespace CaptureScreen
             }
         }
 
+        private void DrawLine_MouseDown(MouseEventArgs e)
+        {
+            lastPoint = e.Location;
+            start = true;
+            selectPen = new Pen(Color.Red, 5)
+            {
+                DashStyle = DashStyle.Solid
+            };
+        }
+
         private void picCapturedImage_MouseMove(object sender, MouseEventArgs e)
         {
             if (currentMode == EditMode.CleanArea)
@@ -153,6 +173,11 @@ namespace CaptureScreen
             if (currentMode == EditMode.DrawRect)
             {
                 DrawRect_MouseMove(e);
+            }
+
+            if (currentMode == EditMode.DrawLine)
+            {
+                DrawLine_MouseMove(e);
             }
         }
 
@@ -196,6 +221,34 @@ namespace CaptureScreen
                     selectWidth,
                     selectHeight);
             }
+        }
+
+        private void DrawLine_MouseMove(MouseEventArgs e)
+        {
+            if (!start || lastPoint == Point.Empty || e.Button != MouseButtons.Left || currentImage == null)
+            {
+                return;
+            }
+
+            Bitmap _img = new(currentImage);
+            using Graphics g = Graphics.FromImage(_img);
+            g.DrawLine(selectPen, lastPoint, e.Location);
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            picCapturedImage.Invalidate();
+            lastPoint = e.Location;
+            currentImage = _img;
+            picCapturedImage.Image = currentImage;
+        }
+
+        private void picCapturedImage_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (currentMode != EditMode.DrawLine)
+            {
+                return;
+            }
+
+            start = false;
+            lastPoint = Point.Empty;
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
