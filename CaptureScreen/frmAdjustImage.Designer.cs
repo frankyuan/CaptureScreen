@@ -60,6 +60,7 @@
             this.picCapturedImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.picCapturedImage.BackColor = System.Drawing.Color.White;
             this.picCapturedImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picCapturedImage.Location = new System.Drawing.Point(-1, 71);
             this.picCapturedImage.Name = "picCapturedImage";
@@ -175,7 +176,7 @@
             // btnSaveToClip
             // 
             this.btnSaveToClip.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveToClip.Image")));
-            this.btnSaveToClip.Location = new System.Drawing.Point(776, 13);
+            this.btnSaveToClip.Location = new System.Drawing.Point(953, 13);
             this.btnSaveToClip.Name = "btnSaveToClip";
             this.btnSaveToClip.Size = new System.Drawing.Size(48, 48);
             this.btnSaveToClip.TabIndex = 8;
@@ -195,7 +196,7 @@
             // btnUndo
             // 
             this.btnUndo.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.Image")));
-            this.btnUndo.Location = new System.Drawing.Point(682, 12);
+            this.btnUndo.Location = new System.Drawing.Point(859, 12);
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.Size = new System.Drawing.Size(48, 48);
             this.btnUndo.TabIndex = 10;
@@ -205,7 +206,7 @@
             // btnSave
             // 
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(830, 13);
+            this.btnSave.Location = new System.Drawing.Point(1007, 13);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(48, 48);
             this.btnSave.TabIndex = 11;

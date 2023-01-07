@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCaptureScreen));
             this.picCaptureScreen = new System.Windows.Forms.PictureBox();
+            this.btnScreen1 = new System.Windows.Forms.Button();
+            this.btnScreen2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picCaptureScreen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -37,6 +40,7 @@
             this.picCaptureScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.picCaptureScreen.BackColor = System.Drawing.SystemColors.Control;
             this.picCaptureScreen.Location = new System.Drawing.Point(0, 3);
             this.picCaptureScreen.Name = "picCaptureScreen";
             this.picCaptureScreen.Size = new System.Drawing.Size(1585, 862);
@@ -46,11 +50,41 @@
             this.picCaptureScreen.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picCaptureScreen_MouseMove);
             this.picCaptureScreen.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.picCaptureScreen_PreviewKeyDown);
             // 
+            // btnScreen1
+            // 
+            this.btnScreen1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnScreen1.Image = ((System.Drawing.Image)(resources.GetObject("btnScreen1.Image")));
+            this.btnScreen1.Location = new System.Drawing.Point(1472, 12);
+            this.btnScreen1.Name = "btnScreen1";
+            this.btnScreen1.Size = new System.Drawing.Size(48, 48);
+            this.btnScreen1.TabIndex = 15;
+            this.btnScreen1.TabStop = false;
+            this.btnScreen1.UseVisualStyleBackColor = true;
+            this.btnScreen1.Click += new System.EventHandler(this.btnScreen1_Click);
+            this.btnScreen1.MouseEnter += new System.EventHandler(this.btnScreen1_MouseEnter);
+            this.btnScreen1.MouseLeave += new System.EventHandler(this.btnScreen1_MouseLeave);
+            // 
+            // btnScreen2
+            // 
+            this.btnScreen2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnScreen2.Image = ((System.Drawing.Image)(resources.GetObject("btnScreen2.Image")));
+            this.btnScreen2.Location = new System.Drawing.Point(1526, 12);
+            this.btnScreen2.Name = "btnScreen2";
+            this.btnScreen2.Size = new System.Drawing.Size(48, 48);
+            this.btnScreen2.TabIndex = 14;
+            this.btnScreen2.TabStop = false;
+            this.btnScreen2.UseVisualStyleBackColor = true;
+            this.btnScreen2.Click += new System.EventHandler(this.btnScreen2_Click);
+            this.btnScreen2.MouseEnter += new System.EventHandler(this.btnScreen2_MouseEnter);
+            this.btnScreen2.MouseLeave += new System.EventHandler(this.btnScreen2_MouseLeave);
+            // 
             // frmCaptureScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1586, 865);
+            this.Controls.Add(this.btnScreen1);
+            this.Controls.Add(this.btnScreen2);
             this.Controls.Add(this.picCaptureScreen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
@@ -72,5 +106,7 @@
         #endregion
 
         private PictureBox picCaptureScreen;
+        private Button btnScreen1;
+        private Button btnScreen2;
     }
 }

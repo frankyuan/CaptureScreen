@@ -7,13 +7,13 @@ namespace CaptureScreen
     public partial class frmCaptureScreen : Form
     {
         //These variables control the mouse position
-        int selectX;
-        int selectY;
-        int selectWidth;
-        int selectHeight;
-        public Pen selectPen;
+        private int selectX;
+        private int selectY;
+        private int selectWidth;
+        private int selectHeight;
+        private Pen selectPen;
+        private List<Image> screenImages = new List<Image>();
 
-        //This variable control when you start the right click
         bool start = false;
 
         public frmCaptureScreen()
@@ -23,20 +23,45 @@ namespace CaptureScreen
 
         private void frmCaptureScreen_Load(object sender, EventArgs e)
         {
+            btnScreen1.Visible = (Screen.AllScreens.Count() > 1);
+            btnScreen2.Visible = (Screen.AllScreens.Count() > 1);
+            CaptureAllScreens();
+        }
+
+        private void CaptureAllScreens()
+        {
             this.Hide();
-            Bitmap printscreen = new(Screen.PrimaryScreen.Bounds.Width,
-                                     Screen.PrimaryScreen.Bounds.Height);
-            //Create the Graphic Variable with screen Dimensions
-            Graphics graphics = Graphics.FromImage(printscreen as Image);
-            //Copy Image from the screen
-            graphics.CopyFromScreen(0, 0, 0, 0, printscreen.Size);
-            //Create a temporal memory stream for the image
-            using (MemoryStream memoryStream = new())
+            var defaultScreenIndex = -1;
+            for (int i = 0; i < Screen.AllScreens.Count(); i++)
             {
-                printscreen.Save(memoryStream, ImageFormat.Bmp);
-                picCaptureScreen.Size = new Size(this.Width, this.Height);
-                picCaptureScreen.Image = Image.FromStream(memoryStream);
+                var screen = Screen.AllScreens[i];
+                if (screen == Screen.PrimaryScreen)
+                {
+                    defaultScreenIndex = i;
+                }
+
+                Bitmap printscreen = new(screen.Bounds.Width, screen.Bounds.Height);
+                //Create the Graphic Variable with screen Dimensions
+                var graphics = Graphics.FromImage(printscreen);
+                //Copy Image from the screen
+                graphics.CopyFromScreen(
+                    screen.Bounds.X,
+                    screen.Bounds.Y,
+                    0,
+                    0,
+                    screen.Bounds.Size, CopyPixelOperation.SourceCopy);
+                //Create a temporal memory stream for the image
+                using (MemoryStream memoryStream = new())
+                {
+                    printscreen.Save(memoryStream, ImageFormat.Bmp);
+                    var image = Image.FromStream(memoryStream);
+                    screenImages.Add(image);
+                }
             }
+
+            var firstImage = screenImages[defaultScreenIndex];
+            picCaptureScreen.Size = new Size(firstImage.Width, firstImage.Height);
+            picCaptureScreen.Image = firstImage;
             this.Show();
             Cursor = Cursors.Cross;
         }
@@ -145,6 +170,40 @@ namespace CaptureScreen
             {
                 Application.Exit();
             }
+        }
+
+        private void btnScreen1_Click(object sender, EventArgs e)
+        {
+            var image = screenImages[0];
+            picCaptureScreen.Size = new Size(image.Width, image.Height);
+            picCaptureScreen.Image = image;
+        }
+
+        private void btnScreen2_Click(object sender, EventArgs e)
+        {
+            var image = screenImages[1];
+            picCaptureScreen.Size = new Size(image.Width, image.Height);
+            picCaptureScreen.Image = image;
+        }
+
+        private void btnScreen1_MouseEnter(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+        }
+
+        private void btnScreen1_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Cross;
+        }
+
+        private void btnScreen2_MouseEnter(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+        }
+
+        private void btnScreen2_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Cross;
         }
     }
 }
