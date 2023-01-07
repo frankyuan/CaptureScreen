@@ -130,27 +130,27 @@ namespace CaptureScreen
         private void SaveToClipboard()
         {
             //validate if something selected
-            if (selectWidth > 0)
+            if (selectWidth <= 0)
             {
-
-                Rectangle rect = new(selectX, selectY, selectWidth, selectHeight);
-                //create bitmap with original dimensions
-                Bitmap OriginalImage = new(picCaptureScreen.Image, picCaptureScreen.Width, picCaptureScreen.Height);
-                //create bitmap with selected dimensions
-                Bitmap _img = new(selectWidth, selectHeight);
-                //create graphic variable
-                Graphics g = Graphics.FromImage(_img);
-                //set graphic attributes
-                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-                g.DrawImage(OriginalImage, 0, 0, rect, GraphicsUnit.Pixel);
-                //insert image stream into clipboard
-                Clipboard.SetImage(_img);
+                return;
             }
-            //End application
+
+            Rectangle rect = new(selectX, selectY, selectWidth, selectHeight);
+            //create bitmap with original dimensions
+            Bitmap OriginalImage = new(picCaptureScreen.Image, picCaptureScreen.Width, picCaptureScreen.Height);
+            //create bitmap with selected dimensions
+            Bitmap _img = new(selectWidth, selectHeight);
+            //create graphic variable
+            Graphics g = Graphics.FromImage(_img);
+            //set graphic attributes
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            g.CompositingQuality = CompositingQuality.HighQuality;
+            g.DrawImage(OriginalImage, 0, 0, rect, GraphicsUnit.Pixel);
+            //insert image stream into clipboard
+            Clipboard.SetImage(_img);
             this.Hide();
-            frmAdjustImage frmAdjustImage = new();
+            frmAdjustImage frmAdjustImage = new(_img);
             frmAdjustImage.Show();
         }
 
@@ -177,6 +177,7 @@ namespace CaptureScreen
             var image = screenImages[0];
             picCaptureScreen.Size = new Size(image.Width, image.Height);
             picCaptureScreen.Image = image;
+            start = false;
         }
 
         private void btnScreen2_Click(object sender, EventArgs e)
@@ -184,6 +185,7 @@ namespace CaptureScreen
             var image = screenImages[1];
             picCaptureScreen.Size = new Size(image.Width, image.Height);
             picCaptureScreen.Image = image;
+            start = false;
         }
 
         private void btnScreen1_MouseEnter(object sender, EventArgs e)

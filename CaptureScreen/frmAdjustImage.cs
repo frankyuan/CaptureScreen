@@ -45,14 +45,14 @@ namespace CaptureScreen
             }
         }
 
-        public frmAdjustImage()
+        public frmAdjustImage(Image img)
         {
             InitializeComponent();
+            originalImage = img;
         }
 
         private void frmAdjustImage_Load(object sender, EventArgs e)
         {
-            originalImage = Clipboard.GetImage();
             CurrentImage = originalImage;
             picCapturedImage.Image = CurrentImage;
 
