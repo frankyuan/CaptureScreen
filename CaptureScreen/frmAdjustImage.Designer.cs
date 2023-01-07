@@ -44,6 +44,8 @@
             this.btnSaveToClip = new System.Windows.Forms.Button();
             this.btnDrawRect = new System.Windows.Forms.Button();
             this.btnUndo = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.picCapturedImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBackGround)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWhite)).BeginInit();
@@ -173,7 +175,7 @@
             // btnSaveToClip
             // 
             this.btnSaveToClip.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveToClip.Image")));
-            this.btnSaveToClip.Location = new System.Drawing.Point(760, 12);
+            this.btnSaveToClip.Location = new System.Drawing.Point(776, 13);
             this.btnSaveToClip.Name = "btnSaveToClip";
             this.btnSaveToClip.Size = new System.Drawing.Size(48, 48);
             this.btnSaveToClip.TabIndex = 8;
@@ -200,11 +202,22 @@
             this.btnUndo.UseVisualStyleBackColor = true;
             this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
             // 
+            // btnSave
+            // 
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.Location = new System.Drawing.Point(830, 13);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(48, 48);
+            this.btnSave.TabIndex = 11;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // frmAdjustImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1511, 746);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnUndo);
             this.Controls.Add(this.btnDrawRect);
             this.Controls.Add(this.btnSaveToClip);
@@ -214,7 +227,6 @@
             this.Controls.Add(this.picCapturedImage);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAdjustImage";
             this.Text = "Capture Screen";
@@ -249,5 +261,7 @@
         private PictureBox picRed;
         private Button btnLineColorPicker;
         private Button btnUndo;
+        private Button btnSave;
+        private SaveFileDialog saveFileDialog1;
     }
 }

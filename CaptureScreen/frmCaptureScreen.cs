@@ -56,8 +56,12 @@ namespace CaptureScreen
                 selectWidth = e.X - selectX;
                 selectHeight = e.Y - selectY;
                 //draw dotted rectangle
-                picCaptureScreen.CreateGraphics().DrawRectangle(selectPen,
-                          selectX, selectY, selectWidth, selectHeight);
+                picCaptureScreen.CreateGraphics().DrawRectangle(
+                    selectPen,
+                    Math.Min(selectX, e.X), 
+                    Math.Min(selectY, e.Y), 
+                    Math.Abs(selectWidth), 
+                    Math.Abs(selectHeight));
             }
         }
 
@@ -69,9 +73,9 @@ namespace CaptureScreen
                 {
                     selectX = e.X;
                     selectY = e.Y;
-                    selectPen = new Pen(Color.Red, 1)
+                    selectPen = new Pen(Color.Red, 3)
                     {
-                        DashStyle = DashStyle.Solid
+                        DashStyle = DashStyle.Dot
                     };
                 }
                 picCaptureScreen.Refresh();

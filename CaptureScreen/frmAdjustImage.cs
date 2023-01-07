@@ -111,8 +111,8 @@ namespace CaptureScreen
                     picCapturedImage.Refresh();
                     selectWidth = e.X - selectX;
                     selectHeight = e.Y - selectY;
-                    var location = new PointF() { X = selectX, Y = selectY };
-                    var size = new SizeF() { Width = selectWidth, Height = selectHeight };
+                    var location = new PointF() { X = Math.Min(selectX, e.X), Y = Math.Min(selectY, e.Y) };
+                    var size = new SizeF() { Width = Math.Abs(selectWidth), Height = Math.Abs(selectHeight) };
                     var rectFToFill = new RectangleF(location, size);
                     Bitmap _img = new(CurrentImage);
                     using Graphics g = Graphics.FromImage(_img);
@@ -157,10 +157,10 @@ namespace CaptureScreen
                     using Graphics g = Graphics.FromImage(_img);
                     g.DrawRectangle(
                         selectPen,
-                        selectX,
-                        selectY,
-                        selectWidth,
-                        selectHeight);
+                        Math.Min(selectX, e.X),
+                        Math.Min(selectY, e.Y),
+                        Math.Abs(selectWidth),
+                        Math.Abs(selectHeight));
                     CurrentImage = _img;
                     picCapturedImage.Image = CurrentImage;
                 }
@@ -222,10 +222,10 @@ namespace CaptureScreen
                 selectHeight = e.Y - selectY;
                 picCapturedImage.CreateGraphics().DrawRectangle(
                     selectPen,
-                    selectX,
-                    selectY,
-                    selectWidth,
-                    selectHeight);
+                    Math.Min(selectX, e.X),
+                    Math.Min(selectY, e.Y),
+                    Math.Abs(selectWidth),
+                    Math.Abs(selectHeight));
             }
         }
 
@@ -243,10 +243,10 @@ namespace CaptureScreen
                 selectHeight = e.Y - selectY;
                 picCapturedImage.CreateGraphics().DrawRectangle(
                     selectPen,
-                    selectX,
-                    selectY,
-                    selectWidth,
-                    selectHeight);
+                    Math.Min(selectX, e.X),
+                    Math.Min(selectY, e.Y),
+                    Math.Abs(selectWidth),
+                    Math.Abs(selectHeight));
             }
         }
 
@@ -365,6 +365,16 @@ namespace CaptureScreen
             if (result == DialogResult.OK)
             {
                 picLineColor.BackColor = colorDialog.Color;
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            var result = saveFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                picCapturedImage.Image.Save(saveFileDialog1.FileName);
+                Application.Exit();
             }
         }
 
