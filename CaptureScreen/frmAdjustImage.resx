@@ -139,7 +139,7 @@
   <data name="btnUndo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA69AAAOvQFH+5CtAAAAB3RJ
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA68AAAOvAGVvHJJAAAAB3RJ
         TUUH5AgFCgUpdP2hOAAAAvJJREFUWEe9l1moTWEUx49ZMmTMWIakpDyQUqYyRJEkURRuiZQiIsObQsYQ
         SlGmiMQLD7x6ILNHChleUMg8+/2O8x3n3LvvPXufu/f916+z9zpnr/Xtb61vfd/JZah2MBhmwno4C8/g
         DLSAVNUG+sB4WAI74So8ha/wpwTtHSA1TYBL8Ag+wm8wkJ9v4T741pthDgyB5pCa5sJPCG/4GS7CfBgO
@@ -158,13 +158,13 @@
   </data>
   <data name="btnSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE0SURBVFhH7ZehSgVBGEavID6C0SYKvoRgMJhMGlXEYNBu
-        1mixyH0Nq28gRotisCgIRkWx6Dku9zLgzLLszm6aDw4Mu3e+/2y4zO6IbMEb/PTEM6xAMg6/gPUIn3AG
-        Gy05BSVeISnhDxwWywdsVstGWYVjOIJ5cK8PcQVJiZwCN+Cgb9gH99oxB0mJnAK3cAJPcAATAZOUGErA
-        RCWGFDD/JIYWMBMJ/6LZBe7AfXUCxpnOziqwA2O4hEXoLPAOPslCS9zbSeAavN8FO2JpJDALS7DcEvfa
-        EUsjgT5TBGoFZmANfFfIgV12hqkVOIcveMmEXXaGqRW4h8NqmSV2PVTLaWoFHmGvWmbJLtgZpggUgSJQ
-        BIrAVCD2cerrsodHeK0Ldnkohdec6ey/47LPz/MUzBxt/wIFFRAFqPY2gwAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wQAADsEBuJFr7QAAATRJREFUWEftl6FKBUEYRq8gPoLRJgq+hGAwmEwaVcRg0G7WaLHIfQ2rbyBGi2Kw
+        KAhGRbHoOS73MuDMsuzObpoPDgy7d77/bLjM7ohswRv89MQzrEAyDr+A9QifcAYbLTkFJV4hKeEPHBbL
+        B2xWy0ZZhWM4gnlwrw9xBUmJnAI34KBv2Af32jEHSYmcArdwAk9wABMBk5QYSsBEJYYUMP8khhYwEwn/
+        otkF7sB9dQLGmc7OKrADY7iERegs8A4+yUJL3NtJ4Bq83wU7YmkkMAtLsNwS99oRSyOBPlMEagVmYA18
+        V8iBXXaGqRU4hy94yYRddoapFbiHw2qZJXY9VMtpagUeYa9aZsku2BmmCBSBIlAEisBUIPZx6uuyh0d4
+        rQt2eSiF15zp7L/jss/P8xTMHG3/AgUVEAWo9jaDAAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

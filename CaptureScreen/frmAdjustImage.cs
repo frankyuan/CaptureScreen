@@ -59,12 +59,16 @@ namespace CaptureScreen
             saveFileDialog1.Filter = "Images (*.png,*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
             saveFileDialog1.DefaultExt = "png";
             saveFileDialog1.AddExtension = true;
-            var lastBackground = Properties.Settings.Default;
+            var lastSetting = Properties.Settings.Default;
             picBackGround.BackColor = Color.FromArgb(
-                int.Parse(lastBackground.BackgroundColorR),
-                int.Parse(lastBackground.BackgroundColorG),
-                int.Parse(lastBackground.BackgroundColorB));
+                int.Parse(lastSetting.BackgroundColorR),
+                int.Parse(lastSetting.BackgroundColorG),
+                int.Parse(lastSetting.BackgroundColorB));
 
+            picLineColor.BackColor = Color.FromArgb(
+                int.Parse(lastSetting.LineColorR),
+                int.Parse(lastSetting.LineColorG),
+                int.Parse(lastSetting.LineColorB));
             this.btnClearArea_Click(sender, e);
         }
 
@@ -94,9 +98,9 @@ namespace CaptureScreen
                 {
                     selectX = e.X;
                     selectY = e.Y;
-                    selectPen = new Pen(Color.Red, 1)
+                    selectPen = new Pen(Color.Red, 2)
                     {
-                        DashStyle = DashStyle.Solid
+                        DashStyle = DashStyle.Dot
                     };
                 }
                 picCapturedImage.Refresh();
@@ -285,6 +289,7 @@ namespace CaptureScreen
         private void picRed_Click(object sender, EventArgs e)
         {
             picLineColor.BackColor = picRed.BackColor;
+            SaveLineColor();
         }
 
         private void picGreen_Click(object sender, EventArgs e)
@@ -301,10 +306,19 @@ namespace CaptureScreen
 
         private void SaveBackColor()
         {
-            var lastBackground = Properties.Settings.Default;
-            lastBackground.BackgroundColorR = picBackGround.BackColor.R.ToString();
-            lastBackground.BackgroundColorG = picBackGround.BackColor.G.ToString();
-            lastBackground.BackgroundColorB = picBackGround.BackColor.B.ToString();
+            var lastSetting = Properties.Settings.Default;
+            lastSetting.BackgroundColorR = picBackGround.BackColor.R.ToString();
+            lastSetting.BackgroundColorG = picBackGround.BackColor.G.ToString();
+            lastSetting.BackgroundColorB = picBackGround.BackColor.B.ToString();
+            Properties.Settings.Default.Save();
+        }
+
+        private void SaveLineColor()
+        {
+            var lastSetting = Properties.Settings.Default;
+            lastSetting.LineColorR = picLineColor.BackColor.R.ToString();
+            lastSetting.LineColorG = picLineColor.BackColor.G.ToString();
+            lastSetting.LineColorB = picLineColor.BackColor.B.ToString();
             Properties.Settings.Default.Save();
         }
 
@@ -359,6 +373,7 @@ namespace CaptureScreen
             if (result == DialogResult.OK)
             {
                 picBackGround.BackColor = colorDialog.Color;
+                SaveBackColor();
             }
         }
 
@@ -368,6 +383,7 @@ namespace CaptureScreen
             if (result == DialogResult.OK)
             {
                 picLineColor.BackColor = colorDialog.Color;
+                SaveLineColor();
             }
         }
 

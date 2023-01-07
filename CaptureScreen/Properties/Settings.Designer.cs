@@ -58,5 +58,41 @@ namespace CaptureScreen.Properties {
                 this["BackgroundColorB"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("255")]
+        public string LineColorR {
+            get {
+                return ((string)(this["LineColorR"]));
+            }
+            set {
+                this["LineColorR"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string LineColorG {
+            get {
+                return ((string)(this["LineColorG"]));
+            }
+            set {
+                this["LineColorG"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string LineColorB {
+            get {
+                return ((string)(this["LineColorB"]));
+            }
+            set {
+                this["LineColorB"] = value;
+            }
+        }
     }
 }
