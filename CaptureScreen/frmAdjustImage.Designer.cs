@@ -73,16 +73,16 @@
             // picBackGround
             // 
             this.picBackGround.BackColor = System.Drawing.Color.White;
-            this.picBackGround.Location = new System.Drawing.Point(243, 16);
+            this.picBackGround.Location = new System.Drawing.Point(18, 28);
             this.picBackGround.Name = "picBackGround";
-            this.picBackGround.Size = new System.Drawing.Size(48, 48);
+            this.picBackGround.Size = new System.Drawing.Size(36, 36);
             this.picBackGround.TabIndex = 1;
             this.picBackGround.TabStop = false;
             // 
             // btnBackColorPicker
             // 
             this.btnBackColorPicker.Image = ((System.Drawing.Image)(resources.GetObject("btnBackColorPicker.Image")));
-            this.btnBackColorPicker.Location = new System.Drawing.Point(297, 16);
+            this.btnBackColorPicker.Location = new System.Drawing.Point(229, 16);
             this.btnBackColorPicker.Name = "btnBackColorPicker";
             this.btnBackColorPicker.Size = new System.Drawing.Size(48, 48);
             this.btnBackColorPicker.TabIndex = 2;
@@ -92,7 +92,7 @@
             // picWhite
             // 
             this.picWhite.BackColor = System.Drawing.Color.White;
-            this.picWhite.Location = new System.Drawing.Point(360, 16);
+            this.picWhite.Location = new System.Drawing.Point(292, 16);
             this.picWhite.Name = "picWhite";
             this.picWhite.Size = new System.Drawing.Size(48, 48);
             this.picWhite.TabIndex = 3;
@@ -102,7 +102,7 @@
             // picGreen
             // 
             this.picGreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(238)))), ((int)(((byte)(221)))));
-            this.picGreen.Location = new System.Drawing.Point(414, 16);
+            this.picGreen.Location = new System.Drawing.Point(346, 16);
             this.picGreen.Name = "picGreen";
             this.picGreen.Size = new System.Drawing.Size(48, 48);
             this.picGreen.TabIndex = 4;
@@ -131,16 +131,16 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.picLineColor);
             this.groupBox1.Controls.Add(this.picRed);
             this.groupBox1.Controls.Add(this.btnLineColorPicker);
-            this.groupBox1.Controls.Add(this.picLineColor);
-            this.groupBox1.Controls.Add(this.picBackGround);
             this.groupBox1.Controls.Add(this.btnBackColorPicker);
             this.groupBox1.Controls.Add(this.picWhite);
             this.groupBox1.Controls.Add(this.picGreen);
+            this.groupBox1.Controls.Add(this.picBackGround);
             this.groupBox1.Location = new System.Drawing.Point(174, -4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(472, 71);
+            this.groupBox1.Size = new System.Drawing.Size(403, 71);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
@@ -169,14 +169,14 @@
             this.picLineColor.BackColor = System.Drawing.Color.Red;
             this.picLineColor.Location = new System.Drawing.Point(6, 16);
             this.picLineColor.Name = "picLineColor";
-            this.picLineColor.Size = new System.Drawing.Size(48, 48);
+            this.picLineColor.Size = new System.Drawing.Size(36, 36);
             this.picLineColor.TabIndex = 10;
             this.picLineColor.TabStop = false;
             // 
             // btnSaveToClip
             // 
             this.btnSaveToClip.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveToClip.Image")));
-            this.btnSaveToClip.Location = new System.Drawing.Point(953, 13);
+            this.btnSaveToClip.Location = new System.Drawing.Point(714, 14);
             this.btnSaveToClip.Name = "btnSaveToClip";
             this.btnSaveToClip.Size = new System.Drawing.Size(48, 48);
             this.btnSaveToClip.TabIndex = 8;
@@ -196,7 +196,7 @@
             // btnUndo
             // 
             this.btnUndo.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.Image")));
-            this.btnUndo.Location = new System.Drawing.Point(859, 12);
+            this.btnUndo.Location = new System.Drawing.Point(620, 13);
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.Size = new System.Drawing.Size(48, 48);
             this.btnUndo.TabIndex = 10;
@@ -206,7 +206,7 @@
             // btnSave
             // 
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(1007, 13);
+            this.btnSave.Location = new System.Drawing.Point(768, 14);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(48, 48);
             this.btnSave.TabIndex = 11;

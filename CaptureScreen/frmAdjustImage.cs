@@ -128,6 +128,7 @@ namespace CaptureScreen
                     CurrentImage = _img;
                     picCapturedImage.Image = CurrentImage;
                 }
+
                 start = false;
             }
         }
