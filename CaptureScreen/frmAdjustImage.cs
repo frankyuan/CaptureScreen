@@ -13,7 +13,6 @@ namespace CaptureScreen
     public partial class frmAdjustImage : Form
     {
         private EditMode currentMode = EditMode.CleanArea;
-        private static readonly Color FocusColor = SystemColors.Info;
         private Stack<Image> imageHistory = new Stack<Image>();
 
         #region These variables control the mouse position other than draw line
@@ -351,21 +350,21 @@ namespace CaptureScreen
         {
             ClearEditModeStyle();
             this.currentMode = EditMode.CleanArea;
-            this.btnClearArea.BackColor = FocusColor;
+            this.btnClearArea.BackColor = Const.FocusColor;
         }
 
         private void btnDrawLine_Click(object sender, EventArgs e)
         {
             ClearEditModeStyle();
             this.currentMode = EditMode.DrawLine;
-            this.btnDrawLine.BackColor = FocusColor;
+            this.btnDrawLine.BackColor = Const.FocusColor;
         }
 
         private void btnDrawRect_Click(object sender, EventArgs e)
         {
             ClearEditModeStyle();
             this.currentMode = EditMode.DrawRect;
-            this.btnDrawRect.BackColor = FocusColor;
+            this.btnDrawRect.BackColor = Const.FocusColor;
         }
 
         private void btnBackColorPicker_Click(object sender, EventArgs e)

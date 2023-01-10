@@ -1,5 +1,6 @@
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace CaptureScreen
@@ -25,6 +26,7 @@ namespace CaptureScreen
         {
             btnScreen1.Visible = (Screen.AllScreens.Count() > 1);
             btnScreen2.Visible = (Screen.AllScreens.Count() > 1);
+            ClearScreenButtonScreen();
             CaptureAllScreens();
         }
 
@@ -51,12 +53,10 @@ namespace CaptureScreen
                     0,
                     screen.Bounds.Size, CopyPixelOperation.SourceCopy);
                 //Create a temporal memory stream for the image
-                using (MemoryStream memoryStream = new())
-                {
-                    printscreen.Save(memoryStream, ImageFormat.Bmp);
-                    var image = Image.FromStream(memoryStream);
-                    screenImages.Add(image);
-                }
+                using MemoryStream memoryStream = new();
+                printscreen.Save(memoryStream, ImageFormat.Bmp);
+                var image = Image.FromStream(memoryStream);
+                screenImages.Add(image);
             }
 
             var firstImage = screenImages[defaultScreenIndex];
@@ -64,6 +64,14 @@ namespace CaptureScreen
             picCaptureScreen.Image = firstImage;
             this.Show();
             Cursor = Cursors.Cross;
+            if (firstImage == screenImages[0])
+            {
+                btnScreen1.BackColor = Const.FocusColor;
+            }
+            if (firstImage == screenImages[1])
+            {
+                btnScreen2.BackColor = Const.FocusColor;
+            }
         }
 
         private void picCaptureScreen_MouseMove(object sender, MouseEventArgs e)
@@ -174,18 +182,22 @@ namespace CaptureScreen
 
         private void btnScreen1_Click(object sender, EventArgs e)
         {
+            ClearScreenButtonScreen();
             var image = screenImages[0];
             picCaptureScreen.Size = new Size(image.Width, image.Height);
             picCaptureScreen.Image = image;
             start = false;
+            btnScreen1.BackColor = Const.FocusColor;
         }
 
         private void btnScreen2_Click(object sender, EventArgs e)
         {
+            ClearScreenButtonScreen();
             var image = screenImages[1];
             picCaptureScreen.Size = new Size(image.Width, image.Height);
             picCaptureScreen.Image = image;
             start = false;
+            btnScreen2.BackColor = Const.FocusColor;
         }
 
         private void btnScreen1_MouseEnter(object sender, EventArgs e)
@@ -206,6 +218,12 @@ namespace CaptureScreen
         private void btnScreen2_MouseLeave(object sender, EventArgs e)
         {
             Cursor = Cursors.Cross;
+        }
+
+        private void ClearScreenButtonScreen()
+        {
+            btnScreen1.BackColor = this.BackColor;
+            btnScreen2.BackColor = this.BackColor;
         }
     }
 }
