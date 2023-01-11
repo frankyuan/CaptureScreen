@@ -46,6 +46,7 @@
             this.btnUndo = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.btnDrawArrow = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picCapturedImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBackGround)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWhite)).BeginInit();
@@ -112,7 +113,7 @@
             // btnClearArea
             // 
             this.btnClearArea.Image = ((System.Drawing.Image)(resources.GetObject("btnClearArea.Image")));
-            this.btnClearArea.Location = new System.Drawing.Point(120, 12);
+            this.btnClearArea.Location = new System.Drawing.Point(174, 12);
             this.btnClearArea.Name = "btnClearArea";
             this.btnClearArea.Size = new System.Drawing.Size(48, 48);
             this.btnClearArea.TabIndex = 5;
@@ -138,7 +139,7 @@
             this.groupBox1.Controls.Add(this.picWhite);
             this.groupBox1.Controls.Add(this.picGreen);
             this.groupBox1.Controls.Add(this.picBackGround);
-            this.groupBox1.Location = new System.Drawing.Point(174, -4);
+            this.groupBox1.Location = new System.Drawing.Point(229, -4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(403, 71);
             this.groupBox1.TabIndex = 7;
@@ -176,7 +177,7 @@
             // btnSaveToClip
             // 
             this.btnSaveToClip.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveToClip.Image")));
-            this.btnSaveToClip.Location = new System.Drawing.Point(714, 14);
+            this.btnSaveToClip.Location = new System.Drawing.Point(769, 14);
             this.btnSaveToClip.Name = "btnSaveToClip";
             this.btnSaveToClip.Size = new System.Drawing.Size(48, 48);
             this.btnSaveToClip.TabIndex = 8;
@@ -196,7 +197,7 @@
             // btnUndo
             // 
             this.btnUndo.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.Image")));
-            this.btnUndo.Location = new System.Drawing.Point(620, 13);
+            this.btnUndo.Location = new System.Drawing.Point(675, 13);
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.Size = new System.Drawing.Size(48, 48);
             this.btnUndo.TabIndex = 10;
@@ -206,18 +207,29 @@
             // btnSave
             // 
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(768, 14);
+            this.btnSave.Location = new System.Drawing.Point(823, 14);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(48, 48);
             this.btnSave.TabIndex = 11;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // btnDrawArrow
+            // 
+            this.btnDrawArrow.Image = ((System.Drawing.Image)(resources.GetObject("btnDrawArrow.Image")));
+            this.btnDrawArrow.Location = new System.Drawing.Point(120, 12);
+            this.btnDrawArrow.Name = "btnDrawArrow";
+            this.btnDrawArrow.Size = new System.Drawing.Size(48, 48);
+            this.btnDrawArrow.TabIndex = 12;
+            this.btnDrawArrow.UseVisualStyleBackColor = true;
+            this.btnDrawArrow.Click += new System.EventHandler(this.btnDrawArrow_Click);
+            // 
             // frmAdjustImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1511, 746);
+            this.Controls.Add(this.btnDrawArrow);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnUndo);
             this.Controls.Add(this.btnDrawRect);
@@ -265,5 +277,6 @@
         private Button btnUndo;
         private Button btnSave;
         private SaveFileDialog saveFileDialog1;
+        private Button btnDrawArrow;
     }
 }

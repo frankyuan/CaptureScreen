@@ -7,11 +7,14 @@ namespace CaptureScreen
         CleanArea,
         DrawLine,
         DrawRect,
+        DrawArrow,
         Unknown
     }
 
     public partial class frmAdjustImage : Form
     {
+        private static int LineWidth = 3;
+        private static int ArrowLength = 5;
         private EditMode currentMode = EditMode.CleanArea;
         private Stack<Image> imageHistory = new Stack<Image>();
 
@@ -34,7 +37,7 @@ namespace CaptureScreen
         public Image CurrentImage
         {
             get => currentImage;
-            set 
+            set
             {
                 currentImage = value;
                 if (currentMode != EditMode.DrawLine)
@@ -86,6 +89,11 @@ namespace CaptureScreen
             if (currentMode == EditMode.DrawLine)
             {
                 DrawLine_MouseDown(e);
+            }
+
+            if (currentMode == EditMode.DrawArrow)
+            {
+                DrowArrow_MouseDown(e);
             }
         }
 
@@ -140,10 +148,7 @@ namespace CaptureScreen
                 {
                     selectX = e.X;
                     selectY = e.Y;
-                    selectPen = new Pen(picLineColor.BackColor, 3)
-                    {
-                        DashStyle = DashStyle.Solid
-                    };
+                    selectPen = CreatePen;
                 }
                 picCapturedImage.Refresh();
                 start = true;
@@ -181,10 +186,7 @@ namespace CaptureScreen
             {
                 lastPoint = e.Location;
                 start = true;
-                selectPen = new Pen(picLineColor.BackColor, 5)
-                {
-                    DashStyle = DashStyle.Solid
-                };
+                selectPen = CreatePen;
             }
             else
             {
@@ -194,6 +196,54 @@ namespace CaptureScreen
                 currentMode = EditMode.Unknown;
                 CurrentImage = picCapturedImage.Image;
                 currentMode = tmpCurrentMode;
+            }
+        }
+
+        private void DrowArrow_MouseDown(MouseEventArgs e)
+        {
+            if (!start)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    selectX = e.X;
+                    selectY = e.Y;
+                    selectPen = CreatePen;
+                }
+
+                picCapturedImage.Refresh();
+                start = true;
+            }
+            else
+            {
+                if (picCapturedImage.Image == null)
+                {
+                    return;
+                }
+
+                if (e.Button == MouseButtons.Left)
+                {
+                    picCapturedImage.Refresh();
+                    selectWidth = e.X - selectX;
+                    selectHeight = e.Y - selectY;
+                    Bitmap _img = new(CurrentImage);
+                    using Graphics g = Graphics.FromImage(_img);
+                    g.SmoothingMode = SmoothingMode.AntiAlias;
+                    using var pen = CreatePen;
+                    using (GraphicsPath capPath = new())
+                    {
+                        // A triangle
+                        capPath.AddLine(-1* ArrowLength, 0, ArrowLength, 0);
+                        capPath.AddLine(-1 * ArrowLength, 0, 0, ArrowLength);
+                        capPath.AddLine(0, ArrowLength, ArrowLength, 0);
+                        pen.CustomEndCap = new CustomLineCap(null, capPath);
+                        g.DrawLine(pen, selectX, selectY, e.X, e.Y);
+                    }
+
+                    CurrentImage = _img;
+                    picCapturedImage.Image = CurrentImage;
+                }
+
+                start = false;
             }
         }
 
@@ -212,6 +262,11 @@ namespace CaptureScreen
             if (currentMode == EditMode.DrawLine)
             {
                 DrawLine_MouseMove(e);
+            }
+
+            if (currentMode == EditMode.DrawArrow)
+            {
+                DrawArrow_MouseMove(e);
             }
         }
 
@@ -272,6 +327,25 @@ namespace CaptureScreen
             lastPoint = e.Location;
             CurrentImage = _img;
             picCapturedImage.Image = CurrentImage;
+        }
+
+        private void DrawArrow_MouseMove(MouseEventArgs e)
+        {
+            if (picCapturedImage.Image == null)
+            {
+                return;
+            }
+
+            if (start)
+            {
+                picCapturedImage.Refresh();
+                using Graphics g = picCapturedImage.CreateGraphics();
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.DrawLine(
+                    selectPen,
+                    new Point(e.X, e.Y),
+                    new Point(selectX, selectY));
+            }
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
@@ -367,6 +441,13 @@ namespace CaptureScreen
             this.btnDrawRect.BackColor = Const.FocusColor;
         }
 
+        private void btnDrawArrow_Click(object sender, EventArgs e)
+        {
+            ClearEditModeStyle();
+            currentMode = EditMode.DrawArrow;
+            btnDrawArrow.BackColor = Const.FocusColor;
+        }
+
         private void btnBackColorPicker_Click(object sender, EventArgs e)
         {
             var result = colorDialog.ShowDialog();
@@ -399,9 +480,16 @@ namespace CaptureScreen
 
         private void ClearEditModeStyle()
         {
-            this.btnClearArea.BackColor = this.BackColor;
-            this.btnDrawLine.BackColor = this.BackColor;
-            this.btnDrawRect.BackColor = this.BackColor;
+            btnClearArea.BackColor = BackColor;
+            btnDrawLine.BackColor = BackColor;
+            btnDrawRect.BackColor = BackColor;
+            btnDrawArrow.BackColor = BackColor;
         }
+
+        private Pen CreatePen =>
+            new(picLineColor.BackColor, LineWidth)
+            {
+                DashStyle = DashStyle.Solid
+            };
     }
 }

@@ -1,7 +1,5 @@
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Runtime.CompilerServices;
-using System.Windows.Forms;
 
 namespace CaptureScreen
 {
@@ -91,9 +89,9 @@ namespace CaptureScreen
                 //draw dotted rectangle
                 picCaptureScreen.CreateGraphics().DrawRectangle(
                     selectPen,
-                    Math.Min(selectX, e.X), 
-                    Math.Min(selectY, e.Y), 
-                    Math.Abs(selectWidth), 
+                    Math.Min(selectX, e.X),
+                    Math.Min(selectY, e.Y),
+                    Math.Abs(selectWidth),
                     Math.Abs(selectHeight));
             }
         }
@@ -126,28 +124,38 @@ namespace CaptureScreen
                     picCaptureScreen.Refresh();
                     selectWidth = e.X - selectX;
                     selectHeight = e.Y - selectY;
-                    picCaptureScreen.CreateGraphics().DrawRectangle(selectPen, selectX,
-                             selectY, selectWidth, selectHeight);
+                    picCaptureScreen.CreateGraphics().DrawRectangle(
+                        selectPen,
+                        Math.Min(selectX, e.X),
+                        Math.Min(selectY, e.Y),
+                        Math.Abs(selectWidth),
+                        Math.Abs(selectHeight));
                 }
 
                 start = false;
-                SaveToClipboard();
+                SaveToClipboard(new Point(e.X, e.Y));
             }
         }
 
-        private void SaveToClipboard()
+        private void SaveToClipboard(Point currentPoint)
         {
+            int capturedWidth = Math.Abs(selectWidth);
+            int capturedHeight = Math.Abs(selectHeight);
             //validate if something selected
-            if (selectWidth <= 0)
+            if (capturedWidth == 0)
             {
                 return;
             }
 
-            Rectangle rect = new(selectX, selectY, selectWidth, selectHeight);
+            Rectangle rect = new(
+                Math.Min(selectX, currentPoint.X),
+                Math.Min(selectY, currentPoint.Y),
+                Math.Abs(capturedWidth),
+                Math.Abs(capturedHeight));
             //create bitmap with original dimensions
             Bitmap OriginalImage = new(picCaptureScreen.Image, picCaptureScreen.Width, picCaptureScreen.Height);
             //create bitmap with selected dimensions
-            Bitmap _img = new(selectWidth, selectHeight);
+            Bitmap _img = new(capturedWidth, capturedHeight);
             //create graphic variable
             Graphics g = Graphics.FromImage(_img);
             //set graphic attributes
