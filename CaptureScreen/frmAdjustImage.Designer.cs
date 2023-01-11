@@ -81,6 +81,7 @@
             // 
             // btnBackColorPicker
             // 
+            this.btnBackColorPicker.FlatAppearance.BorderSize = 0;
             this.btnBackColorPicker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBackColorPicker.Image = ((System.Drawing.Image)(resources.GetObject("btnBackColorPicker.Image")));
             this.btnBackColorPicker.Location = new System.Drawing.Point(229, 16);
@@ -112,6 +113,7 @@
             // 
             // btnClearArea
             // 
+            this.btnClearArea.FlatAppearance.BorderSize = 0;
             this.btnClearArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearArea.Image = ((System.Drawing.Image)(resources.GetObject("btnClearArea.Image")));
             this.btnClearArea.Location = new System.Drawing.Point(174, 12);
@@ -123,6 +125,7 @@
             // 
             // btnDrawLine
             // 
+            this.btnDrawLine.FlatAppearance.BorderSize = 0;
             this.btnDrawLine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDrawLine.Image = ((System.Drawing.Image)(resources.GetObject("btnDrawLine.Image")));
             this.btnDrawLine.Location = new System.Drawing.Point(66, 12);
@@ -168,6 +171,7 @@
             // 
             // btnLineColorPicker
             // 
+            this.btnLineColorPicker.FlatAppearance.BorderSize = 0;
             this.btnLineColorPicker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLineColorPicker.Image = ((System.Drawing.Image)(resources.GetObject("btnLineColorPicker.Image")));
             this.btnLineColorPicker.Location = new System.Drawing.Point(60, 16);
@@ -179,9 +183,10 @@
             // 
             // btnSaveToClip
             // 
+            this.btnSaveToClip.FlatAppearance.BorderSize = 0;
             this.btnSaveToClip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveToClip.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveToClip.Image")));
-            this.btnSaveToClip.Location = new System.Drawing.Point(769, 14);
+            this.btnSaveToClip.Location = new System.Drawing.Point(729, 13);
             this.btnSaveToClip.Name = "btnSaveToClip";
             this.btnSaveToClip.Size = new System.Drawing.Size(48, 48);
             this.btnSaveToClip.TabIndex = 0;
@@ -190,6 +195,7 @@
             // 
             // btnDrawRect
             // 
+            this.btnDrawRect.FlatAppearance.BorderSize = 0;
             this.btnDrawRect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDrawRect.Image = ((System.Drawing.Image)(resources.GetObject("btnDrawRect.Image")));
             this.btnDrawRect.Location = new System.Drawing.Point(12, 13);
@@ -201,6 +207,7 @@
             // 
             // btnUndo
             // 
+            this.btnUndo.FlatAppearance.BorderSize = 0;
             this.btnUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUndo.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.Image")));
             this.btnUndo.Location = new System.Drawing.Point(675, 13);
@@ -212,9 +219,10 @@
             // 
             // btnSave
             // 
+            this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(823, 14);
+            this.btnSave.Location = new System.Drawing.Point(783, 13);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(48, 48);
             this.btnSave.TabIndex = 8;
@@ -223,6 +231,7 @@
             // 
             // btnDrawArrow
             // 
+            this.btnDrawArrow.FlatAppearance.BorderSize = 0;
             this.btnDrawArrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDrawArrow.Image = ((System.Drawing.Image)(resources.GetObject("btnDrawArrow.Image")));
             this.btnDrawArrow.Location = new System.Drawing.Point(120, 12);
