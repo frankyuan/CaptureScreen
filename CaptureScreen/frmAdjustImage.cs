@@ -218,6 +218,12 @@ namespace CaptureScreen
                     selectX = e.X;
                     selectY = e.Y;
                     selectPen = CreatePen;
+                    using GraphicsPath capPath = new();
+                    // TODO: A triangle, need refactor
+                    capPath.AddLine(-1 * ArrowShort, ArrowLong * -1, ArrowShort, ArrowLong * -1);
+                    capPath.AddLine(-1 * ArrowShort, ArrowLong * -1, 0, 0);
+                    capPath.AddLine(0, 0, ArrowShort, ArrowLong * -1);
+                    selectPen.CustomStartCap = new CustomLineCap(null, capPath);
                 }
 
                 picCapturedImage.Refresh();
@@ -238,17 +244,7 @@ namespace CaptureScreen
                     Bitmap _img = new(CurrentImage);
                     using Graphics g = Graphics.FromImage(_img);
                     g.SmoothingMode = SmoothingMode.AntiAlias;
-                    using var pen = CreatePen;
-                    using (GraphicsPath capPath = new())
-                    {
-                        // TODO: A triangle, need refactor
-                        capPath.AddLine(-1 * ArrowShort, ArrowLong * -1, ArrowShort, ArrowLong * -1);
-                        capPath.AddLine(-1 * ArrowShort, ArrowLong * -1, 0, 0);
-                        capPath.AddLine(0, 0, ArrowShort, ArrowLong * -1);
-                        pen.CustomEndCap = new CustomLineCap(null, capPath);
-                        g.DrawLine(pen, selectX, selectY, e.X, e.Y);
-                    }
-
+                    g.DrawLine(selectPen, e.X, e.Y, selectX, selectY);
                     CurrentImage = _img;
                     picCapturedImage.Image = CurrentImage;
                 }
