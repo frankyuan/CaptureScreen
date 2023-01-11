@@ -14,7 +14,8 @@ namespace CaptureScreen
     public partial class frmAdjustImage : Form
     {
         private static int LineWidth = 3;
-        private static int ArrowLength = 3;
+        private static int ArrowLong = 4;
+        private static int ArrowShort = 1;
         private EditMode currentMode = EditMode.CleanArea;
         private Stack<Image> imageHistory = new Stack<Image>();
 
@@ -232,9 +233,9 @@ namespace CaptureScreen
                     using (GraphicsPath capPath = new())
                     {
                         // A triangle
-                        capPath.AddLine(-1* ArrowLength, 0, ArrowLength, 0);
-                        capPath.AddLine(-1 * ArrowLength, 0, 0, ArrowLength);
-                        capPath.AddLine(0, ArrowLength, ArrowLength, 0);
+                        capPath.AddLine(-1 * ArrowShort, 0, ArrowShort, 0);
+                        capPath.AddLine(-1 * ArrowShort, 0, 0, ArrowLong);
+                        capPath.AddLine(0, ArrowLong, ArrowShort, 0);
                         pen.CustomEndCap = new CustomLineCap(null, capPath);
                         g.DrawLine(pen, selectX, selectY, e.X, e.Y);
                     }
