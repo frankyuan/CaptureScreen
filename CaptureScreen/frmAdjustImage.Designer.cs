@@ -32,7 +32,6 @@
             this.picCapturedImage = new System.Windows.Forms.PictureBox();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.picBackGround = new System.Windows.Forms.PictureBox();
-            this.btnBackColorPicker = new System.Windows.Forms.Button();
             this.picWhite = new System.Windows.Forms.PictureBox();
             this.picGreen = new System.Windows.Forms.PictureBox();
             this.btnClearArea = new System.Windows.Forms.Button();
@@ -40,7 +39,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.picLineColor = new System.Windows.Forms.PictureBox();
             this.picRed = new System.Windows.Forms.PictureBox();
-            this.btnLineColorPicker = new System.Windows.Forms.Button();
+            this.btnColorPicker = new System.Windows.Forms.Button();
             this.btnSaveToClip = new System.Windows.Forms.Button();
             this.btnDrawRect = new System.Windows.Forms.Button();
             this.btnUndo = new System.Windows.Forms.Button();
@@ -73,28 +72,17 @@
             // picBackGround
             // 
             this.picBackGround.BackColor = System.Drawing.Color.White;
-            this.picBackGround.Location = new System.Drawing.Point(18, 28);
+            this.picBackGround.Location = new System.Drawing.Point(24, 35);
             this.picBackGround.Name = "picBackGround";
-            this.picBackGround.Size = new System.Drawing.Size(36, 36);
+            this.picBackGround.Size = new System.Drawing.Size(30, 30);
             this.picBackGround.TabIndex = 1;
             this.picBackGround.TabStop = false;
-            // 
-            // btnBackColorPicker
-            // 
-            this.btnBackColorPicker.FlatAppearance.BorderSize = 0;
-            this.btnBackColorPicker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackColorPicker.Image = ((System.Drawing.Image)(resources.GetObject("btnBackColorPicker.Image")));
-            this.btnBackColorPicker.Location = new System.Drawing.Point(229, 16);
-            this.btnBackColorPicker.Name = "btnBackColorPicker";
-            this.btnBackColorPicker.Size = new System.Drawing.Size(48, 48);
-            this.btnBackColorPicker.TabIndex = 6;
-            this.btnBackColorPicker.UseVisualStyleBackColor = true;
-            this.btnBackColorPicker.Click += new System.EventHandler(this.btnBackColorPicker_Click);
+            this.picBackGround.Click += new System.EventHandler(this.picBackGround_Click);
             // 
             // picWhite
             // 
             this.picWhite.BackColor = System.Drawing.Color.White;
-            this.picWhite.Location = new System.Drawing.Point(292, 16);
+            this.picWhite.Location = new System.Drawing.Point(174, 16);
             this.picWhite.Name = "picWhite";
             this.picWhite.Size = new System.Drawing.Size(48, 48);
             this.picWhite.TabIndex = 3;
@@ -104,7 +92,7 @@
             // picGreen
             // 
             this.picGreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(238)))), ((int)(((byte)(221)))));
-            this.picGreen.Location = new System.Drawing.Point(346, 16);
+            this.picGreen.Location = new System.Drawing.Point(228, 16);
             this.picGreen.Name = "picGreen";
             this.picGreen.Size = new System.Drawing.Size(48, 48);
             this.picGreen.TabIndex = 4;
@@ -139,14 +127,13 @@
             // 
             this.groupBox1.Controls.Add(this.picLineColor);
             this.groupBox1.Controls.Add(this.picRed);
-            this.groupBox1.Controls.Add(this.btnLineColorPicker);
-            this.groupBox1.Controls.Add(this.btnBackColorPicker);
+            this.groupBox1.Controls.Add(this.btnColorPicker);
             this.groupBox1.Controls.Add(this.picWhite);
             this.groupBox1.Controls.Add(this.picGreen);
             this.groupBox1.Controls.Add(this.picBackGround);
             this.groupBox1.Location = new System.Drawing.Point(229, -4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(403, 71);
+            this.groupBox1.Size = new System.Drawing.Size(284, 71);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
@@ -155,9 +142,10 @@
             this.picLineColor.BackColor = System.Drawing.Color.Red;
             this.picLineColor.Location = new System.Drawing.Point(6, 16);
             this.picLineColor.Name = "picLineColor";
-            this.picLineColor.Size = new System.Drawing.Size(36, 36);
+            this.picLineColor.Size = new System.Drawing.Size(30, 30);
             this.picLineColor.TabIndex = 10;
             this.picLineColor.TabStop = false;
+            this.picLineColor.DoubleClick += new System.EventHandler(this.picLineColor_DoubleClick);
             // 
             // picRed
             // 
@@ -169,24 +157,24 @@
             this.picRed.TabStop = false;
             this.picRed.Click += new System.EventHandler(this.picRed_Click);
             // 
-            // btnLineColorPicker
+            // btnColorPicker
             // 
-            this.btnLineColorPicker.FlatAppearance.BorderSize = 0;
-            this.btnLineColorPicker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLineColorPicker.Image = ((System.Drawing.Image)(resources.GetObject("btnLineColorPicker.Image")));
-            this.btnLineColorPicker.Location = new System.Drawing.Point(60, 16);
-            this.btnLineColorPicker.Name = "btnLineColorPicker";
-            this.btnLineColorPicker.Size = new System.Drawing.Size(48, 48);
-            this.btnLineColorPicker.TabIndex = 5;
-            this.btnLineColorPicker.UseVisualStyleBackColor = true;
-            this.btnLineColorPicker.Click += new System.EventHandler(this.btnLineColorPicker_Click);
+            this.btnColorPicker.FlatAppearance.BorderSize = 0;
+            this.btnColorPicker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnColorPicker.Image = ((System.Drawing.Image)(resources.GetObject("btnColorPicker.Image")));
+            this.btnColorPicker.Location = new System.Drawing.Point(60, 16);
+            this.btnColorPicker.Name = "btnColorPicker";
+            this.btnColorPicker.Size = new System.Drawing.Size(48, 48);
+            this.btnColorPicker.TabIndex = 5;
+            this.btnColorPicker.UseVisualStyleBackColor = true;
+            this.btnColorPicker.Click += new System.EventHandler(this.btnColorPicker_Click);
             // 
             // btnSaveToClip
             // 
             this.btnSaveToClip.FlatAppearance.BorderSize = 0;
             this.btnSaveToClip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveToClip.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveToClip.Image")));
-            this.btnSaveToClip.Location = new System.Drawing.Point(729, 13);
+            this.btnSaveToClip.Location = new System.Drawing.Point(580, 13);
             this.btnSaveToClip.Name = "btnSaveToClip";
             this.btnSaveToClip.Size = new System.Drawing.Size(48, 48);
             this.btnSaveToClip.TabIndex = 0;
@@ -210,7 +198,7 @@
             this.btnUndo.FlatAppearance.BorderSize = 0;
             this.btnUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUndo.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.Image")));
-            this.btnUndo.Location = new System.Drawing.Point(675, 13);
+            this.btnUndo.Location = new System.Drawing.Point(526, 13);
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.Size = new System.Drawing.Size(48, 48);
             this.btnUndo.TabIndex = 100;
@@ -222,7 +210,7 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(783, 13);
+            this.btnSave.Location = new System.Drawing.Point(634, 13);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(48, 48);
             this.btnSave.TabIndex = 8;
@@ -280,7 +268,6 @@
         private PictureBox picCapturedImage;
         private ColorDialog colorDialog;
         private PictureBox picBackGround;
-        private Button btnBackColorPicker;
         private PictureBox picWhite;
         private PictureBox picGreen;
         private Button btnClearArea;
@@ -290,7 +277,7 @@
         private Button btnDrawRect;
         private PictureBox picLineColor;
         private PictureBox picRed;
-        private Button btnLineColorPicker;
+        private Button btnColorPicker;
         private Button btnUndo;
         private Button btnSave;
         private SaveFileDialog saveFileDialog1;

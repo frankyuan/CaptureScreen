@@ -2,7 +2,13 @@
 
 namespace CaptureScreen
 {
-    public enum EditMode
+    public enum ColorPickerMode
+    {
+        LineColor,
+        BackgroundColor
+    }
+
+    public enum ActionMode
     {
         CleanArea,
         DrawLine,
@@ -16,7 +22,8 @@ namespace CaptureScreen
         private static int LineWidth = 3;
         private static int ArrowLong = 4;
         private static int ArrowShort = 1;
-        private EditMode currentMode = EditMode.CleanArea;
+        private ActionMode currentActionMode = ActionMode.CleanArea;
+        private ColorPickerMode currentColorPickerMode = ColorPickerMode.BackgroundColor;
         private Stack<Image> imageHistory = new Stack<Image>();
 
         #region These variables control the mouse position other than draw line
@@ -41,7 +48,7 @@ namespace CaptureScreen
             set
             {
                 currentImage = value;
-                if (currentMode != EditMode.DrawLine)
+                if (currentActionMode != ActionMode.DrawLine)
                 {
                     imageHistory.Push(currentImage);
                     RefreshUndoStatus();
@@ -74,26 +81,27 @@ namespace CaptureScreen
                 int.Parse(lastSetting.LineColorG),
                 int.Parse(lastSetting.LineColorB));
             btnClearArea_Click(sender, e);
+            InitColorPickerStyle();
         }
 
         private void picCapturedImage_MouseDown(object sender, MouseEventArgs e)
         {
-            if (currentMode == EditMode.CleanArea)
+            if (currentActionMode == ActionMode.CleanArea)
             {
                 ClearArea_MouseDown(e);
             }
 
-            if (currentMode == EditMode.DrawRect)
+            if (currentActionMode == ActionMode.DrawRect)
             {
                 DrawRect_MouseDown(e);
             }
 
-            if (currentMode == EditMode.DrawLine)
+            if (currentActionMode == ActionMode.DrawLine)
             {
                 DrawLine_MouseDown(e);
             }
 
-            if (currentMode == EditMode.DrawArrow)
+            if (currentActionMode == ActionMode.DrawArrow)
             {
                 DrowArrow_MouseDown(e);
             }
@@ -194,10 +202,10 @@ namespace CaptureScreen
             {
                 start = false;
                 lastPoint = Point.Empty;
-                var tmpCurrentMode = currentMode;
-                currentMode = EditMode.Unknown;
+                var tmpCurrentMode = currentActionMode;
+                currentActionMode = ActionMode.Unknown;
                 CurrentImage = picCapturedImage.Image;
-                currentMode = tmpCurrentMode;
+                currentActionMode = tmpCurrentMode;
             }
         }
 
@@ -251,22 +259,22 @@ namespace CaptureScreen
 
         private void picCapturedImage_MouseMove(object sender, MouseEventArgs e)
         {
-            if (currentMode == EditMode.CleanArea)
+            if (currentActionMode == ActionMode.CleanArea)
             {
                 ClearArea_MouseMove(e);
             }
 
-            if (currentMode == EditMode.DrawRect)
+            if (currentActionMode == ActionMode.DrawRect)
             {
                 DrawRect_MouseMove(e);
             }
 
-            if (currentMode == EditMode.DrawLine)
+            if (currentActionMode == ActionMode.DrawLine)
             {
                 DrawLine_MouseMove(e);
             }
 
-            if (currentMode == EditMode.DrawArrow)
+            if (currentActionMode == ActionMode.DrawArrow)
             {
                 DrawArrow_MouseMove(e);
             }
@@ -425,49 +433,53 @@ namespace CaptureScreen
 
         private void btnClearArea_Click(object sender, EventArgs e)
         {
-            ClearEditModeStyle();
-            this.currentMode = EditMode.CleanArea;
+            ResetEditModeStyle();
+            this.currentActionMode = ActionMode.CleanArea;
             this.btnClearArea.BackColor = Const.FocusColor;
         }
 
         private void btnDrawLine_Click(object sender, EventArgs e)
         {
-            ClearEditModeStyle();
-            this.currentMode = EditMode.DrawLine;
+            ResetEditModeStyle();
+            this.currentActionMode = ActionMode.DrawLine;
             this.btnDrawLine.BackColor = Const.FocusColor;
         }
 
         private void btnDrawRect_Click(object sender, EventArgs e)
         {
-            ClearEditModeStyle();
-            this.currentMode = EditMode.DrawRect;
+            ResetEditModeStyle();
+            this.currentActionMode = ActionMode.DrawRect;
             this.btnDrawRect.BackColor = Const.FocusColor;
         }
 
         private void btnDrawArrow_Click(object sender, EventArgs e)
         {
-            ClearEditModeStyle();
-            currentMode = EditMode.DrawArrow;
+            ResetEditModeStyle();
+            currentActionMode = ActionMode.DrawArrow;
             btnDrawArrow.BackColor = Const.FocusColor;
         }
 
-        private void btnBackColorPicker_Click(object sender, EventArgs e)
+        private void btnColorPicker_Click(object sender, EventArgs e)
         {
-            var result = colorDialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                picBackGround.BackColor = colorDialog.Color;
-                SaveBackColor();
-            }
+            SetBackgroundColor();
         }
 
-        private void btnLineColorPicker_Click(object sender, EventArgs e)
+        private void SetBackgroundColor()
         {
             var result = colorDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                picLineColor.BackColor = colorDialog.Color;
-                SaveLineColor();
+                if (currentColorPickerMode == ColorPickerMode.BackgroundColor)
+                {
+                    picBackGround.BackColor = colorDialog.Color;
+                    SaveBackColor();
+                }
+                
+                if (currentColorPickerMode == ColorPickerMode.LineColor)
+                {
+                    picLineColor.BackColor = colorDialog.Color;
+                    SaveLineColor();
+                }
             }
         }
 
@@ -481,12 +493,50 @@ namespace CaptureScreen
             }
         }
 
-        private void ClearEditModeStyle()
+        private void picLineColor_DoubleClick(object sender, EventArgs e)
+        {
+            ResetColorPickerModeStyle();
+            currentColorPickerMode = ColorPickerMode.LineColor;
+            SetColorPickerModeStyle();
+        }
+
+        private void picBackGround_Click(object sender, EventArgs e)
+        {
+            ResetColorPickerModeStyle();
+            currentColorPickerMode = ColorPickerMode.BackgroundColor;
+            SetColorPickerModeStyle();
+        }
+
+        private void ResetEditModeStyle()
         {
             btnClearArea.BackColor = BackColor;
             btnDrawLine.BackColor = BackColor;
             btnDrawRect.BackColor = BackColor;
             btnDrawArrow.BackColor = BackColor;
+        }
+
+        private void InitColorPickerStyle()
+        {
+            ResetColorPickerModeStyle();
+            SetColorPickerModeStyle();
+        }
+
+        private void ResetColorPickerModeStyle()
+        {
+            picBackGround.BorderStyle = BorderStyle.None;
+            picLineColor.BorderStyle = BorderStyle.None;
+        }
+
+        private void SetColorPickerModeStyle()
+        {
+            if (currentColorPickerMode == ColorPickerMode.BackgroundColor)
+            {
+                picBackGround.BorderStyle = BorderStyle.Fixed3D;
+            }
+            else
+            {
+                picLineColor.BorderStyle = BorderStyle.Fixed3D;
+            }
         }
 
         private void RefreshUndoStatus()
