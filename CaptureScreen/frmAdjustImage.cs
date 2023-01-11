@@ -44,6 +44,7 @@ namespace CaptureScreen
                 if (currentMode != EditMode.DrawLine)
                 {
                     imageHistory.Push(currentImage);
+                    RefreshUndoStatus();
                 }
             }
         }
@@ -72,7 +73,7 @@ namespace CaptureScreen
                 int.Parse(lastSetting.LineColorR),
                 int.Parse(lastSetting.LineColorG),
                 int.Parse(lastSetting.LineColorB));
-            this.btnClearArea_Click(sender, e);
+            btnClearArea_Click(sender, e);
         }
 
         private void picCapturedImage_MouseDown(object sender, MouseEventArgs e)
@@ -359,6 +360,7 @@ namespace CaptureScreen
             imageHistory.Pop();
             currentImage = imageHistory.Peek();
             picCapturedImage.Image = currentImage;
+            RefreshUndoStatus();
         }
 
         private void picRed_Click(object sender, EventArgs e)
@@ -485,6 +487,11 @@ namespace CaptureScreen
             btnDrawLine.BackColor = BackColor;
             btnDrawRect.BackColor = BackColor;
             btnDrawArrow.BackColor = BackColor;
+        }
+
+        private void RefreshUndoStatus()
+        {
+            btnUndo.Enabled = imageHistory.Count > 1;
         }
 
         private Pen CreatePen =>

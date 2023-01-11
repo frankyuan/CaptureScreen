@@ -86,7 +86,7 @@
             this.btnBackColorPicker.Location = new System.Drawing.Point(229, 16);
             this.btnBackColorPicker.Name = "btnBackColorPicker";
             this.btnBackColorPicker.Size = new System.Drawing.Size(48, 48);
-            this.btnBackColorPicker.TabIndex = 2;
+            this.btnBackColorPicker.TabIndex = 6;
             this.btnBackColorPicker.UseVisualStyleBackColor = true;
             this.btnBackColorPicker.Click += new System.EventHandler(this.btnBackColorPicker_Click);
             // 
@@ -116,7 +116,7 @@
             this.btnClearArea.Location = new System.Drawing.Point(174, 12);
             this.btnClearArea.Name = "btnClearArea";
             this.btnClearArea.Size = new System.Drawing.Size(48, 48);
-            this.btnClearArea.TabIndex = 5;
+            this.btnClearArea.TabIndex = 4;
             this.btnClearArea.UseVisualStyleBackColor = false;
             this.btnClearArea.Click += new System.EventHandler(this.btnClearArea_Click);
             // 
@@ -126,7 +126,7 @@
             this.btnDrawLine.Location = new System.Drawing.Point(66, 12);
             this.btnDrawLine.Name = "btnDrawLine";
             this.btnDrawLine.Size = new System.Drawing.Size(48, 48);
-            this.btnDrawLine.TabIndex = 6;
+            this.btnDrawLine.TabIndex = 2;
             this.btnDrawLine.UseVisualStyleBackColor = true;
             this.btnDrawLine.Click += new System.EventHandler(this.btnDrawLine_Click);
             // 
@@ -170,7 +170,7 @@
             this.btnLineColorPicker.Location = new System.Drawing.Point(60, 16);
             this.btnLineColorPicker.Name = "btnLineColorPicker";
             this.btnLineColorPicker.Size = new System.Drawing.Size(48, 48);
-            this.btnLineColorPicker.TabIndex = 11;
+            this.btnLineColorPicker.TabIndex = 5;
             this.btnLineColorPicker.UseVisualStyleBackColor = true;
             this.btnLineColorPicker.Click += new System.EventHandler(this.btnLineColorPicker_Click);
             // 
@@ -180,7 +180,7 @@
             this.btnSaveToClip.Location = new System.Drawing.Point(769, 14);
             this.btnSaveToClip.Name = "btnSaveToClip";
             this.btnSaveToClip.Size = new System.Drawing.Size(48, 48);
-            this.btnSaveToClip.TabIndex = 8;
+            this.btnSaveToClip.TabIndex = 0;
             this.btnSaveToClip.UseVisualStyleBackColor = true;
             this.btnSaveToClip.Click += new System.EventHandler(this.btnSaveToClip_Click);
             // 
@@ -190,7 +190,7 @@
             this.btnDrawRect.Location = new System.Drawing.Point(12, 13);
             this.btnDrawRect.Name = "btnDrawRect";
             this.btnDrawRect.Size = new System.Drawing.Size(48, 48);
-            this.btnDrawRect.TabIndex = 9;
+            this.btnDrawRect.TabIndex = 1;
             this.btnDrawRect.UseVisualStyleBackColor = true;
             this.btnDrawRect.Click += new System.EventHandler(this.btnDrawRect_Click);
             // 
@@ -200,7 +200,7 @@
             this.btnUndo.Location = new System.Drawing.Point(675, 13);
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.Size = new System.Drawing.Size(48, 48);
-            this.btnUndo.TabIndex = 10;
+            this.btnUndo.TabIndex = 100;
             this.btnUndo.UseVisualStyleBackColor = true;
             this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
             // 
@@ -210,7 +210,7 @@
             this.btnSave.Location = new System.Drawing.Point(823, 14);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(48, 48);
-            this.btnSave.TabIndex = 11;
+            this.btnSave.TabIndex = 8;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -220,7 +220,7 @@
             this.btnDrawArrow.Location = new System.Drawing.Point(120, 12);
             this.btnDrawArrow.Name = "btnDrawArrow";
             this.btnDrawArrow.Size = new System.Drawing.Size(48, 48);
-            this.btnDrawArrow.TabIndex = 12;
+            this.btnDrawArrow.TabIndex = 3;
             this.btnDrawArrow.UseVisualStyleBackColor = true;
             this.btnDrawArrow.Click += new System.EventHandler(this.btnDrawArrow_Click);
             // 
