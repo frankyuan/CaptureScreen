@@ -62,7 +62,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picCapturedImage.BackColor = System.Drawing.Color.White;
-            this.picCapturedImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picCapturedImage.Location = new System.Drawing.Point(-1, 71);
             this.picCapturedImage.Name = "picCapturedImage";
             this.picCapturedImage.Size = new System.Drawing.Size(1514, 679);
@@ -82,6 +81,7 @@
             // 
             // btnBackColorPicker
             // 
+            this.btnBackColorPicker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBackColorPicker.Image = ((System.Drawing.Image)(resources.GetObject("btnBackColorPicker.Image")));
             this.btnBackColorPicker.Location = new System.Drawing.Point(229, 16);
             this.btnBackColorPicker.Name = "btnBackColorPicker";
@@ -112,6 +112,7 @@
             // 
             // btnClearArea
             // 
+            this.btnClearArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearArea.Image = ((System.Drawing.Image)(resources.GetObject("btnClearArea.Image")));
             this.btnClearArea.Location = new System.Drawing.Point(174, 12);
             this.btnClearArea.Name = "btnClearArea";
@@ -122,6 +123,7 @@
             // 
             // btnDrawLine
             // 
+            this.btnDrawLine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDrawLine.Image = ((System.Drawing.Image)(resources.GetObject("btnDrawLine.Image")));
             this.btnDrawLine.Location = new System.Drawing.Point(66, 12);
             this.btnDrawLine.Name = "btnDrawLine";
@@ -166,6 +168,7 @@
             // 
             // btnLineColorPicker
             // 
+            this.btnLineColorPicker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLineColorPicker.Image = ((System.Drawing.Image)(resources.GetObject("btnLineColorPicker.Image")));
             this.btnLineColorPicker.Location = new System.Drawing.Point(60, 16);
             this.btnLineColorPicker.Name = "btnLineColorPicker";
@@ -176,6 +179,7 @@
             // 
             // btnSaveToClip
             // 
+            this.btnSaveToClip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveToClip.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveToClip.Image")));
             this.btnSaveToClip.Location = new System.Drawing.Point(769, 14);
             this.btnSaveToClip.Name = "btnSaveToClip";
@@ -186,6 +190,7 @@
             // 
             // btnDrawRect
             // 
+            this.btnDrawRect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDrawRect.Image = ((System.Drawing.Image)(resources.GetObject("btnDrawRect.Image")));
             this.btnDrawRect.Location = new System.Drawing.Point(12, 13);
             this.btnDrawRect.Name = "btnDrawRect";
@@ -196,6 +201,7 @@
             // 
             // btnUndo
             // 
+            this.btnUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUndo.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.Image")));
             this.btnUndo.Location = new System.Drawing.Point(675, 13);
             this.btnUndo.Name = "btnUndo";
@@ -206,6 +212,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.Location = new System.Drawing.Point(823, 14);
             this.btnSave.Name = "btnSave";
@@ -216,6 +223,7 @@
             // 
             // btnDrawArrow
             // 
+            this.btnDrawArrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDrawArrow.Image = ((System.Drawing.Image)(resources.GetObject("btnDrawArrow.Image")));
             this.btnDrawArrow.Location = new System.Drawing.Point(120, 12);
             this.btnDrawArrow.Name = "btnDrawArrow";
