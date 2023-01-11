@@ -64,11 +64,11 @@ namespace CaptureScreen
             picCaptureScreen.Image = firstImage;
             this.Show();
             Cursor = Cursors.Cross;
-            if (firstImage == screenImages[0])
+            if (screenImages.Count >= 1 && firstImage == screenImages[0] && btnScreen1.Visible)
             {
                 btnScreen1.BackColor = Const.FocusColor;
             }
-            if (firstImage == screenImages[1])
+            if (screenImages.Count >= 2 && firstImage == screenImages[1] && btnScreen2.Visible)
             {
                 btnScreen2.BackColor = Const.FocusColor;
             }

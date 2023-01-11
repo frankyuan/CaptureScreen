@@ -38,9 +38,9 @@
             this.btnClearArea = new System.Windows.Forms.Button();
             this.btnDrawLine = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.picLineColor = new System.Windows.Forms.PictureBox();
             this.picRed = new System.Windows.Forms.PictureBox();
             this.btnLineColorPicker = new System.Windows.Forms.Button();
-            this.picLineColor = new System.Windows.Forms.PictureBox();
             this.btnSaveToClip = new System.Windows.Forms.Button();
             this.btnDrawRect = new System.Windows.Forms.Button();
             this.btnUndo = new System.Windows.Forms.Button();
@@ -51,8 +51,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picWhite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGreen)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLineColor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRed)).BeginInit();
             this.SuspendLayout();
             // 
             // picCapturedImage
@@ -144,6 +144,15 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
+            // picLineColor
+            // 
+            this.picLineColor.BackColor = System.Drawing.Color.Red;
+            this.picLineColor.Location = new System.Drawing.Point(6, 16);
+            this.picLineColor.Name = "picLineColor";
+            this.picLineColor.Size = new System.Drawing.Size(36, 36);
+            this.picLineColor.TabIndex = 10;
+            this.picLineColor.TabStop = false;
+            // 
             // picRed
             // 
             this.picRed.BackColor = System.Drawing.Color.Red;
@@ -163,15 +172,6 @@
             this.btnLineColorPicker.TabIndex = 11;
             this.btnLineColorPicker.UseVisualStyleBackColor = true;
             this.btnLineColorPicker.Click += new System.EventHandler(this.btnLineColorPicker_Click);
-            // 
-            // picLineColor
-            // 
-            this.picLineColor.BackColor = System.Drawing.Color.Red;
-            this.picLineColor.Location = new System.Drawing.Point(6, 16);
-            this.picLineColor.Name = "picLineColor";
-            this.picLineColor.Size = new System.Drawing.Size(36, 36);
-            this.picLineColor.TabIndex = 10;
-            this.picLineColor.TabStop = false;
             // 
             // btnSaveToClip
             // 
@@ -231,6 +231,7 @@
             this.MinimizeBox = false;
             this.Name = "frmAdjustImage";
             this.Text = "Capture Screen";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAdjustImage_FormClosed);
             this.Load += new System.EventHandler(this.frmAdjustImage_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmAdjustImage_KeyDown);
@@ -239,8 +240,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picWhite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGreen)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picRed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLineColor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRed)).EndInit();
             this.ResumeLayout(false);
 
         }
