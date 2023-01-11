@@ -232,10 +232,10 @@ namespace CaptureScreen
                     using var pen = CreatePen;
                     using (GraphicsPath capPath = new())
                     {
-                        // A triangle
-                        capPath.AddLine(-1 * ArrowShort, 0, ArrowShort, 0);
-                        capPath.AddLine(-1 * ArrowShort, 0, 0, ArrowLong);
-                        capPath.AddLine(0, ArrowLong, ArrowShort, 0);
+                        // TODO: A triangle, need refactor
+                        capPath.AddLine(-1 * ArrowShort, ArrowLong * -1, ArrowShort, ArrowLong * -1);
+                        capPath.AddLine(-1 * ArrowShort, ArrowLong * -1, 0, 0);
+                        capPath.AddLine(0, 0, ArrowShort, ArrowLong * -1);
                         pen.CustomEndCap = new CustomLineCap(null, capPath);
                         g.DrawLine(pen, selectX, selectY, e.X, e.Y);
                     }
