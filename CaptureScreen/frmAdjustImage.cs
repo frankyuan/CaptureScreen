@@ -14,7 +14,7 @@ namespace CaptureScreen
     public partial class frmAdjustImage : Form
     {
         private static int LineWidth = 3;
-        private static int ArrowLength = 5;
+        private static int ArrowLength = 3;
         private EditMode currentMode = EditMode.CleanArea;
         private Stack<Image> imageHistory = new Stack<Image>();
 
