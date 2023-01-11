@@ -266,8 +266,8 @@ namespace CaptureScreen
 
             Bitmap _img = new(CurrentImage);
             using Graphics g = Graphics.FromImage(_img);
-            g.DrawLine(selectPen, lastPoint, e.Location);
             g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.DrawLine(selectPen, lastPoint, e.Location);
             picCapturedImage.Invalidate();
             lastPoint = e.Location;
             CurrentImage = _img;
