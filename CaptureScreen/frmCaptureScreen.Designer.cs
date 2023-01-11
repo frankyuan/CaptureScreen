@@ -53,6 +53,8 @@
             // btnScreen1
             // 
             this.btnScreen1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnScreen1.FlatAppearance.BorderSize = 0;
+            this.btnScreen1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnScreen1.Image = ((System.Drawing.Image)(resources.GetObject("btnScreen1.Image")));
             this.btnScreen1.Location = new System.Drawing.Point(1472, 12);
             this.btnScreen1.Name = "btnScreen1";
@@ -67,6 +69,8 @@
             // btnScreen2
             // 
             this.btnScreen2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnScreen2.FlatAppearance.BorderSize = 0;
+            this.btnScreen2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnScreen2.Image = ((System.Drawing.Image)(resources.GetObject("btnScreen2.Image")));
             this.btnScreen2.Location = new System.Drawing.Point(1526, 12);
             this.btnScreen2.Name = "btnScreen2";

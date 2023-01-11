@@ -430,29 +430,29 @@ namespace CaptureScreen
         private void btnClearArea_Click(object sender, EventArgs e)
         {
             ResetEditModeStyle();
-            this.currentActionMode = ActionMode.CleanArea;
-            this.btnClearArea.BackColor = Const.FocusColor;
+            currentActionMode = ActionMode.CleanArea;
+            btnClearArea.FlatStyle = FlatStyle.Popup;
         }
 
         private void btnDrawLine_Click(object sender, EventArgs e)
         {
             ResetEditModeStyle();
-            this.currentActionMode = ActionMode.DrawLine;
-            this.btnDrawLine.BackColor = Const.FocusColor;
+            currentActionMode = ActionMode.DrawLine;
+            btnDrawLine.FlatStyle = FlatStyle.Popup;
         }
 
         private void btnDrawRect_Click(object sender, EventArgs e)
         {
             ResetEditModeStyle();
-            this.currentActionMode = ActionMode.DrawRect;
-            this.btnDrawRect.BackColor = Const.FocusColor;
+            currentActionMode = ActionMode.DrawRect;
+            btnDrawRect.FlatStyle = FlatStyle.Popup;
         }
 
         private void btnDrawArrow_Click(object sender, EventArgs e)
         {
             ResetEditModeStyle();
             currentActionMode = ActionMode.DrawArrow;
-            btnDrawArrow.BackColor = Const.FocusColor;
+            btnDrawArrow.FlatStyle = FlatStyle.Popup;
         }
 
         private void btnColorPicker_Click(object sender, EventArgs e)
@@ -481,6 +481,7 @@ namespace CaptureScreen
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            saveFileDialog1.FileName = $"Untitled-{DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss")}";
             var result = saveFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -505,10 +506,10 @@ namespace CaptureScreen
 
         private void ResetEditModeStyle()
         {
-            btnClearArea.BackColor = BackColor;
-            btnDrawLine.BackColor = BackColor;
-            btnDrawRect.BackColor = BackColor;
-            btnDrawArrow.BackColor = BackColor;
+            btnClearArea.FlatStyle = FlatStyle.Flat;
+            btnDrawLine.FlatStyle = FlatStyle.Flat;
+            btnDrawRect.FlatStyle = FlatStyle.Flat;
+            btnDrawArrow.FlatStyle = FlatStyle.Flat;
         }
 
         private void InitColorPickerStyle()

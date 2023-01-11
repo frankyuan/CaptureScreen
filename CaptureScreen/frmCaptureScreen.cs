@@ -24,7 +24,7 @@ namespace CaptureScreen
         {
             btnScreen1.Visible = (Screen.AllScreens.Count() > 1);
             btnScreen2.Visible = (Screen.AllScreens.Count() > 1);
-            ClearScreenButtonScreen();
+            ResetScreenButtonStyle();
             CaptureAllScreens();
         }
 
@@ -64,11 +64,12 @@ namespace CaptureScreen
             Cursor = Cursors.Cross;
             if (screenImages.Count >= 1 && firstImage == screenImages[0] && btnScreen1.Visible)
             {
-                btnScreen1.BackColor = Const.FocusColor;
+                btnScreen1.FlatStyle = FlatStyle.Popup;
             }
+
             if (screenImages.Count >= 2 && firstImage == screenImages[1] && btnScreen2.Visible)
             {
-                btnScreen2.BackColor = Const.FocusColor;
+                btnScreen2.FlatStyle = FlatStyle.Popup;
             }
         }
 
@@ -190,22 +191,22 @@ namespace CaptureScreen
 
         private void btnScreen1_Click(object sender, EventArgs e)
         {
-            ClearScreenButtonScreen();
+            ResetScreenButtonStyle();
             var image = screenImages[0];
             picCaptureScreen.Size = new Size(image.Width, image.Height);
             picCaptureScreen.Image = image;
             start = false;
-            btnScreen1.BackColor = Const.FocusColor;
+            btnScreen1.FlatStyle = FlatStyle.Popup;
         }
 
         private void btnScreen2_Click(object sender, EventArgs e)
         {
-            ClearScreenButtonScreen();
+            ResetScreenButtonStyle();
             var image = screenImages[1];
             picCaptureScreen.Size = new Size(image.Width, image.Height);
             picCaptureScreen.Image = image;
             start = false;
-            btnScreen2.BackColor = Const.FocusColor;
+            btnScreen2.FlatStyle = FlatStyle.Popup;
         }
 
         private void btnScreen1_MouseEnter(object sender, EventArgs e)
@@ -228,10 +229,10 @@ namespace CaptureScreen
             Cursor = Cursors.Cross;
         }
 
-        private void ClearScreenButtonScreen()
+        private void ResetScreenButtonStyle()
         {
-            btnScreen1.BackColor = this.BackColor;
-            btnScreen2.BackColor = this.BackColor;
+            btnScreen1.FlatStyle = FlatStyle.Flat;
+            btnScreen2.FlatStyle = FlatStyle.Flat;
         }
     }
 }
