@@ -14,6 +14,7 @@ namespace CaptureScreen
         DrawLine,
         DrawRect,
         DrawArrow,
+        DrawStraightLine,
         Unknown
     }
 
@@ -24,7 +25,8 @@ namespace CaptureScreen
         private static int ArrowShort = 1;
         private ActionMode currentActionMode = ActionMode.CleanArea;
         private ColorPickerMode currentColorPickerMode = ColorPickerMode.BackgroundColor;
-        private Stack<Image> imageHistory = new Stack<Image>();
+        private Stack<Image> imageHistory = new();
+        private List<Button> actionButtons = new();
 
         #region These variables control the mouse position other than draw line
         private int selectX;
@@ -64,6 +66,7 @@ namespace CaptureScreen
 
         private void frmAdjustImage_Load(object sender, EventArgs e)
         {
+            InitActionButtons();
             CurrentImage = originalImage;
             picCapturedImage.Image = CurrentImage;
 
@@ -84,26 +87,38 @@ namespace CaptureScreen
             InitColorPickerStyle();
         }
 
+        private void InitActionButtons()
+        {
+            actionButtons.Add(btnClearArea);
+            actionButtons.Add(btnDrawLine);
+            actionButtons.Add(btnDrawRect);
+            actionButtons.Add(btnDrawArrow);
+            actionButtons.Add(btnDrawStraightLine);
+        }
+
         private void picCapturedImage_MouseDown(object sender, MouseEventArgs e)
         {
-            if (currentActionMode == ActionMode.CleanArea)
+            switch (currentActionMode)
             {
-                ClearArea_MouseDown(e);
-            }
-
-            if (currentActionMode == ActionMode.DrawRect)
-            {
-                DrawRect_MouseDown(e);
-            }
-
-            if (currentActionMode == ActionMode.DrawLine)
-            {
-                DrawLine_MouseDown(e);
-            }
-
-            if (currentActionMode == ActionMode.DrawArrow)
-            {
-                DrowArrow_MouseDown(e);
+                case ActionMode.CleanArea:
+                    ClearArea_MouseDown(e);
+                    break;
+                case ActionMode.DrawLine:
+                    DrawLine_MouseDown(e);
+                    break;
+                case ActionMode.DrawRect:
+                    DrawRect_MouseDown(e);
+                    break;
+                case ActionMode.DrawArrow:
+                    DrowArrow_MouseDown(e);
+                    break;
+                case ActionMode.DrawStraightLine:
+                    DrowStraightLine_MouseDown(e);
+                    break;
+                case ActionMode.Unknown:
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -253,26 +268,67 @@ namespace CaptureScreen
             }
         }
 
+        private void DrowStraightLine_MouseDown(MouseEventArgs e)
+        {
+            if (!start)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    selectX = e.X;
+                    selectY = e.Y;
+                    selectPen = CreatePen;
+                }
+
+                picCapturedImage.Refresh();
+                start = true;
+            }
+            else
+            {
+                if (picCapturedImage.Image == null)
+                {
+                    return;
+                }
+
+                if (e.Button == MouseButtons.Left)
+                {
+                    picCapturedImage.Refresh();
+                    selectWidth = e.X - selectX;
+                    selectHeight = e.Y - selectY;
+                    Bitmap _img = new(CurrentImage);
+                    using Graphics g = Graphics.FromImage(_img);
+                    g.SmoothingMode = SmoothingMode.AntiAlias;
+                    g.DrawLine(selectPen, e.X, e.Y, selectX, selectY);
+                    CurrentImage = _img;
+                    picCapturedImage.Image = CurrentImage;
+                }
+
+                start = false;
+            }
+        }
+
         private void picCapturedImage_MouseMove(object sender, MouseEventArgs e)
         {
-            if (currentActionMode == ActionMode.CleanArea)
+            switch (currentActionMode)
             {
+                case ActionMode.CleanArea:
                 ClearArea_MouseMove(e);
-            }
-
-            if (currentActionMode == ActionMode.DrawRect)
-            {
-                DrawRect_MouseMove(e);
-            }
-
-            if (currentActionMode == ActionMode.DrawLine)
-            {
+                    break;
+                case ActionMode.DrawLine:
                 DrawLine_MouseMove(e);
-            }
-
-            if (currentActionMode == ActionMode.DrawArrow)
-            {
+                    break;
+                case ActionMode.DrawRect:
+                DrawRect_MouseMove(e);
+                    break;
+                case ActionMode.DrawArrow:
                 DrawArrow_MouseMove(e);
+                    break;
+                case ActionMode.DrawStraightLine:
+                DrawStraightLine_MouseMove(e);
+                    break;
+                case ActionMode.Unknown:
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -354,6 +410,25 @@ namespace CaptureScreen
             }
         }
 
+        private void DrawStraightLine_MouseMove(MouseEventArgs e)
+        {
+            if (picCapturedImage.Image == null)
+            {
+                return;
+            }
+
+            if (start)
+            {
+                picCapturedImage.Refresh();
+                using Graphics g = picCapturedImage.CreateGraphics();
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.DrawLine(
+                    selectPen,
+                    new Point(e.X, e.Y),
+                    new Point(selectX, selectY));
+            }
+        }
+
         private void btnUndo_Click(object sender, EventArgs e)
         {
             if (imageHistory.Count == 1)
@@ -382,9 +457,9 @@ namespace CaptureScreen
             SaveSpecificColor(picWhite.BackColor);
         }
 
-        private void picYellow_Click(object sender, EventArgs e)
+        private void picLame_Click(object sender, EventArgs e)
         {
-            SaveSpecificColor(picYellow.BackColor);
+            SaveSpecificColor(picLime.BackColor);
         }
 
         private void SaveSpecificColor(Color color)
@@ -472,6 +547,13 @@ namespace CaptureScreen
             btnDrawArrow.FlatStyle = FlatStyle.Popup;
         }
 
+        private void btnDrawStraightLine_Click(object sender, EventArgs e)
+        {
+            ResetEditModeStyle();
+            currentActionMode = ActionMode.DrawStraightLine;
+            btnDrawStraightLine.FlatStyle = FlatStyle.Popup;
+        }
+
         private void btnColorPicker_Click(object sender, EventArgs e)
         {
             SetBackgroundColor();
@@ -487,7 +569,7 @@ namespace CaptureScreen
                     picBackGround.BackColor = colorDialog.Color;
                     SaveBackColor();
                 }
-                
+
                 if (currentColorPickerMode == ColorPickerMode.LineColor)
                 {
                     picLineColor.BackColor = colorDialog.Color;
@@ -507,7 +589,7 @@ namespace CaptureScreen
             }
         }
 
-        private void picLineColor_DoubleClick(object sender, EventArgs e)
+        private void picLineColor_Click(object sender, EventArgs e)
         {
             ResetColorPickerModeStyle();
             currentColorPickerMode = ColorPickerMode.LineColor;
@@ -523,10 +605,10 @@ namespace CaptureScreen
 
         private void ResetEditModeStyle()
         {
-            btnClearArea.FlatStyle = FlatStyle.Flat;
-            btnDrawLine.FlatStyle = FlatStyle.Flat;
-            btnDrawRect.FlatStyle = FlatStyle.Flat;
-            btnDrawArrow.FlatStyle = FlatStyle.Flat;
+            foreach (var btn in actionButtons)
+            {
+                btn.FlatStyle = FlatStyle.Flat;
+            }
         }
 
         private void InitColorPickerStyle()

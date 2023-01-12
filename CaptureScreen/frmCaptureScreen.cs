@@ -1,3 +1,4 @@
+using CaptureScreen.Properties;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
@@ -65,11 +66,13 @@ namespace CaptureScreen
             if (screenImages.Count >= 1 && firstImage == screenImages[0] && btnScreen1.Visible)
             {
                 btnScreen1.FlatStyle = FlatStyle.Popup;
+                btnScreen1.Image = Resources.screen1Select;
             }
 
             if (screenImages.Count >= 2 && firstImage == screenImages[1] && btnScreen2.Visible)
             {
                 btnScreen2.FlatStyle = FlatStyle.Popup;
+                btnScreen2.Image = Resources.screen2Select;
             }
         }
 
@@ -197,6 +200,7 @@ namespace CaptureScreen
             picCaptureScreen.Image = image;
             start = false;
             btnScreen1.FlatStyle = FlatStyle.Popup;
+            btnScreen1.Image = Resources.screen1Select;
         }
 
         private void btnScreen2_Click(object sender, EventArgs e)
@@ -207,24 +211,45 @@ namespace CaptureScreen
             picCaptureScreen.Image = image;
             start = false;
             btnScreen2.FlatStyle = FlatStyle.Popup;
+            btnScreen2.Image = Resources.screen2Select;
         }
 
         private void btnScreen1_MouseEnter(object sender, EventArgs e)
         {
-            Cursor = Cursors.Arrow;
+            SetMouseEnterCursorStyle();
         }
 
         private void btnScreen1_MouseLeave(object sender, EventArgs e)
         {
-            Cursor = Cursors.Cross;
+            SetMouseLeaveCursorStyle();
         }
 
         private void btnScreen2_MouseEnter(object sender, EventArgs e)
         {
-            Cursor = Cursors.Arrow;
+            SetMouseEnterCursorStyle();
         }
 
         private void btnScreen2_MouseLeave(object sender, EventArgs e)
+        {
+            SetMouseLeaveCursorStyle();
+        }
+
+        private void btnExit_MouseEnter(object sender, EventArgs e)
+        {
+            SetMouseEnterCursorStyle();
+        }
+
+        private void btnExit_MouseLeave(object sender, EventArgs e)
+        {
+            SetMouseLeaveCursorStyle();
+        }
+
+        private void SetMouseEnterCursorStyle()
+        {
+            Cursor = Cursors.Arrow;
+        }
+
+        private void SetMouseLeaveCursorStyle()
         {
             Cursor = Cursors.Cross;
         }
@@ -232,7 +257,9 @@ namespace CaptureScreen
         private void ResetScreenButtonStyle()
         {
             btnScreen1.FlatStyle = FlatStyle.Flat;
+            btnScreen1.Image = Resources.screen1;
             btnScreen2.FlatStyle = FlatStyle.Flat;
+            btnScreen2.Image = Resources.screen2;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
