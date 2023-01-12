@@ -32,6 +32,7 @@
             this.picCaptureScreen = new System.Windows.Forms.PictureBox();
             this.btnScreen1 = new System.Windows.Forms.Button();
             this.btnScreen2 = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picCaptureScreen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +57,7 @@
             this.btnScreen1.FlatAppearance.BorderSize = 0;
             this.btnScreen1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnScreen1.Image = ((System.Drawing.Image)(resources.GetObject("btnScreen1.Image")));
-            this.btnScreen1.Location = new System.Drawing.Point(1472, 12);
+            this.btnScreen1.Location = new System.Drawing.Point(1373, 12);
             this.btnScreen1.Name = "btnScreen1";
             this.btnScreen1.Size = new System.Drawing.Size(48, 48);
             this.btnScreen1.TabIndex = 15;
@@ -72,7 +73,7 @@
             this.btnScreen2.FlatAppearance.BorderSize = 0;
             this.btnScreen2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnScreen2.Image = ((System.Drawing.Image)(resources.GetObject("btnScreen2.Image")));
-            this.btnScreen2.Location = new System.Drawing.Point(1526, 12);
+            this.btnScreen2.Location = new System.Drawing.Point(1427, 12);
             this.btnScreen2.Name = "btnScreen2";
             this.btnScreen2.Size = new System.Drawing.Size(48, 48);
             this.btnScreen2.TabIndex = 14;
@@ -82,11 +83,25 @@
             this.btnScreen2.MouseEnter += new System.EventHandler(this.btnScreen2_MouseEnter);
             this.btnScreen2.MouseLeave += new System.EventHandler(this.btnScreen2_MouseLeave);
             // 
+            // btnExit
+            // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
+            this.btnExit.Location = new System.Drawing.Point(1526, 12);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(48, 48);
+            this.btnExit.TabIndex = 102;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // frmCaptureScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1586, 865);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnScreen1);
             this.Controls.Add(this.btnScreen2);
             this.Controls.Add(this.picCaptureScreen);
@@ -112,5 +127,6 @@
         private PictureBox picCaptureScreen;
         private Button btnScreen1;
         private Button btnScreen2;
+        private Button btnExit;
     }
 }

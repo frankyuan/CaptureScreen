@@ -369,20 +369,37 @@ namespace CaptureScreen
 
         private void picRed_Click(object sender, EventArgs e)
         {
-            picLineColor.BackColor = picRed.BackColor;
-            SaveLineColor();
+            SaveSpecificColor(picRed.BackColor);
         }
 
         private void picGreen_Click(object sender, EventArgs e)
         {
-            picBackGround.BackColor = picGreen.BackColor;
-            SaveBackColor();
+            SaveSpecificColor(picGreen.BackColor);
         }
 
         private void picWhite_Click(object sender, EventArgs e)
         {
-            picBackGround.BackColor = picWhite.BackColor;
-            SaveBackColor();
+            SaveSpecificColor(picWhite.BackColor);
+        }
+
+        private void picYellow_Click(object sender, EventArgs e)
+        {
+            SaveSpecificColor(picYellow.BackColor);
+        }
+
+        private void SaveSpecificColor(Color color)
+        {
+            if (currentColorPickerMode == ColorPickerMode.BackgroundColor)
+            {
+                picBackGround.BackColor = color;
+                SaveBackColor();
+            }
+
+            if (currentColorPickerMode == ColorPickerMode.LineColor)
+            {
+                picLineColor.BackColor = color;
+                SaveLineColor();
+            }
         }
 
         private void SaveBackColor()

@@ -234,5 +234,10 @@ namespace CaptureScreen
             btnScreen1.FlatStyle = FlatStyle.Flat;
             btnScreen2.FlatStyle = FlatStyle.Flat;
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

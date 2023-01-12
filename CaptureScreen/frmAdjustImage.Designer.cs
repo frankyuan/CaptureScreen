@@ -47,6 +47,7 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnDrawArrow = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.picYellow = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picCapturedImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBackGround)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWhite)).BeginInit();
@@ -54,6 +55,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLineColor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picYellow)).BeginInit();
             this.SuspendLayout();
             // 
             // picCapturedImage
@@ -83,9 +85,9 @@
             // picWhite
             // 
             this.picWhite.BackColor = System.Drawing.Color.White;
-            this.picWhite.Location = new System.Drawing.Point(174, 16);
+            this.picWhite.Location = new System.Drawing.Point(121, 40);
             this.picWhite.Name = "picWhite";
-            this.picWhite.Size = new System.Drawing.Size(48, 48);
+            this.picWhite.Size = new System.Drawing.Size(24, 24);
             this.picWhite.TabIndex = 3;
             this.picWhite.TabStop = false;
             this.picWhite.Click += new System.EventHandler(this.picWhite_Click);
@@ -93,9 +95,9 @@
             // picGreen
             // 
             this.picGreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(238)))), ((int)(((byte)(221)))));
-            this.picGreen.Location = new System.Drawing.Point(228, 16);
+            this.picGreen.Location = new System.Drawing.Point(145, 41);
             this.picGreen.Name = "picGreen";
-            this.picGreen.Size = new System.Drawing.Size(48, 48);
+            this.picGreen.Size = new System.Drawing.Size(24, 24);
             this.picGreen.TabIndex = 4;
             this.picGreen.TabStop = false;
             this.picGreen.Click += new System.EventHandler(this.picGreen_Click);
@@ -126,6 +128,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.picYellow);
             this.groupBox1.Controls.Add(this.picLineColor);
             this.groupBox1.Controls.Add(this.picRed);
             this.groupBox1.Controls.Add(this.btnColorPicker);
@@ -134,7 +137,7 @@
             this.groupBox1.Controls.Add(this.picBackGround);
             this.groupBox1.Location = new System.Drawing.Point(229, -4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(284, 71);
+            this.groupBox1.Size = new System.Drawing.Size(176, 71);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
@@ -153,7 +156,7 @@
             this.picRed.BackColor = System.Drawing.Color.Red;
             this.picRed.Location = new System.Drawing.Point(121, 17);
             this.picRed.Name = "picRed";
-            this.picRed.Size = new System.Drawing.Size(48, 48);
+            this.picRed.Size = new System.Drawing.Size(24, 24);
             this.picRed.TabIndex = 12;
             this.picRed.TabStop = false;
             this.picRed.Click += new System.EventHandler(this.picRed_Click);
@@ -175,7 +178,7 @@
             this.btnSaveToClip.FlatAppearance.BorderSize = 0;
             this.btnSaveToClip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveToClip.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveToClip.Image")));
-            this.btnSaveToClip.Location = new System.Drawing.Point(580, 13);
+            this.btnSaveToClip.Location = new System.Drawing.Point(477, 13);
             this.btnSaveToClip.Name = "btnSaveToClip";
             this.btnSaveToClip.Size = new System.Drawing.Size(48, 48);
             this.btnSaveToClip.TabIndex = 0;
@@ -199,7 +202,7 @@
             this.btnUndo.FlatAppearance.BorderSize = 0;
             this.btnUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUndo.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.Image")));
-            this.btnUndo.Location = new System.Drawing.Point(526, 13);
+            this.btnUndo.Location = new System.Drawing.Point(423, 13);
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.Size = new System.Drawing.Size(48, 48);
             this.btnUndo.TabIndex = 100;
@@ -211,7 +214,7 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(634, 13);
+            this.btnSave.Location = new System.Drawing.Point(531, 13);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(48, 48);
             this.btnSave.TabIndex = 8;
@@ -242,6 +245,16 @@
             this.btnExit.TabIndex = 101;
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // picYellow
+            // 
+            this.picYellow.BackColor = System.Drawing.Color.Yellow;
+            this.picYellow.Location = new System.Drawing.Point(145, 16);
+            this.picYellow.Name = "picYellow";
+            this.picYellow.Size = new System.Drawing.Size(24, 24);
+            this.picYellow.TabIndex = 13;
+            this.picYellow.TabStop = false;
+            this.picYellow.Click += new System.EventHandler(this.picYellow_Click);
             // 
             // frmAdjustImage
             // 
@@ -274,6 +287,7 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picLineColor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picYellow)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -298,5 +312,6 @@
         private SaveFileDialog saveFileDialog1;
         private Button btnDrawArrow;
         private Button btnExit;
+        private PictureBox picYellow;
     }
 }
