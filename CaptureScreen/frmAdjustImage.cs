@@ -15,6 +15,7 @@ namespace CaptureScreen
         DrawRect,
         DrawArrow,
         DrawStraightLine,
+        DrawHighLighter,
         Unknown
     }
 
@@ -23,6 +24,8 @@ namespace CaptureScreen
         private static int LineWidth = 3;
         private static int ArrowLong = 4;
         private static int ArrowShort = 1;
+        private static int HighLighterWidth = 15;
+        private static int HighLighterTransparent = 64;
         private ActionMode currentActionMode = ActionMode.CleanArea;
         private ColorPickerMode currentColorPickerMode = ColorPickerMode.BackgroundColor;
         private Stack<Image> imageHistory = new();
@@ -94,6 +97,7 @@ namespace CaptureScreen
             actionButtons.Add(btnDrawRect);
             actionButtons.Add(btnDrawArrow);
             actionButtons.Add(btnDrawStraightLine);
+            actionButtons.Add(btnHighLighter);
         }
 
         private void picCapturedImage_MouseDown(object sender, MouseEventArgs e)
@@ -114,6 +118,9 @@ namespace CaptureScreen
                     break;
                 case ActionMode.DrawStraightLine:
                     DrowStraightLine_MouseDown(e);
+                    break;
+                case ActionMode.DrawHighLighter:
+                    DrawHighLighter_MouseDown(e);
                     break;
                 case ActionMode.Unknown:
                     break;
@@ -224,6 +231,25 @@ namespace CaptureScreen
             }
         }
 
+        private void DrawHighLighter_MouseDown(MouseEventArgs e)
+        {
+            if (!start)
+            {
+                lastPoint = e.Location;
+                start = true;
+                selectPen = CreateHighLightPen;
+            }
+            else
+            {
+                start = false;
+                lastPoint = Point.Empty;
+                var tmpCurrentMode = currentActionMode;
+                currentActionMode = ActionMode.Unknown;
+                CurrentImage = picCapturedImage.Image;
+                currentActionMode = tmpCurrentMode;
+            }
+        }
+
         private void DrowArrow_MouseDown(MouseEventArgs e)
         {
             if (!start)
@@ -311,19 +337,22 @@ namespace CaptureScreen
             switch (currentActionMode)
             {
                 case ActionMode.CleanArea:
-                ClearArea_MouseMove(e);
+                    ClearArea_MouseMove(e);
                     break;
                 case ActionMode.DrawLine:
-                DrawLine_MouseMove(e);
+                    DrawLine_MouseMove(e);
                     break;
                 case ActionMode.DrawRect:
-                DrawRect_MouseMove(e);
+                    DrawRect_MouseMove(e);
                     break;
                 case ActionMode.DrawArrow:
-                DrawArrow_MouseMove(e);
+                    DrawArrow_MouseMove(e);
                     break;
                 case ActionMode.DrawStraightLine:
-                DrawStraightLine_MouseMove(e);
+                    DrawStraightLine_MouseMove(e);
+                    break;
+                case ActionMode.DrawHighLighter:
+                    DrawHighLigher_MouseMove(e);
                     break;
                 case ActionMode.Unknown:
                     break;
@@ -375,6 +404,23 @@ namespace CaptureScreen
         }
 
         private void DrawLine_MouseMove(MouseEventArgs e)
+        {
+            if (!start || lastPoint == Point.Empty || CurrentImage == null)
+            {
+                return;
+            }
+
+            Bitmap _img = new(CurrentImage);
+            using Graphics g = Graphics.FromImage(_img);
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.DrawLine(selectPen, lastPoint, e.Location);
+            picCapturedImage.Invalidate();
+            lastPoint = e.Location;
+            CurrentImage = _img;
+            picCapturedImage.Image = CurrentImage;
+        }
+
+        private void DrawHighLigher_MouseMove(MouseEventArgs e)
         {
             if (!start || lastPoint == Point.Empty || CurrentImage == null)
             {
@@ -462,6 +508,16 @@ namespace CaptureScreen
             SaveSpecificColor(picLime.BackColor);
         }
 
+        private void picYellow_Click(object sender, EventArgs e)
+        {
+            SaveSpecificColor(picYellow.BackColor);
+        }
+
+        private void picOrange_Click(object sender, EventArgs e)
+        {
+            SaveSpecificColor(picOrange.BackColor);
+        }
+
         private void SaveSpecificColor(Color color)
         {
             if (currentColorPickerMode == ColorPickerMode.BackgroundColor)
@@ -521,6 +577,7 @@ namespace CaptureScreen
 
         private void btnClearArea_Click(object sender, EventArgs e)
         {
+            picBackGround_Click(sender, e);
             ResetEditModeStyle();
             currentActionMode = ActionMode.CleanArea;
             btnClearArea.FlatStyle = FlatStyle.Popup;
@@ -528,6 +585,7 @@ namespace CaptureScreen
 
         private void btnDrawLine_Click(object sender, EventArgs e)
         {
+            picLineColor_Click(sender, e);
             ResetEditModeStyle();
             currentActionMode = ActionMode.DrawLine;
             btnDrawLine.FlatStyle = FlatStyle.Popup;
@@ -535,6 +593,7 @@ namespace CaptureScreen
 
         private void btnDrawRect_Click(object sender, EventArgs e)
         {
+            picLineColor_Click(sender, e);
             ResetEditModeStyle();
             currentActionMode = ActionMode.DrawRect;
             btnDrawRect.FlatStyle = FlatStyle.Popup;
@@ -542,6 +601,7 @@ namespace CaptureScreen
 
         private void btnDrawArrow_Click(object sender, EventArgs e)
         {
+            picLineColor_Click(sender, e);
             ResetEditModeStyle();
             currentActionMode = ActionMode.DrawArrow;
             btnDrawArrow.FlatStyle = FlatStyle.Popup;
@@ -549,9 +609,18 @@ namespace CaptureScreen
 
         private void btnDrawStraightLine_Click(object sender, EventArgs e)
         {
+            picLineColor_Click(sender, e);
             ResetEditModeStyle();
             currentActionMode = ActionMode.DrawStraightLine;
             btnDrawStraightLine.FlatStyle = FlatStyle.Popup;
+        }
+
+        private void btnHighLighter_Click(object sender, EventArgs e)
+        {
+            picLineColor_Click(sender, e);
+            ResetEditModeStyle();
+            currentActionMode = ActionMode.DrawHighLighter;
+            btnHighLighter.FlatStyle = FlatStyle.Popup;
         }
 
         private void btnColorPicker_Click(object sender, EventArgs e)
@@ -642,6 +711,12 @@ namespace CaptureScreen
 
         private Pen CreatePen =>
             new(picLineColor.BackColor, LineWidth)
+            {
+                DashStyle = DashStyle.Solid
+            };
+
+        private Pen CreateHighLightPen =>
+            new(Color.FromArgb(HighLighterTransparent, picLineColor.BackColor.R, picLineColor.BackColor.G, picLineColor.BackColor.B), HighLighterWidth)
             {
                 DashStyle = DashStyle.Solid
             };
