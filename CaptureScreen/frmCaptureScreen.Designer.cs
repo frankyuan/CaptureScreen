@@ -64,8 +64,8 @@
             this.btnScreen1.TabStop = false;
             this.btnScreen1.UseVisualStyleBackColor = true;
             this.btnScreen1.Click += new System.EventHandler(this.btnScreen1_Click);
-            this.btnScreen1.MouseEnter += new System.EventHandler(this.btnScreen1_MouseEnter);
-            this.btnScreen1.MouseLeave += new System.EventHandler(this.btnScreen1_MouseLeave);
+            this.btnScreen1.MouseEnter += new System.EventHandler(this.btnControlButton_MouseEnter);
+            this.btnScreen1.MouseLeave += new System.EventHandler(this.btnControlButton_MouseLeave);
             // 
             // btnScreen2
             // 
@@ -80,8 +80,8 @@
             this.btnScreen2.TabStop = false;
             this.btnScreen2.UseVisualStyleBackColor = true;
             this.btnScreen2.Click += new System.EventHandler(this.btnScreen2_Click);
-            this.btnScreen2.MouseEnter += new System.EventHandler(this.btnScreen2_MouseEnter);
-            this.btnScreen2.MouseLeave += new System.EventHandler(this.btnScreen2_MouseLeave);
+            this.btnScreen2.MouseEnter += new System.EventHandler(this.btnControlButton_MouseEnter);
+            this.btnScreen2.MouseLeave += new System.EventHandler(this.btnControlButton_MouseLeave);
             // 
             // btnExit
             // 
@@ -95,8 +95,8 @@
             this.btnExit.TabIndex = 102;
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            this.btnExit.MouseEnter += new System.EventHandler(this.btnExit_MouseEnter);
-            this.btnExit.MouseLeave += new System.EventHandler(this.btnExit_MouseLeave);
+            this.btnExit.MouseEnter += new System.EventHandler(this.btnControlButton_MouseEnter);
+            this.btnExit.MouseLeave += new System.EventHandler(this.btnControlButton_MouseLeave);
             // 
             // frmCaptureScreen
             // 
@@ -119,6 +119,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmCaptureScreen_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCaptureScreen_KeyDown);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmCaptureScreen_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.picCaptureScreen)).EndInit();
             this.ResumeLayout(false);
 

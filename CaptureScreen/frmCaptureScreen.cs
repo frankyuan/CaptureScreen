@@ -102,6 +102,12 @@ namespace CaptureScreen
 
         private void picCaptureScreen_MouseDown(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Right)
+            {
+                ExitApplication();
+                return;
+            }
+
             if (!start)
             {
                 if (e.Button == MouseButtons.Left)
@@ -137,11 +143,11 @@ namespace CaptureScreen
                 }
 
                 start = false;
-                SaveToClipboard(new Point(e.X, e.Y));
+                JumpToAdjustScreen(new Point(e.X, e.Y));
             }
         }
 
-        private void SaveToClipboard(Point currentPoint)
+        private void JumpToAdjustScreen(Point currentPoint)
         {
             int capturedWidth = Math.Abs(selectWidth);
             int capturedHeight = Math.Abs(selectHeight);
@@ -176,20 +182,25 @@ namespace CaptureScreen
 
         private void frmCaptureScreen_KeyDown(object sender, KeyEventArgs e)
         {
-            ExitApplication(e.KeyCode);
+            ExitApplicationWhenKeyDown(e.KeyCode);
         }
 
         private void picCaptureScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            ExitApplication(e.KeyCode);
+            ExitApplicationWhenKeyDown(e.KeyCode);
         }
 
-        private static void ExitApplication(Keys key)
+        private static void ExitApplicationWhenKeyDown(Keys key)
         {
             if (key == Keys.Escape)
             {
-                Application.Exit();
+                ExitApplication();
             }
+        }
+
+        private static void ExitApplication()
+        {
+            Application.Exit();
         }
 
         private void btnScreen1_Click(object sender, EventArgs e)
@@ -214,34 +225,27 @@ namespace CaptureScreen
             btnScreen2.Image = Resources.screen2Select;
         }
 
-        private void btnScreen1_MouseEnter(object sender, EventArgs e)
+        private void btnControlButton_MouseEnter(object sender, EventArgs e)
         {
             SetMouseEnterCursorStyle();
         }
 
-        private void btnScreen1_MouseLeave(object sender, EventArgs e)
+        private void btnControlButton_MouseLeave(object sender, EventArgs e)
         {
             SetMouseLeaveCursorStyle();
         }
 
-        private void btnScreen2_MouseEnter(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
-            SetMouseEnterCursorStyle();
+            ExitApplication();
         }
 
-        private void btnScreen2_MouseLeave(object sender, EventArgs e)
+        private void frmCaptureScreen_MouseDown(object sender, MouseEventArgs e)
         {
-            SetMouseLeaveCursorStyle();
-        }
-
-        private void btnExit_MouseEnter(object sender, EventArgs e)
-        {
-            SetMouseEnterCursorStyle();
-        }
-
-        private void btnExit_MouseLeave(object sender, EventArgs e)
-        {
-            SetMouseLeaveCursorStyle();
+            if (e.Button == MouseButtons.Right)
+            {
+                ExitApplication();
+            }
         }
 
         private void SetMouseEnterCursorStyle()
@@ -260,11 +264,6 @@ namespace CaptureScreen
             btnScreen1.Image = Resources.screen1;
             btnScreen2.FlatStyle = FlatStyle.Flat;
             btnScreen2.Image = Resources.screen2;
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
     }
 }
