@@ -52,8 +52,9 @@ namespace CaptureScreen
             get => currentImage;
             set
             {
+                var exceptMode = new ActionMode[] { ActionMode.DrawLine, ActionMode.DrawHighLighter };
                 currentImage = value;
-                if (currentActionMode != ActionMode.DrawLine)
+                if (!exceptMode.Contains(currentActionMode))
                 {
                     imageHistory.Push(currentImage);
                     RefreshUndoStatus();
