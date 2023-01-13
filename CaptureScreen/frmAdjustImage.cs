@@ -103,6 +103,12 @@ namespace CaptureScreen
 
         private void picCapturedImage_MouseDown(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Right)
+            {
+                CancelCurrentStep(e);
+                return;
+            }
+
             switch (currentActionMode)
             {
                 case ActionMode.CleanArea:
@@ -364,44 +370,38 @@ namespace CaptureScreen
 
         private void ClearArea_MouseMove(MouseEventArgs e)
         {
-            if (picCapturedImage.Image == null)
+            if (!start || picCapturedImage.Image == null)
             {
                 return;
             }
 
-            if (start)
-            {
-                picCapturedImage.Refresh();
-                selectWidth = e.X - selectX;
-                selectHeight = e.Y - selectY;
-                picCapturedImage.CreateGraphics().DrawRectangle(
-                    selectPen,
-                    Math.Min(selectX, e.X),
-                    Math.Min(selectY, e.Y),
-                    Math.Abs(selectWidth),
-                    Math.Abs(selectHeight));
-            }
+            picCapturedImage.Refresh();
+            selectWidth = e.X - selectX;
+            selectHeight = e.Y - selectY;
+            picCapturedImage.CreateGraphics().DrawRectangle(
+                selectPen,
+                Math.Min(selectX, e.X),
+                Math.Min(selectY, e.Y),
+                Math.Abs(selectWidth),
+                Math.Abs(selectHeight));
         }
 
         private void DrawRect_MouseMove(MouseEventArgs e)
         {
-            if (picCapturedImage.Image == null)
+            if (!start || picCapturedImage.Image == null)
             {
                 return;
             }
 
-            if (start)
-            {
-                picCapturedImage.Refresh();
-                selectWidth = e.X - selectX;
-                selectHeight = e.Y - selectY;
-                picCapturedImage.CreateGraphics().DrawRectangle(
-                    selectPen,
-                    Math.Min(selectX, e.X),
-                    Math.Min(selectY, e.Y),
-                    Math.Abs(selectWidth),
-                    Math.Abs(selectHeight));
-            }
+            picCapturedImage.Refresh();
+            selectWidth = e.X - selectX;
+            selectHeight = e.Y - selectY;
+            picCapturedImage.CreateGraphics().DrawRectangle(
+                selectPen,
+                Math.Min(selectX, e.X),
+                Math.Min(selectY, e.Y),
+                Math.Abs(selectWidth),
+                Math.Abs(selectHeight));
         }
 
         private void DrawLine_MouseMove(MouseEventArgs e)
@@ -440,32 +440,27 @@ namespace CaptureScreen
 
         private void DrawArrow_MouseMove(MouseEventArgs e)
         {
-            if (picCapturedImage.Image == null)
+            if (!start || picCapturedImage.Image == null)
             {
                 return;
             }
 
-            if (start)
-            {
-                picCapturedImage.Refresh();
-                using Graphics g = picCapturedImage.CreateGraphics();
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.DrawLine(
-                    selectPen,
-                    new Point(e.X, e.Y),
-                    new Point(selectX, selectY));
-            }
+            picCapturedImage.Refresh();
+            using Graphics g = picCapturedImage.CreateGraphics();
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.DrawLine(
+                selectPen,
+                new Point(e.X, e.Y),
+                new Point(selectX, selectY));
         }
 
         private void DrawStraightLine_MouseMove(MouseEventArgs e)
         {
-            if (picCapturedImage.Image == null)
+            if (!start || picCapturedImage.Image == null)
             {
                 return;
             }
 
-            if (start)
-            {
                 picCapturedImage.Refresh();
                 using Graphics g = picCapturedImage.CreateGraphics();
                 g.SmoothingMode = SmoothingMode.AntiAlias;
@@ -473,7 +468,6 @@ namespace CaptureScreen
                     selectPen,
                     new Point(e.X, e.Y),
                     new Point(selectX, selectY));
-            }
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
@@ -627,6 +621,12 @@ namespace CaptureScreen
         private void btnColorPicker_Click(object sender, EventArgs e)
         {
             SetBackgroundColor();
+        }
+
+        private void CancelCurrentStep(MouseEventArgs e)
+        {
+            start = false;
+            picCapturedImage.Refresh();
         }
 
         private void SetBackgroundColor()
