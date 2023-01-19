@@ -76,6 +76,8 @@
             this.picCapturedImage.TabIndex = 0;
             this.picCapturedImage.TabStop = false;
             this.picCapturedImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picCapturedImage_MouseDown);
+            this.picCapturedImage.MouseEnter += new System.EventHandler(this.picCapturedImage_MouseEnter);
+            this.picCapturedImage.MouseLeave += new System.EventHandler(this.picCapturedImage_MouseLeave);
             this.picCapturedImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picCapturedImage_MouseMove);
             // 
             // picBackGround

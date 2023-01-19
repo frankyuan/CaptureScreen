@@ -726,5 +726,25 @@ namespace CaptureScreen
         {
             Application.Exit();
         }
+
+        private void picCapturedImage_MouseEnter(object sender, EventArgs e)
+        {
+            var crossModes = new ActionMode[] { ActionMode.CleanArea, ActionMode.DrawRect };
+            var penModes = new ActionMode[] { ActionMode.DrawArrow, ActionMode.DrawHighLighter, ActionMode.DrawLine, ActionMode.DrawStraightLine };
+            if (crossModes.Contains(currentActionMode))
+            {
+                Cursor = Cursors.Cross;
+            }
+
+            if (penModes.Contains(currentActionMode))
+            {
+                Cursor = Cursors.Arrow;
+            }
+        }
+
+        private void picCapturedImage_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
     }
 }
