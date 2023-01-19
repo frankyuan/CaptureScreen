@@ -173,8 +173,8 @@ namespace CaptureScreen
             g.PixelOffsetMode = PixelOffsetMode.HighQuality;
             g.CompositingQuality = CompositingQuality.HighQuality;
             g.DrawImage(OriginalImage, 0, 0, rect, GraphicsUnit.Pixel);
-            //insert image stream into clipboard
-            Clipboard.SetImage(_img);
+            ////insert image stream into clipboard
+            //Clipboard.SetImage(_img);
             this.Hide();
             frmAdjustImage frmAdjustImage = new(_img);
             frmAdjustImage.Show();

@@ -105,6 +105,12 @@ namespace CaptureScreen
         {
             if (e.Button == MouseButtons.Right)
             {
+                if (!start)
+                {
+                    SaveOriginImageAndExit();
+                    return;
+                }
+
                 CancelCurrentStep(e);
                 return;
             }
