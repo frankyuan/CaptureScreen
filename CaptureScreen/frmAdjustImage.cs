@@ -29,7 +29,7 @@ namespace CaptureScreen
         private ActionMode currentActionMode = ActionMode.CleanArea;
         private ColorPickerMode currentColorPickerMode = ColorPickerMode.BackgroundColor;
         private Stack<Image> imageHistory = new();
-        private List<Button> actionButtons = new();
+        private Dictionary<ActionMode, Button> actionButtonDict = new();
 
         #region These variables control the mouse position other than draw line
         private int selectX;
@@ -88,17 +88,17 @@ namespace CaptureScreen
                 int.Parse(lastSetting.LineColorG),
                 int.Parse(lastSetting.LineColorB));
             btnClearArea_Click(sender, e);
-            InitColorPickerStyle();
+            SetColorPickerModeStyle(ColorPickerMode.BackgroundColor);
         }
 
         private void InitActionButtons()
         {
-            actionButtons.Add(btnClearArea);
-            actionButtons.Add(btnDrawLine);
-            actionButtons.Add(btnDrawRect);
-            actionButtons.Add(btnDrawArrow);
-            actionButtons.Add(btnDrawStraightLine);
-            actionButtons.Add(btnHighLighter);
+            actionButtonDict[ActionMode.CleanArea] = btnClearArea;
+            actionButtonDict[ActionMode.DrawLine] = btnDrawLine;
+            actionButtonDict[ActionMode.DrawRect] = btnDrawRect;
+            actionButtonDict[ActionMode.DrawArrow] = btnDrawArrow;
+            actionButtonDict[ActionMode.DrawStraightLine] = btnDrawStraightLine;
+            actionButtonDict[ActionMode.DrawHighLighter] = btnHighLighter;
         }
 
         private void picCapturedImage_MouseDown(object sender, MouseEventArgs e)
@@ -651,55 +651,58 @@ namespace CaptureScreen
 
         private void btnClearArea_Click(object sender, EventArgs e)
         {
-            picBackGround_Click(sender, e);
-            ResetEditModeStyle();
-            currentActionMode = ActionMode.CleanArea;
-            btnClearArea.FlatStyle = FlatStyle.Popup;
+            SetActionMode(ActionMode.CleanArea, sender, e);
         }
 
         private void btnDrawLine_Click(object sender, EventArgs e)
         {
-            picLineColor_Click(sender, e);
-            ResetEditModeStyle();
-            currentActionMode = ActionMode.DrawLine;
-            btnDrawLine.FlatStyle = FlatStyle.Popup;
+            SetActionMode(ActionMode.DrawLine, sender, e);
         }
 
         private void btnDrawRect_Click(object sender, EventArgs e)
         {
-            picLineColor_Click(sender, e);
-            ResetEditModeStyle();
-            currentActionMode = ActionMode.DrawRect;
-            btnDrawRect.FlatStyle = FlatStyle.Popup;
+            SetActionMode(ActionMode.DrawRect, sender, e);
         }
 
         private void btnDrawArrow_Click(object sender, EventArgs e)
         {
-            picLineColor_Click(sender, e);
-            ResetEditModeStyle();
-            currentActionMode = ActionMode.DrawArrow;
-            btnDrawArrow.FlatStyle = FlatStyle.Popup;
+            SetActionMode(ActionMode.DrawArrow, sender, e);
         }
 
         private void btnDrawStraightLine_Click(object sender, EventArgs e)
         {
-            picLineColor_Click(sender, e);
-            ResetEditModeStyle();
-            currentActionMode = ActionMode.DrawStraightLine;
-            btnDrawStraightLine.FlatStyle = FlatStyle.Popup;
+            SetActionMode(ActionMode.DrawStraightLine, sender, e);
         }
 
         private void btnHighLighter_Click(object sender, EventArgs e)
         {
-            picLineColor_Click(sender, e);
-            ResetEditModeStyle();
-            currentActionMode = ActionMode.DrawHighLighter;
-            btnHighLighter.FlatStyle = FlatStyle.Popup;
+            SetActionMode(ActionMode.DrawHighLighter, sender, e);
         }
 
         private void btnColorPicker_Click(object sender, EventArgs e)
         {
             SetBackgroundColor();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.FileName = $"Untitled-{DateTime.Now:yyyy-MM-dd-hh-mm-ss}";
+            var result = saveFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                picCapturedImage.Image.Save(saveFileDialog1.FileName);
+                Application.Exit();
+            }
+        }
+
+        private void picLineColor_Click(object sender, EventArgs e)
+        {
+            SetColorPickerModeStyle(ColorPickerMode.LineColor);
+        }
+
+        private void picBackGround_Click(object sender, EventArgs e)
+        {
+            SetColorPickerModeStyle(ColorPickerMode.BackgroundColor);
         }
 
         private void CancelCurrentStep(MouseEventArgs e)
@@ -727,58 +730,41 @@ namespace CaptureScreen
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void SetActionMode(ActionMode currentMode, object sender, EventArgs e)
         {
-            saveFileDialog1.FileName = $"Untitled-{DateTime.Now:yyyy-MM-dd-hh-mm-ss}";
-            var result = saveFileDialog1.ShowDialog();
-            if (result == DialogResult.OK)
+            if (currentMode == ActionMode.CleanArea)
             {
-                picCapturedImage.Image.Save(saveFileDialog1.FileName);
-                Application.Exit();
+                picBackGround_Click(sender, e);
+            }
+            else
+            {
+                picLineColor_Click(sender, e);
+            }
+
+            currentActionMode = currentMode;
+            foreach (var (mode, button) in actionButtonDict)
+            {
+                if (mode == currentMode)
+                {
+                    button.FlatStyle = FlatStyle.Popup;
+                }
+                else
+                {
+                    button.FlatStyle = FlatStyle.Flat;
+                }
             }
         }
 
-        private void picLineColor_Click(object sender, EventArgs e)
-        {
-            ResetColorPickerModeStyle();
-            currentColorPickerMode = ColorPickerMode.LineColor;
-            SetColorPickerModeStyle();
-        }
-
-        private void picBackGround_Click(object sender, EventArgs e)
-        {
-            ResetColorPickerModeStyle();
-            currentColorPickerMode = ColorPickerMode.BackgroundColor;
-            SetColorPickerModeStyle();
-        }
-
-        private void ResetEditModeStyle()
-        {
-            foreach (var btn in actionButtons)
-            {
-                btn.FlatStyle = FlatStyle.Flat;
-            }
-        }
-
-        private void InitColorPickerStyle()
-        {
-            ResetColorPickerModeStyle();
-            SetColorPickerModeStyle();
-        }
-
-        private void ResetColorPickerModeStyle()
+        private void SetColorPickerModeStyle(ColorPickerMode colorPickerMode)
         {
             picBackGround.BorderStyle = BorderStyle.None;
             picLineColor.BorderStyle = BorderStyle.None;
-        }
-
-        private void SetColorPickerModeStyle()
-        {
+            currentColorPickerMode = colorPickerMode;
             if (currentColorPickerMode == ColorPickerMode.BackgroundColor)
             {
                 picBackGround.BorderStyle = BorderStyle.Fixed3D;
             }
-            else
+            else // line color
             {
                 picLineColor.BorderStyle = BorderStyle.Fixed3D;
             }
