@@ -127,10 +127,10 @@ namespace CaptureScreen
                     DrawRect_MouseDown(e);
                     break;
                 case ActionMode.DrawArrow:
-                    DrowArrow_MouseDown(e);
+                    DrawArrow_MouseDown(e);
                     break;
                 case ActionMode.DrawStraightLine:
-                    DrowStraightLine_MouseDown(e);
+                    DrawStraightLine_MouseDown(e);
                     break;
                 case ActionMode.DrawHighLighter:
                     DrawHighLighter_MouseDown(e);
@@ -146,17 +146,7 @@ namespace CaptureScreen
         {
             if (!start)
             {
-                if (e.Button == MouseButtons.Left)
-                {
-                    selectX = e.X;
-                    selectY = e.Y;
-                    selectPen = new Pen(Color.Red, 2)
-                    {
-                        DashStyle = DashStyle.Dot
-                    };
-                }
-                picCapturedImage.Refresh();
-                start = true;
+                ClearAreaStart(e);
             }
             else
             {
@@ -165,38 +155,52 @@ namespace CaptureScreen
                     return;
                 }
 
-                if (e.Button == MouseButtons.Left)
-                {
-                    picCapturedImage.Refresh();
-                    selectWidth = e.X - selectX;
-                    selectHeight = e.Y - selectY;
-                    var location = new PointF() { X = Math.Min(selectX, e.X), Y = Math.Min(selectY, e.Y) };
-                    var size = new SizeF() { Width = Math.Abs(selectWidth), Height = Math.Abs(selectHeight) };
-                    var rectFToFill = new RectangleF(location, size);
-                    Bitmap _img = new(CurrentImage);
-                    using Graphics g = Graphics.FromImage(_img);
-                    SolidBrush shadowBrush = new(picBackGround.BackColor);
-                    g.FillRectangles(shadowBrush, new RectangleF[] { rectFToFill });
-                    CurrentImage = _img;
-                    picCapturedImage.Image = CurrentImage;
-                }
-
-                start = false;
+                ClearAreaEnd(e);
             }
+        }
+
+        private void ClearAreaEnd(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                picCapturedImage.Refresh();
+                selectWidth = e.X - selectX;
+                selectHeight = e.Y - selectY;
+                var location = new PointF() { X = Math.Min(selectX, e.X), Y = Math.Min(selectY, e.Y) };
+                var size = new SizeF() { Width = Math.Abs(selectWidth), Height = Math.Abs(selectHeight) };
+                var rectFToFill = new RectangleF(location, size);
+                Bitmap _img = new(CurrentImage);
+                using Graphics g = Graphics.FromImage(_img);
+                SolidBrush shadowBrush = new(picBackGround.BackColor);
+                g.FillRectangles(shadowBrush, new RectangleF[] { rectFToFill });
+                CurrentImage = _img;
+                picCapturedImage.Image = CurrentImage;
+            }
+
+            start = false;
+        }
+
+        private void ClearAreaStart(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                selectX = e.X;
+                selectY = e.Y;
+                selectPen = new Pen(Color.Red, 2)
+                {
+                    DashStyle = DashStyle.Dot
+                };
+            }
+
+            picCapturedImage.Refresh();
+            start = true;
         }
 
         private void DrawRect_MouseDown(MouseEventArgs e)
         {
             if (!start)
             {
-                if (e.Button == MouseButtons.Left)
-                {
-                    selectX = e.X;
-                    selectY = e.Y;
-                    selectPen = CreatePen;
-                }
-                picCapturedImage.Refresh();
-                start = true;
+                DrawRectStart(e);
             }
             else
             {
@@ -205,83 +209,84 @@ namespace CaptureScreen
                     return;
                 }
 
-                if (e.Button == MouseButtons.Left)
-                {
-                    picCapturedImage.Refresh();
-                    selectWidth = e.X - selectX;
-                    selectHeight = e.Y - selectY;
-                    Bitmap _img = new(CurrentImage);
-                    using Graphics g = Graphics.FromImage(_img);
-                    g.DrawRectangle(
-                        selectPen,
-                        Math.Min(selectX, e.X),
-                        Math.Min(selectY, e.Y),
-                        Math.Abs(selectWidth),
-                        Math.Abs(selectHeight));
-                    CurrentImage = _img;
-                    picCapturedImage.Image = CurrentImage;
-                }
-                start = false;
+                DrawRectStop(e);
             }
+        }
+
+        private void DrawRectStop(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                picCapturedImage.Refresh();
+                selectWidth = e.X - selectX;
+                selectHeight = e.Y - selectY;
+                Bitmap _img = new(CurrentImage);
+                using Graphics g = Graphics.FromImage(_img);
+                g.DrawRectangle(
+                    selectPen,
+                    Math.Min(selectX, e.X),
+                    Math.Min(selectY, e.Y),
+                    Math.Abs(selectWidth),
+                    Math.Abs(selectHeight));
+                CurrentImage = _img;
+                picCapturedImage.Image = CurrentImage;
+            }
+
+            start = false;
+        }
+
+        private void DrawRectStart(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                selectX = e.X;
+                selectY = e.Y;
+                selectPen = CreatePen;
+            }
+
+            picCapturedImage.Refresh();
+            start = true;
         }
 
         private void DrawLine_MouseDown(MouseEventArgs e)
         {
             if (!start)
             {
-                lastPoint = e.Location;
-                start = true;
-                selectPen = CreatePen;
+                DrawLineStart(e);
             }
             else
             {
-                start = false;
-                lastPoint = Point.Empty;
-                var tmpCurrentMode = currentActionMode;
-                currentActionMode = ActionMode.Unknown;
-                CurrentImage = picCapturedImage.Image;
-                currentActionMode = tmpCurrentMode;
+                if (picCapturedImage.Image == null)
+                {
+                    return;
+                }
+
+                DrawLineEnd();
             }
+        }
+
+        private void DrawLineEnd()
+        {
+            start = false;
+            lastPoint = Point.Empty;
+            var tmpCurrentMode = currentActionMode;
+            currentActionMode = ActionMode.Unknown;
+            CurrentImage = picCapturedImage.Image;
+            currentActionMode = tmpCurrentMode;
+        }
+
+        private void DrawLineStart(MouseEventArgs e)
+        {
+            lastPoint = e.Location;
+            start = true;
+            selectPen = CreatePen;
         }
 
         private void DrawHighLighter_MouseDown(MouseEventArgs e)
         {
             if (!start)
             {
-                lastPoint = e.Location;
-                start = true;
-                selectPen = CreateHighLightPen;
-            }
-            else
-            {
-                start = false;
-                lastPoint = Point.Empty;
-                var tmpCurrentMode = currentActionMode;
-                currentActionMode = ActionMode.Unknown;
-                CurrentImage = picCapturedImage.Image;
-                currentActionMode = tmpCurrentMode;
-            }
-        }
-
-        private void DrowArrow_MouseDown(MouseEventArgs e)
-        {
-            if (!start)
-            {
-                if (e.Button == MouseButtons.Left)
-                {
-                    selectX = e.X;
-                    selectY = e.Y;
-                    selectPen = CreatePen;
-                    using GraphicsPath capPath = new();
-                    // TODO: A triangle, need refactor
-                    capPath.AddLine(-1 * ArrowShort, ArrowLong * -1, ArrowShort, ArrowLong * -1);
-                    capPath.AddLine(-1 * ArrowShort, ArrowLong * -1, 0, 0);
-                    capPath.AddLine(0, 0, ArrowShort, ArrowLong * -1);
-                    selectPen.CustomStartCap = new CustomLineCap(null, capPath);
-                }
-
-                picCapturedImage.Refresh();
-                start = true;
+                DrawHighLigherStart(e);
             }
             else
             {
@@ -290,36 +295,32 @@ namespace CaptureScreen
                     return;
                 }
 
-                if (e.Button == MouseButtons.Left)
-                {
-                    picCapturedImage.Refresh();
-                    selectWidth = e.X - selectX;
-                    selectHeight = e.Y - selectY;
-                    Bitmap _img = new(CurrentImage);
-                    using Graphics g = Graphics.FromImage(_img);
-                    g.SmoothingMode = SmoothingMode.AntiAlias;
-                    g.DrawLine(selectPen, e.X, e.Y, selectX, selectY);
-                    CurrentImage = _img;
-                    picCapturedImage.Image = CurrentImage;
-                }
-
-                start = false;
+                DrawHighLighterEnd();
             }
         }
 
-        private void DrowStraightLine_MouseDown(MouseEventArgs e)
+        private void DrawHighLighterEnd()
+        {
+            start = false;
+            lastPoint = Point.Empty;
+            var tmpCurrentMode = currentActionMode;
+            currentActionMode = ActionMode.Unknown;
+            CurrentImage = picCapturedImage.Image;
+            currentActionMode = tmpCurrentMode;
+        }
+
+        private void DrawHighLigherStart(MouseEventArgs e)
+        {
+            lastPoint = e.Location;
+            start = true;
+            selectPen = CreateHighLightPen;
+        }
+
+        private void DrawArrow_MouseDown(MouseEventArgs e)
         {
             if (!start)
             {
-                if (e.Button == MouseButtons.Left)
-                {
-                    selectX = e.X;
-                    selectY = e.Y;
-                    selectPen = CreatePen;
-                }
-
-                picCapturedImage.Refresh();
-                start = true;
+                DrawArrowStart(e);
             }
             else
             {
@@ -328,21 +329,93 @@ namespace CaptureScreen
                     return;
                 }
 
-                if (e.Button == MouseButtons.Left)
+                DrawArrowEnd(e);
+            }
+        }
+
+        private void DrawArrowEnd(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                picCapturedImage.Refresh();
+                selectWidth = e.X - selectX;
+                selectHeight = e.Y - selectY;
+                Bitmap _img = new(CurrentImage);
+                using Graphics g = Graphics.FromImage(_img);
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.DrawLine(selectPen, e.X, e.Y, selectX, selectY);
+                CurrentImage = _img;
+                picCapturedImage.Image = CurrentImage;
+            }
+
+            start = false;
+        }
+
+        private void DrawArrowStart(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                selectX = e.X;
+                selectY = e.Y;
+                selectPen = CreatePen;
+                using GraphicsPath capPath = new();
+                // TODO: A triangle, need refactor
+                capPath.AddLine(-1 * ArrowShort, ArrowLong * -1, ArrowShort, ArrowLong * -1);
+                capPath.AddLine(-1 * ArrowShort, ArrowLong * -1, 0, 0);
+                capPath.AddLine(0, 0, ArrowShort, ArrowLong * -1);
+                selectPen.CustomStartCap = new CustomLineCap(null, capPath);
+            }
+
+            picCapturedImage.Refresh();
+            start = true;
+        }
+
+        private void DrawStraightLine_MouseDown(MouseEventArgs e)
+        {
+            if (!start)
+            {
+                DrawStraightLineStart(e);
+            }
+            else
+            {
+                if (picCapturedImage.Image == null)
                 {
-                    picCapturedImage.Refresh();
-                    selectWidth = e.X - selectX;
-                    selectHeight = e.Y - selectY;
-                    Bitmap _img = new(CurrentImage);
-                    using Graphics g = Graphics.FromImage(_img);
-                    g.SmoothingMode = SmoothingMode.AntiAlias;
-                    g.DrawLine(selectPen, e.X, e.Y, selectX, selectY);
-                    CurrentImage = _img;
-                    picCapturedImage.Image = CurrentImage;
+                    return;
                 }
 
-                start = false;
+                DrawStraightLineEnd(e);
             }
+        }
+
+        private void DrawStraightLineEnd(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                picCapturedImage.Refresh();
+                selectWidth = e.X - selectX;
+                selectHeight = e.Y - selectY;
+                Bitmap _img = new(CurrentImage);
+                using Graphics g = Graphics.FromImage(_img);
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.DrawLine(selectPen, e.X, e.Y, selectX, selectY);
+                CurrentImage = _img;
+                picCapturedImage.Image = CurrentImage;
+            }
+
+            start = false;
+        }
+
+        private void DrawStraightLineStart(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                selectX = e.X;
+                selectY = e.Y;
+                selectPen = CreatePen;
+            }
+
+            picCapturedImage.Refresh();
+            start = true;
         }
 
         private void picCapturedImage_MouseMove(object sender, MouseEventArgs e)
@@ -467,13 +540,13 @@ namespace CaptureScreen
                 return;
             }
 
-                picCapturedImage.Refresh();
-                using Graphics g = picCapturedImage.CreateGraphics();
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.DrawLine(
-                    selectPen,
-                    new Point(e.X, e.Y),
-                    new Point(selectX, selectY));
+            picCapturedImage.Refresh();
+            using Graphics g = picCapturedImage.CreateGraphics();
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.DrawLine(
+                selectPen,
+                new Point(e.X, e.Y),
+                new Point(selectX, selectY));
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
@@ -656,7 +729,7 @@ namespace CaptureScreen
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.FileName = $"Untitled-{DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss")}";
+            saveFileDialog1.FileName = $"Untitled-{DateTime.Now:yyyy-MM-dd-hh-mm-ss}";
             var result = saveFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
