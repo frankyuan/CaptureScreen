@@ -342,7 +342,7 @@ namespace CaptureScreen
                 selectHeight = e.Y - selectY;
                 Bitmap _img = new(CurrentImage);
                 using Graphics g = Graphics.FromImage(_img);
-                g.SmoothingMode = SmoothingMode.AntiAlias;
+                ConfigGraphic(g);
                 g.DrawLine(selectPen, e.X, e.Y, selectX, selectY);
                 CurrentImage = _img;
                 picCapturedImage.Image = CurrentImage;
@@ -396,7 +396,7 @@ namespace CaptureScreen
                 selectHeight = e.Y - selectY;
                 Bitmap _img = new(CurrentImage);
                 using Graphics g = Graphics.FromImage(_img);
-                g.SmoothingMode = SmoothingMode.AntiAlias;
+                ConfigGraphic(g);
                 g.DrawLine(selectPen, e.X, e.Y, selectX, selectY);
                 CurrentImage = _img;
                 picCapturedImage.Image = CurrentImage;
