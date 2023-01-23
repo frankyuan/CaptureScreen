@@ -1,1 +1,1 @@
-A Sreen Capture Tool
+A Sreen Capture Tool for Windows
