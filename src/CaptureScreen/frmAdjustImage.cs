@@ -492,7 +492,7 @@ namespace CaptureScreen
 
             Bitmap _img = new(CurrentImage);
             using Graphics g = Graphics.FromImage(_img);
-            g.SmoothingMode = SmoothingMode.AntiAlias;
+            ConfigGraphic(g);
             g.DrawLine(selectPen, lastPoint, e.Location);
             picCapturedImage.Invalidate();
             lastPoint = e.Location;
@@ -509,7 +509,7 @@ namespace CaptureScreen
 
             Bitmap _img = new(CurrentImage);
             using Graphics g = Graphics.FromImage(_img);
-            g.SmoothingMode = SmoothingMode.AntiAlias;
+            ConfigGraphic(g);
             g.DrawLine(selectPen, lastPoint, e.Location);
             picCapturedImage.Invalidate();
             lastPoint = e.Location;
@@ -526,7 +526,7 @@ namespace CaptureScreen
 
             picCapturedImage.Refresh();
             using Graphics g = picCapturedImage.CreateGraphics();
-            g.SmoothingMode = SmoothingMode.AntiAlias;
+            ConfigGraphic(g);
             g.DrawLine(
                 selectPen,
                 new Point(e.X, e.Y),
@@ -542,7 +542,7 @@ namespace CaptureScreen
 
             picCapturedImage.Refresh();
             using Graphics g = picCapturedImage.CreateGraphics();
-            g.SmoothingMode = SmoothingMode.AntiAlias;
+            ConfigGraphic(g);
             g.DrawLine(
                 selectPen,
                 new Point(e.X, e.Y),
@@ -705,6 +705,31 @@ namespace CaptureScreen
             SetColorPickerModeStyle(ColorPickerMode.BackgroundColor);
         }
 
+        private void picCapturedImage_MouseEnter(object sender, EventArgs e)
+        {
+            var crossModes = new ActionMode[] { ActionMode.CleanArea, ActionMode.DrawRect };
+            var penModes = new ActionMode[] { ActionMode.DrawArrow, ActionMode.DrawHighLighter, ActionMode.DrawLine, ActionMode.DrawStraightLine };
+            if (crossModes.Contains(currentActionMode))
+            {
+                Cursor = Cursors.Cross;
+            }
+
+            if (penModes.Contains(currentActionMode))
+            {
+                Cursor = Cursors.Arrow;
+            }
+        }
+
+        private void picCapturedImage_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void CancelCurrentStep(MouseEventArgs e)
         {
             start = false;
@@ -770,6 +795,14 @@ namespace CaptureScreen
             }
         }
 
+        private static void ConfigGraphic(Graphics g)
+        {
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            g.CompositingQuality = CompositingQuality.HighQuality;
+        }
+
         private void RefreshUndoStatus()
         {
             btnUndo.Enabled = imageHistory.Count > 1;
@@ -786,30 +819,5 @@ namespace CaptureScreen
             {
                 DashStyle = DashStyle.Solid
             };
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void picCapturedImage_MouseEnter(object sender, EventArgs e)
-        {
-            var crossModes = new ActionMode[] { ActionMode.CleanArea, ActionMode.DrawRect };
-            var penModes = new ActionMode[] { ActionMode.DrawArrow, ActionMode.DrawHighLighter, ActionMode.DrawLine, ActionMode.DrawStraightLine };
-            if (crossModes.Contains(currentActionMode))
-            {
-                Cursor = Cursors.Cross;
-            }
-
-            if (penModes.Contains(currentActionMode))
-            {
-                Cursor = Cursors.Arrow;
-            }
-        }
-
-        private void picCapturedImage_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
     }
 }
