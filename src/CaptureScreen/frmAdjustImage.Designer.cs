@@ -37,7 +37,7 @@
             this.btnClearArea = new System.Windows.Forms.Button();
             this.btnDrawLine = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.picOrange = new System.Windows.Forms.PictureBox();
+            this.picSepia = new System.Windows.Forms.PictureBox();
             this.picYellow = new System.Windows.Forms.PictureBox();
             this.picLime = new System.Windows.Forms.PictureBox();
             this.picLineColor = new System.Windows.Forms.PictureBox();
@@ -57,7 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picWhite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGreen)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picOrange)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSepia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picYellow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLineColor)).BeginInit();
@@ -138,7 +138,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.picOrange);
+            this.groupBox1.Controls.Add(this.picSepia);
             this.groupBox1.Controls.Add(this.picYellow);
             this.groupBox1.Controls.Add(this.picLime);
             this.groupBox1.Controls.Add(this.picLineColor);
@@ -153,16 +153,16 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
-            // picOrange
+            // picSepia
             // 
-            this.picOrange.BackColor = System.Drawing.Color.Orange;
-            this.picOrange.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picOrange.Location = new System.Drawing.Point(170, 41);
-            this.picOrange.Name = "picOrange";
-            this.picOrange.Size = new System.Drawing.Size(24, 24);
-            this.picOrange.TabIndex = 104;
-            this.picOrange.TabStop = false;
-            this.picOrange.Click += new System.EventHandler(this.picOrange_Click);
+            this.picSepia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(240)))), ((int)(((byte)(217)))));
+            this.picSepia.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.picSepia.Location = new System.Drawing.Point(170, 41);
+            this.picSepia.Name = "picSepia";
+            this.picSepia.Size = new System.Drawing.Size(24, 24);
+            this.picSepia.TabIndex = 104;
+            this.picSepia.TabStop = false;
+            this.picSepia.Click += new System.EventHandler(this.picSepia_Click);
             // 
             // picYellow
             // 
@@ -347,7 +347,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picWhite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGreen)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picOrange)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSepia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picYellow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLineColor)).EndInit();
@@ -378,7 +378,7 @@
         private Button btnExit;
         private PictureBox picLime;
         private Button btnDrawStraightLine;
-        private PictureBox picOrange;
+        private PictureBox picSepia;
         private PictureBox picYellow;
         private Button btnHighLighter;
     }

@@ -587,9 +587,9 @@ namespace CaptureScreen
             SaveSpecificColor(picYellow.BackColor);
         }
 
-        private void picOrange_Click(object sender, EventArgs e)
+        private void picSepia_Click(object sender, EventArgs e)
         {
-            SaveSpecificColor(picOrange.BackColor);
+            SaveSpecificColor(picSepia.BackColor);
         }
 
         private void SaveSpecificColor(Color color)
