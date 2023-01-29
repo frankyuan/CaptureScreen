@@ -23,10 +23,15 @@ namespace CaptureScreen
 
         private void frmCaptureScreen_Load(object sender, EventArgs e)
         {
-            btnScreen1.Visible = (Screen.AllScreens.Count() > 1);
-            btnScreen2.Visible = (Screen.AllScreens.Count() > 1);
+            btnScreen1.Visible = HasMultipleMonitors();
+            btnScreen2.Visible = HasMultipleMonitors();
             ResetScreenButtonStyle();
             CaptureAllScreens();
+        }
+
+        private static bool HasMultipleMonitors()
+        {
+            return Screen.AllScreens.Count() > 1;
         }
 
         private void CaptureAllScreens()
@@ -197,6 +202,18 @@ namespace CaptureScreen
 
         private void frmCaptureScreen_KeyDown(object sender, KeyEventArgs e)
         {
+            if (HasMultipleMonitors())
+            {
+                if (e.KeyCode == Keys.A)
+                {
+                    btnScreen1_Click(sender, e);
+                }
+
+                if (e.KeyCode == Keys.D)
+                {
+                    btnScreen2_Click(sender, e);
+                }
+            }
             ExitApplicationWhenKeyDown(e.KeyCode);
         }
 
