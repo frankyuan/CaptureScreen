@@ -100,11 +100,26 @@ namespace CaptureScreen
             }
         }
 
-        private void picCaptureScreen_MouseDown(object sender, MouseEventArgs e)
+        private void picCaptureScreen_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
                 ExitApplication();
+            }
+        }
+
+        private void frmCaptureScreen_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ExitApplication();
+            }
+        }
+
+        private void picCaptureScreen_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
                 return;
             }
 
@@ -238,14 +253,6 @@ namespace CaptureScreen
         private void btnExit_Click(object sender, EventArgs e)
         {
             ExitApplication();
-        }
-
-        private void frmCaptureScreen_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                ExitApplication();
-            }
         }
 
         private void SetMouseEnterCursorStyle()

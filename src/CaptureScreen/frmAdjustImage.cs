@@ -105,13 +105,6 @@ namespace CaptureScreen
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (!start)
-                {
-                    SaveOriginImageAndExit();
-                    return;
-                }
-
-                CancelCurrentStep(e);
                 return;
             }
 
@@ -139,6 +132,21 @@ namespace CaptureScreen
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void picCapturedImage_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (!start)
+                {
+                    SaveOriginImageAndExit();
+                    return;
+                }
+
+                CancelCurrentStep(e);
+                return;
             }
         }
 

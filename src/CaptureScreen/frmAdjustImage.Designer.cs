@@ -79,6 +79,7 @@
             this.picCapturedImage.MouseEnter += new System.EventHandler(this.picCapturedImage_MouseEnter);
             this.picCapturedImage.MouseLeave += new System.EventHandler(this.picCapturedImage_MouseLeave);
             this.picCapturedImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picCapturedImage_MouseMove);
+            this.picCapturedImage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picCapturedImage_MouseUp);
             // 
             // picBackGround
             // 

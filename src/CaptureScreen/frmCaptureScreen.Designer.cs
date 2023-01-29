@@ -49,6 +49,7 @@
             this.picCaptureScreen.TabStop = false;
             this.picCaptureScreen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picCaptureScreen_MouseDown);
             this.picCaptureScreen.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picCaptureScreen_MouseMove);
+            this.picCaptureScreen.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picCaptureScreen_MouseUp);
             this.picCaptureScreen.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.picCaptureScreen_PreviewKeyDown);
             // 
             // btnScreen1
@@ -119,7 +120,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmCaptureScreen_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCaptureScreen_KeyDown);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmCaptureScreen_MouseDown);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.frmCaptureScreen_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.picCaptureScreen)).EndInit();
             this.ResumeLayout(false);
 
