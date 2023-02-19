@@ -600,6 +600,16 @@ namespace CaptureScreen
             SaveSpecificColor(picSepia.BackColor);
         }
 
+        private void picSkyBlue_Click(object sender, EventArgs e)
+        {
+            SaveSpecificColor(picSkyBlue.BackColor);
+        }
+
+        private void picGreen2_Click(object sender, EventArgs e)
+        {
+            SaveSpecificColor(picGreen2.BackColor);
+        }
+
         private void SaveSpecificColor(Color color)
         {
             if (currentColorPickerMode == ColorPickerMode.BackgroundColor)

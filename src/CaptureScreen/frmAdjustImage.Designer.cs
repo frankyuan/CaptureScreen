@@ -52,6 +52,8 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnDrawStraightLine = new System.Windows.Forms.Button();
             this.btnHighLighter = new System.Windows.Forms.Button();
+            this.picSkyBlue = new System.Windows.Forms.PictureBox();
+            this.picGreen2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picCapturedImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBackGround)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWhite)).BeginInit();
@@ -62,6 +64,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picLime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLineColor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSkyBlue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGreen2)).BeginInit();
             this.SuspendLayout();
             // 
             // picCapturedImage
@@ -139,6 +143,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.picGreen2);
+            this.groupBox1.Controls.Add(this.picSkyBlue);
             this.groupBox1.Controls.Add(this.picSepia);
             this.groupBox1.Controls.Add(this.picYellow);
             this.groupBox1.Controls.Add(this.picLime);
@@ -150,7 +156,7 @@
             this.groupBox1.Controls.Add(this.picBackGround);
             this.groupBox1.Location = new System.Drawing.Point(358, -4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(209, 71);
+            this.groupBox1.Size = new System.Drawing.Size(236, 71);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
@@ -225,7 +231,7 @@
             this.btnSaveToClip.FlatAppearance.BorderSize = 0;
             this.btnSaveToClip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveToClip.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveToClip.Image")));
-            this.btnSaveToClip.Location = new System.Drawing.Point(641, 13);
+            this.btnSaveToClip.Location = new System.Drawing.Point(671, 13);
             this.btnSaveToClip.Name = "btnSaveToClip";
             this.btnSaveToClip.Size = new System.Drawing.Size(48, 48);
             this.btnSaveToClip.TabIndex = 0;
@@ -249,7 +255,7 @@
             this.btnUndo.FlatAppearance.BorderSize = 0;
             this.btnUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUndo.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.Image")));
-            this.btnUndo.Location = new System.Drawing.Point(587, 13);
+            this.btnUndo.Location = new System.Drawing.Point(617, 13);
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.Size = new System.Drawing.Size(48, 48);
             this.btnUndo.TabIndex = 100;
@@ -261,7 +267,7 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(695, 13);
+            this.btnSave.Location = new System.Drawing.Point(725, 13);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(48, 48);
             this.btnSave.TabIndex = 8;
@@ -317,6 +323,28 @@
             this.btnHighLighter.UseVisualStyleBackColor = true;
             this.btnHighLighter.Click += new System.EventHandler(this.btnHighLighter_Click);
             // 
+            // picSkyBlue
+            // 
+            this.picSkyBlue.BackColor = System.Drawing.Color.SkyBlue;
+            this.picSkyBlue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.picSkyBlue.Location = new System.Drawing.Point(195, 17);
+            this.picSkyBlue.Name = "picSkyBlue";
+            this.picSkyBlue.Size = new System.Drawing.Size(24, 24);
+            this.picSkyBlue.TabIndex = 105;
+            this.picSkyBlue.TabStop = false;
+            this.picSkyBlue.Click += new System.EventHandler(this.picSkyBlue_Click);
+            // 
+            // picGreen2
+            // 
+            this.picGreen2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(209)))), ((int)(((byte)(194)))));
+            this.picGreen2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.picGreen2.Location = new System.Drawing.Point(195, 40);
+            this.picGreen2.Name = "picGreen2";
+            this.picGreen2.Size = new System.Drawing.Size(24, 24);
+            this.picGreen2.TabIndex = 106;
+            this.picGreen2.TabStop = false;
+            this.picGreen2.Click += new System.EventHandler(this.picGreen2_Click);
+            // 
             // frmAdjustImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -353,6 +381,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picLime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLineColor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSkyBlue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGreen2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -382,5 +412,7 @@
         private PictureBox picSepia;
         private PictureBox picYellow;
         private Button btnHighLighter;
+        private PictureBox picGreen2;
+        private PictureBox picSkyBlue;
     }
 }
