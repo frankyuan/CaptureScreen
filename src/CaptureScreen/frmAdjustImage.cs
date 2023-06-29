@@ -16,6 +16,7 @@ namespace CaptureScreen
         DrawArrow,
         DrawStraightLine,
         DrawHighLighter,
+        CutArea,
         Unknown
     }
 
@@ -99,6 +100,7 @@ namespace CaptureScreen
             actionButtonDict[ActionMode.DrawArrow] = btnDrawArrow;
             actionButtonDict[ActionMode.DrawStraightLine] = btnDrawStraightLine;
             actionButtonDict[ActionMode.DrawHighLighter] = btnHighLighter;
+            actionButtonDict[ActionMode.CutArea] = btnCutArea;
         }
 
         private void picCapturedImage_MouseDown(object sender, MouseEventArgs e)
@@ -127,6 +129,9 @@ namespace CaptureScreen
                     break;
                 case ActionMode.DrawHighLighter:
                     DrawHighLighter_MouseDown(e);
+                    break;
+                case ActionMode.CutArea:
+                    CutArea_MouseDown(e);
                     break;
                 case ActionMode.Unknown:
                     break;
@@ -167,6 +172,23 @@ namespace CaptureScreen
             }
         }
 
+        private void CutArea_MouseDown(MouseEventArgs e)
+        {
+            if (!start)
+            {
+                CutAreaStart(e);
+            }
+            else
+            {
+                if (picCapturedImage.Image == null)
+                {
+                    return;
+                }
+
+                CutAreaEnd(e);
+            }
+        }
+
         private void ClearAreaEnd(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -188,7 +210,51 @@ namespace CaptureScreen
             start = false;
         }
 
+        private void CutAreaEnd(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                picCapturedImage.Refresh();
+                Bitmap tempImg = new(CurrentImage);
+                var originalLocation = new Point() { X = 0, Y = e.Y };
+                var size = new Size() { Width = tempImg.Width, Height = tempImg.Height - e.Y };
+                selectHeight = Math.Abs(e.Y - selectY);
+                var originalRect = new Rectangle(originalLocation, size);
+                var newLocation = new Point() { X = 0, Y = e.Y - selectHeight };
+                var newRect = new Rectangle(newLocation, size);
+                
+                using Graphics g = Graphics.FromImage(tempImg);
+                g.DrawImage(CurrentImage, newRect, originalRect, GraphicsUnit.Pixel);
+
+                var rectFToFill = new RectangleF(
+                    new PointF() { X = 0, Y = tempImg.Height - selectHeight}, 
+                    new SizeF() { Width = tempImg.Width, Height = selectHeight});
+                SolidBrush shadowBrush = new(picBackGround.BackColor);
+                g.FillRectangles(shadowBrush, new RectangleF[] { rectFToFill });
+                CurrentImage = tempImg;
+                picCapturedImage.Image = CurrentImage;
+            }
+
+            start = false;
+        }
+
         private void ClearAreaStart(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                selectX = e.X;
+                selectY = e.Y;
+                selectPen = new Pen(Color.Red, 2)
+                {
+                    DashStyle = DashStyle.Dot
+                };
+            }
+
+            picCapturedImage.Refresh();
+            start = true;
+        }
+
+        private void CutAreaStart(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -448,6 +514,9 @@ namespace CaptureScreen
                 case ActionMode.DrawHighLighter:
                     DrawHighLigher_MouseMove(e);
                     break;
+                case ActionMode.CutArea:
+                    CutArea_MouseMove(e);
+                    break;
                 case ActionMode.Unknown:
                     break;
                 default:
@@ -456,6 +525,24 @@ namespace CaptureScreen
         }
 
         private void ClearArea_MouseMove(MouseEventArgs e)
+        {
+            if (!start || picCapturedImage.Image == null)
+            {
+                return;
+            }
+
+            picCapturedImage.Refresh();
+            selectWidth = e.X - selectX;
+            selectHeight = e.Y - selectY;
+            picCapturedImage.CreateGraphics().DrawRectangle(
+                selectPen,
+                Math.Min(selectX, e.X),
+                Math.Min(selectY, e.Y),
+                Math.Abs(selectWidth),
+                Math.Abs(selectHeight));
+        }
+
+        private void CutArea_MouseMove(MouseEventArgs e)
         {
             if (!start || picCapturedImage.Image == null)
             {
@@ -697,6 +784,11 @@ namespace CaptureScreen
             SetActionMode(ActionMode.DrawHighLighter, sender, e);
         }
 
+        private void btnCutArea_Click(object sender, EventArgs e)
+        {
+            SetActionMode(ActionMode.CutArea, sender, e);
+        }
+
         private void btnColorPicker_Click(object sender, EventArgs e)
         {
             SetBackgroundColor();
@@ -725,7 +817,7 @@ namespace CaptureScreen
 
         private void picCapturedImage_MouseEnter(object sender, EventArgs e)
         {
-            var crossModes = new ActionMode[] { ActionMode.CleanArea, ActionMode.DrawRect };
+            var crossModes = new ActionMode[] { ActionMode.CleanArea, ActionMode.DrawRect, ActionMode.CutArea };
             var penModes = new ActionMode[] { ActionMode.DrawArrow, ActionMode.DrawHighLighter, ActionMode.DrawLine, ActionMode.DrawStraightLine };
             if (crossModes.Contains(currentActionMode))
             {

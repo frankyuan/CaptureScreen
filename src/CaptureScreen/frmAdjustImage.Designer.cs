@@ -29,362 +29,373 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdjustImage));
-            this.picCapturedImage = new System.Windows.Forms.PictureBox();
-            this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.picBackGround = new System.Windows.Forms.PictureBox();
-            this.picWhite = new System.Windows.Forms.PictureBox();
-            this.picGreen = new System.Windows.Forms.PictureBox();
-            this.btnClearArea = new System.Windows.Forms.Button();
-            this.btnDrawLine = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.picSepia = new System.Windows.Forms.PictureBox();
-            this.picYellow = new System.Windows.Forms.PictureBox();
-            this.picLime = new System.Windows.Forms.PictureBox();
-            this.picLineColor = new System.Windows.Forms.PictureBox();
-            this.picRed = new System.Windows.Forms.PictureBox();
-            this.btnColorPicker = new System.Windows.Forms.Button();
-            this.btnSaveToClip = new System.Windows.Forms.Button();
-            this.btnDrawRect = new System.Windows.Forms.Button();
-            this.btnUndo = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.btnDrawArrow = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnDrawStraightLine = new System.Windows.Forms.Button();
-            this.btnHighLighter = new System.Windows.Forms.Button();
-            this.picSkyBlue = new System.Windows.Forms.PictureBox();
-            this.picGreen2 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picCapturedImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBackGround)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picWhite)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picGreen)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picSepia)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picYellow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLime)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLineColor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSkyBlue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picGreen2)).BeginInit();
-            this.SuspendLayout();
+            picCapturedImage = new PictureBox();
+            colorDialog = new ColorDialog();
+            picBackGround = new PictureBox();
+            picWhite = new PictureBox();
+            picGreen = new PictureBox();
+            btnClearArea = new Button();
+            btnDrawLine = new Button();
+            groupBox1 = new GroupBox();
+            picGreen2 = new PictureBox();
+            picSkyBlue = new PictureBox();
+            picSepia = new PictureBox();
+            picYellow = new PictureBox();
+            picLime = new PictureBox();
+            picLineColor = new PictureBox();
+            picRed = new PictureBox();
+            btnColorPicker = new Button();
+            btnSaveToClip = new Button();
+            btnDrawRect = new Button();
+            btnUndo = new Button();
+            btnSave = new Button();
+            saveFileDialog1 = new SaveFileDialog();
+            btnDrawArrow = new Button();
+            btnExit = new Button();
+            btnDrawStraightLine = new Button();
+            btnHighLighter = new Button();
+            btnCutArea = new Button();
+            ((System.ComponentModel.ISupportInitialize)picCapturedImage).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picBackGround).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picWhite).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picGreen).BeginInit();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picGreen2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picSkyBlue).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picSepia).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picYellow).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picLime).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picLineColor).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picRed).BeginInit();
+            SuspendLayout();
             // 
             // picCapturedImage
             // 
-            this.picCapturedImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.picCapturedImage.BackColor = System.Drawing.Color.White;
-            this.picCapturedImage.Location = new System.Drawing.Point(-1, 71);
-            this.picCapturedImage.Name = "picCapturedImage";
-            this.picCapturedImage.Size = new System.Drawing.Size(1514, 679);
-            this.picCapturedImage.TabIndex = 0;
-            this.picCapturedImage.TabStop = false;
-            this.picCapturedImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picCapturedImage_MouseDown);
-            this.picCapturedImage.MouseEnter += new System.EventHandler(this.picCapturedImage_MouseEnter);
-            this.picCapturedImage.MouseLeave += new System.EventHandler(this.picCapturedImage_MouseLeave);
-            this.picCapturedImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picCapturedImage_MouseMove);
-            this.picCapturedImage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picCapturedImage_MouseUp);
+            picCapturedImage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            picCapturedImage.BackColor = Color.White;
+            picCapturedImage.Location = new Point(-1, 71);
+            picCapturedImage.Name = "picCapturedImage";
+            picCapturedImage.Size = new Size(1514, 679);
+            picCapturedImage.TabIndex = 0;
+            picCapturedImage.TabStop = false;
+            picCapturedImage.MouseDown += picCapturedImage_MouseDown;
+            picCapturedImage.MouseEnter += picCapturedImage_MouseEnter;
+            picCapturedImage.MouseLeave += picCapturedImage_MouseLeave;
+            picCapturedImage.MouseMove += picCapturedImage_MouseMove;
+            picCapturedImage.MouseUp += picCapturedImage_MouseUp;
             // 
             // picBackGround
             // 
-            this.picBackGround.BackColor = System.Drawing.Color.White;
-            this.picBackGround.Location = new System.Drawing.Point(24, 35);
-            this.picBackGround.Name = "picBackGround";
-            this.picBackGround.Size = new System.Drawing.Size(30, 30);
-            this.picBackGround.TabIndex = 1;
-            this.picBackGround.TabStop = false;
-            this.picBackGround.Click += new System.EventHandler(this.picBackGround_Click);
+            picBackGround.BackColor = Color.White;
+            picBackGround.Location = new Point(24, 35);
+            picBackGround.Name = "picBackGround";
+            picBackGround.Size = new Size(30, 30);
+            picBackGround.TabIndex = 1;
+            picBackGround.TabStop = false;
+            picBackGround.Click += picBackGround_Click;
             // 
             // picWhite
             // 
-            this.picWhite.BackColor = System.Drawing.Color.White;
-            this.picWhite.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picWhite.Location = new System.Drawing.Point(123, 41);
-            this.picWhite.Name = "picWhite";
-            this.picWhite.Size = new System.Drawing.Size(24, 24);
-            this.picWhite.TabIndex = 3;
-            this.picWhite.TabStop = false;
-            this.picWhite.Click += new System.EventHandler(this.picWhite_Click);
+            picWhite.BackColor = Color.White;
+            picWhite.BorderStyle = BorderStyle.Fixed3D;
+            picWhite.Location = new Point(123, 41);
+            picWhite.Name = "picWhite";
+            picWhite.Size = new Size(24, 24);
+            picWhite.TabIndex = 3;
+            picWhite.TabStop = false;
+            picWhite.Click += picWhite_Click;
             // 
             // picGreen
             // 
-            this.picGreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(238)))), ((int)(((byte)(221)))));
-            this.picGreen.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picGreen.Location = new System.Drawing.Point(146, 41);
-            this.picGreen.Name = "picGreen";
-            this.picGreen.Size = new System.Drawing.Size(24, 24);
-            this.picGreen.TabIndex = 4;
-            this.picGreen.TabStop = false;
-            this.picGreen.Click += new System.EventHandler(this.picGreen_Click);
+            picGreen.BackColor = Color.FromArgb(219, 238, 221);
+            picGreen.BorderStyle = BorderStyle.Fixed3D;
+            picGreen.Location = new Point(146, 41);
+            picGreen.Name = "picGreen";
+            picGreen.Size = new Size(24, 24);
+            picGreen.TabIndex = 4;
+            picGreen.TabStop = false;
+            picGreen.Click += picGreen_Click;
             // 
             // btnClearArea
             // 
-            this.btnClearArea.FlatAppearance.BorderSize = 0;
-            this.btnClearArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearArea.Image = ((System.Drawing.Image)(resources.GetObject("btnClearArea.Image")));
-            this.btnClearArea.Location = new System.Drawing.Point(282, 12);
-            this.btnClearArea.Name = "btnClearArea";
-            this.btnClearArea.Size = new System.Drawing.Size(48, 48);
-            this.btnClearArea.TabIndex = 4;
-            this.btnClearArea.UseVisualStyleBackColor = false;
-            this.btnClearArea.Click += new System.EventHandler(this.btnClearArea_Click);
+            btnClearArea.FlatAppearance.BorderSize = 0;
+            btnClearArea.FlatStyle = FlatStyle.Flat;
+            btnClearArea.Image = (Image)resources.GetObject("btnClearArea.Image");
+            btnClearArea.Location = new Point(282, 12);
+            btnClearArea.Name = "btnClearArea";
+            btnClearArea.Size = new Size(48, 48);
+            btnClearArea.TabIndex = 4;
+            btnClearArea.UseVisualStyleBackColor = false;
+            btnClearArea.Click += btnClearArea_Click;
             // 
             // btnDrawLine
             // 
-            this.btnDrawLine.FlatAppearance.BorderSize = 0;
-            this.btnDrawLine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDrawLine.Image = ((System.Drawing.Image)(resources.GetObject("btnDrawLine.Image")));
-            this.btnDrawLine.Location = new System.Drawing.Point(174, 12);
-            this.btnDrawLine.Name = "btnDrawLine";
-            this.btnDrawLine.Size = new System.Drawing.Size(48, 48);
-            this.btnDrawLine.TabIndex = 2;
-            this.btnDrawLine.UseVisualStyleBackColor = true;
-            this.btnDrawLine.Click += new System.EventHandler(this.btnDrawLine_Click);
+            btnDrawLine.FlatAppearance.BorderSize = 0;
+            btnDrawLine.FlatStyle = FlatStyle.Flat;
+            btnDrawLine.Image = (Image)resources.GetObject("btnDrawLine.Image");
+            btnDrawLine.Location = new Point(174, 12);
+            btnDrawLine.Name = "btnDrawLine";
+            btnDrawLine.Size = new Size(48, 48);
+            btnDrawLine.TabIndex = 2;
+            btnDrawLine.UseVisualStyleBackColor = true;
+            btnDrawLine.Click += btnDrawLine_Click;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.picGreen2);
-            this.groupBox1.Controls.Add(this.picSkyBlue);
-            this.groupBox1.Controls.Add(this.picSepia);
-            this.groupBox1.Controls.Add(this.picYellow);
-            this.groupBox1.Controls.Add(this.picLime);
-            this.groupBox1.Controls.Add(this.picLineColor);
-            this.groupBox1.Controls.Add(this.picRed);
-            this.groupBox1.Controls.Add(this.btnColorPicker);
-            this.groupBox1.Controls.Add(this.picWhite);
-            this.groupBox1.Controls.Add(this.picGreen);
-            this.groupBox1.Controls.Add(this.picBackGround);
-            this.groupBox1.Location = new System.Drawing.Point(358, -4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(236, 71);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            // 
-            // picSepia
-            // 
-            this.picSepia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(240)))), ((int)(((byte)(217)))));
-            this.picSepia.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picSepia.Location = new System.Drawing.Point(170, 41);
-            this.picSepia.Name = "picSepia";
-            this.picSepia.Size = new System.Drawing.Size(24, 24);
-            this.picSepia.TabIndex = 104;
-            this.picSepia.TabStop = false;
-            this.picSepia.Click += new System.EventHandler(this.picSepia_Click);
-            // 
-            // picYellow
-            // 
-            this.picYellow.BackColor = System.Drawing.Color.Yellow;
-            this.picYellow.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picYellow.Location = new System.Drawing.Point(170, 17);
-            this.picYellow.Name = "picYellow";
-            this.picYellow.Size = new System.Drawing.Size(24, 24);
-            this.picYellow.TabIndex = 103;
-            this.picYellow.TabStop = false;
-            this.picYellow.Click += new System.EventHandler(this.picYellow_Click);
-            // 
-            // picLime
-            // 
-            this.picLime.BackColor = System.Drawing.Color.Lime;
-            this.picLime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picLime.Location = new System.Drawing.Point(146, 17);
-            this.picLime.Name = "picLime";
-            this.picLime.Size = new System.Drawing.Size(24, 24);
-            this.picLime.TabIndex = 13;
-            this.picLime.TabStop = false;
-            this.picLime.Click += new System.EventHandler(this.picLame_Click);
-            // 
-            // picLineColor
-            // 
-            this.picLineColor.BackColor = System.Drawing.Color.Red;
-            this.picLineColor.Location = new System.Drawing.Point(6, 16);
-            this.picLineColor.Name = "picLineColor";
-            this.picLineColor.Size = new System.Drawing.Size(30, 30);
-            this.picLineColor.TabIndex = 10;
-            this.picLineColor.TabStop = false;
-            this.picLineColor.Click += new System.EventHandler(this.picLineColor_Click);
-            // 
-            // picRed
-            // 
-            this.picRed.BackColor = System.Drawing.Color.Red;
-            this.picRed.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picRed.Location = new System.Drawing.Point(123, 17);
-            this.picRed.Name = "picRed";
-            this.picRed.Size = new System.Drawing.Size(24, 24);
-            this.picRed.TabIndex = 12;
-            this.picRed.TabStop = false;
-            this.picRed.Click += new System.EventHandler(this.picRed_Click);
-            // 
-            // btnColorPicker
-            // 
-            this.btnColorPicker.FlatAppearance.BorderSize = 0;
-            this.btnColorPicker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnColorPicker.Image = ((System.Drawing.Image)(resources.GetObject("btnColorPicker.Image")));
-            this.btnColorPicker.Location = new System.Drawing.Point(60, 16);
-            this.btnColorPicker.Name = "btnColorPicker";
-            this.btnColorPicker.Size = new System.Drawing.Size(48, 48);
-            this.btnColorPicker.TabIndex = 5;
-            this.btnColorPicker.UseVisualStyleBackColor = true;
-            this.btnColorPicker.Click += new System.EventHandler(this.btnColorPicker_Click);
-            // 
-            // btnSaveToClip
-            // 
-            this.btnSaveToClip.FlatAppearance.BorderSize = 0;
-            this.btnSaveToClip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveToClip.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveToClip.Image")));
-            this.btnSaveToClip.Location = new System.Drawing.Point(671, 13);
-            this.btnSaveToClip.Name = "btnSaveToClip";
-            this.btnSaveToClip.Size = new System.Drawing.Size(48, 48);
-            this.btnSaveToClip.TabIndex = 0;
-            this.btnSaveToClip.UseVisualStyleBackColor = true;
-            this.btnSaveToClip.Click += new System.EventHandler(this.btnSaveToClip_Click);
-            // 
-            // btnDrawRect
-            // 
-            this.btnDrawRect.FlatAppearance.BorderSize = 0;
-            this.btnDrawRect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDrawRect.Image = ((System.Drawing.Image)(resources.GetObject("btnDrawRect.Image")));
-            this.btnDrawRect.Location = new System.Drawing.Point(12, 13);
-            this.btnDrawRect.Name = "btnDrawRect";
-            this.btnDrawRect.Size = new System.Drawing.Size(48, 48);
-            this.btnDrawRect.TabIndex = 1;
-            this.btnDrawRect.UseVisualStyleBackColor = true;
-            this.btnDrawRect.Click += new System.EventHandler(this.btnDrawRect_Click);
-            // 
-            // btnUndo
-            // 
-            this.btnUndo.FlatAppearance.BorderSize = 0;
-            this.btnUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUndo.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.Image")));
-            this.btnUndo.Location = new System.Drawing.Point(617, 13);
-            this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(48, 48);
-            this.btnUndo.TabIndex = 100;
-            this.btnUndo.UseVisualStyleBackColor = true;
-            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(725, 13);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(48, 48);
-            this.btnSave.TabIndex = 8;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnDrawArrow
-            // 
-            this.btnDrawArrow.FlatAppearance.BorderSize = 0;
-            this.btnDrawArrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDrawArrow.Image = ((System.Drawing.Image)(resources.GetObject("btnDrawArrow.Image")));
-            this.btnDrawArrow.Location = new System.Drawing.Point(120, 13);
-            this.btnDrawArrow.Name = "btnDrawArrow";
-            this.btnDrawArrow.Size = new System.Drawing.Size(48, 48);
-            this.btnDrawArrow.TabIndex = 3;
-            this.btnDrawArrow.UseVisualStyleBackColor = true;
-            this.btnDrawArrow.Click += new System.EventHandler(this.btnDrawArrow_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.Location = new System.Drawing.Point(1451, 13);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(48, 48);
-            this.btnExit.TabIndex = 101;
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnDrawStraightLine
-            // 
-            this.btnDrawStraightLine.FlatAppearance.BorderSize = 0;
-            this.btnDrawStraightLine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDrawStraightLine.Image = ((System.Drawing.Image)(resources.GetObject("btnDrawStraightLine.Image")));
-            this.btnDrawStraightLine.Location = new System.Drawing.Point(66, 12);
-            this.btnDrawStraightLine.Name = "btnDrawStraightLine";
-            this.btnDrawStraightLine.Size = new System.Drawing.Size(48, 48);
-            this.btnDrawStraightLine.TabIndex = 102;
-            this.btnDrawStraightLine.UseVisualStyleBackColor = true;
-            this.btnDrawStraightLine.Click += new System.EventHandler(this.btnDrawStraightLine_Click);
-            // 
-            // btnHighLighter
-            // 
-            this.btnHighLighter.FlatAppearance.BorderSize = 0;
-            this.btnHighLighter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHighLighter.Image = ((System.Drawing.Image)(resources.GetObject("btnHighLighter.Image")));
-            this.btnHighLighter.Location = new System.Drawing.Point(228, 12);
-            this.btnHighLighter.Name = "btnHighLighter";
-            this.btnHighLighter.Size = new System.Drawing.Size(48, 48);
-            this.btnHighLighter.TabIndex = 103;
-            this.btnHighLighter.UseVisualStyleBackColor = true;
-            this.btnHighLighter.Click += new System.EventHandler(this.btnHighLighter_Click);
-            // 
-            // picSkyBlue
-            // 
-            this.picSkyBlue.BackColor = System.Drawing.Color.SkyBlue;
-            this.picSkyBlue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picSkyBlue.Location = new System.Drawing.Point(195, 17);
-            this.picSkyBlue.Name = "picSkyBlue";
-            this.picSkyBlue.Size = new System.Drawing.Size(24, 24);
-            this.picSkyBlue.TabIndex = 105;
-            this.picSkyBlue.TabStop = false;
-            this.picSkyBlue.Click += new System.EventHandler(this.picSkyBlue_Click);
+            groupBox1.Controls.Add(picGreen2);
+            groupBox1.Controls.Add(picSkyBlue);
+            groupBox1.Controls.Add(picSepia);
+            groupBox1.Controls.Add(picYellow);
+            groupBox1.Controls.Add(picLime);
+            groupBox1.Controls.Add(picLineColor);
+            groupBox1.Controls.Add(picRed);
+            groupBox1.Controls.Add(btnColorPicker);
+            groupBox1.Controls.Add(picWhite);
+            groupBox1.Controls.Add(picGreen);
+            groupBox1.Controls.Add(picBackGround);
+            groupBox1.Location = new Point(460, -4);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(236, 71);
+            groupBox1.TabIndex = 7;
+            groupBox1.TabStop = false;
             // 
             // picGreen2
             // 
-            this.picGreen2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(209)))), ((int)(((byte)(194)))));
-            this.picGreen2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picGreen2.Location = new System.Drawing.Point(195, 40);
-            this.picGreen2.Name = "picGreen2";
-            this.picGreen2.Size = new System.Drawing.Size(24, 24);
-            this.picGreen2.TabIndex = 106;
-            this.picGreen2.TabStop = false;
-            this.picGreen2.Click += new System.EventHandler(this.picGreen2_Click);
+            picGreen2.BackColor = Color.FromArgb(247, 247, 248);
+            picGreen2.BorderStyle = BorderStyle.Fixed3D;
+            picGreen2.Location = new Point(195, 40);
+            picGreen2.Name = "picGreen2";
+            picGreen2.Size = new Size(24, 24);
+            picGreen2.TabIndex = 106;
+            picGreen2.TabStop = false;
+            picGreen2.Click += picGreen2_Click;
+            // 
+            // picSkyBlue
+            // 
+            picSkyBlue.BackColor = Color.SkyBlue;
+            picSkyBlue.BorderStyle = BorderStyle.Fixed3D;
+            picSkyBlue.Location = new Point(195, 17);
+            picSkyBlue.Name = "picSkyBlue";
+            picSkyBlue.Size = new Size(24, 24);
+            picSkyBlue.TabIndex = 105;
+            picSkyBlue.TabStop = false;
+            picSkyBlue.Click += picSkyBlue_Click;
+            // 
+            // picSepia
+            // 
+            picSepia.BackColor = Color.FromArgb(251, 240, 217);
+            picSepia.BorderStyle = BorderStyle.Fixed3D;
+            picSepia.Location = new Point(170, 41);
+            picSepia.Name = "picSepia";
+            picSepia.Size = new Size(24, 24);
+            picSepia.TabIndex = 104;
+            picSepia.TabStop = false;
+            picSepia.Click += picSepia_Click;
+            // 
+            // picYellow
+            // 
+            picYellow.BackColor = Color.Yellow;
+            picYellow.BorderStyle = BorderStyle.Fixed3D;
+            picYellow.Location = new Point(170, 17);
+            picYellow.Name = "picYellow";
+            picYellow.Size = new Size(24, 24);
+            picYellow.TabIndex = 103;
+            picYellow.TabStop = false;
+            picYellow.Click += picYellow_Click;
+            // 
+            // picLime
+            // 
+            picLime.BackColor = Color.Lime;
+            picLime.BorderStyle = BorderStyle.Fixed3D;
+            picLime.Location = new Point(146, 17);
+            picLime.Name = "picLime";
+            picLime.Size = new Size(24, 24);
+            picLime.TabIndex = 13;
+            picLime.TabStop = false;
+            picLime.Click += picLame_Click;
+            // 
+            // picLineColor
+            // 
+            picLineColor.BackColor = Color.Red;
+            picLineColor.Location = new Point(6, 16);
+            picLineColor.Name = "picLineColor";
+            picLineColor.Size = new Size(30, 30);
+            picLineColor.TabIndex = 10;
+            picLineColor.TabStop = false;
+            picLineColor.Click += picLineColor_Click;
+            // 
+            // picRed
+            // 
+            picRed.BackColor = Color.Red;
+            picRed.BorderStyle = BorderStyle.Fixed3D;
+            picRed.Location = new Point(123, 17);
+            picRed.Name = "picRed";
+            picRed.Size = new Size(24, 24);
+            picRed.TabIndex = 12;
+            picRed.TabStop = false;
+            picRed.Click += picRed_Click;
+            // 
+            // btnColorPicker
+            // 
+            btnColorPicker.FlatAppearance.BorderSize = 0;
+            btnColorPicker.FlatStyle = FlatStyle.Flat;
+            btnColorPicker.Image = (Image)resources.GetObject("btnColorPicker.Image");
+            btnColorPicker.Location = new Point(60, 16);
+            btnColorPicker.Name = "btnColorPicker";
+            btnColorPicker.Size = new Size(48, 48);
+            btnColorPicker.TabIndex = 5;
+            btnColorPicker.UseVisualStyleBackColor = true;
+            btnColorPicker.Click += btnColorPicker_Click;
+            // 
+            // btnSaveToClip
+            // 
+            btnSaveToClip.FlatAppearance.BorderSize = 0;
+            btnSaveToClip.FlatStyle = FlatStyle.Flat;
+            btnSaveToClip.Image = (Image)resources.GetObject("btnSaveToClip.Image");
+            btnSaveToClip.Location = new Point(773, 13);
+            btnSaveToClip.Name = "btnSaveToClip";
+            btnSaveToClip.Size = new Size(48, 48);
+            btnSaveToClip.TabIndex = 0;
+            btnSaveToClip.UseVisualStyleBackColor = true;
+            btnSaveToClip.Click += btnSaveToClip_Click;
+            // 
+            // btnDrawRect
+            // 
+            btnDrawRect.FlatAppearance.BorderSize = 0;
+            btnDrawRect.FlatStyle = FlatStyle.Flat;
+            btnDrawRect.Image = (Image)resources.GetObject("btnDrawRect.Image");
+            btnDrawRect.Location = new Point(12, 13);
+            btnDrawRect.Name = "btnDrawRect";
+            btnDrawRect.Size = new Size(48, 48);
+            btnDrawRect.TabIndex = 1;
+            btnDrawRect.UseVisualStyleBackColor = true;
+            btnDrawRect.Click += btnDrawRect_Click;
+            // 
+            // btnUndo
+            // 
+            btnUndo.FlatAppearance.BorderSize = 0;
+            btnUndo.FlatStyle = FlatStyle.Flat;
+            btnUndo.Image = (Image)resources.GetObject("btnUndo.Image");
+            btnUndo.Location = new Point(719, 13);
+            btnUndo.Name = "btnUndo";
+            btnUndo.Size = new Size(48, 48);
+            btnUndo.TabIndex = 100;
+            btnUndo.UseVisualStyleBackColor = true;
+            btnUndo.Click += btnUndo_Click;
+            // 
+            // btnSave
+            // 
+            btnSave.FlatAppearance.BorderSize = 0;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Image = (Image)resources.GetObject("btnSave.Image");
+            btnSave.Location = new Point(827, 13);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(48, 48);
+            btnSave.TabIndex = 8;
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
+            // btnDrawArrow
+            // 
+            btnDrawArrow.FlatAppearance.BorderSize = 0;
+            btnDrawArrow.FlatStyle = FlatStyle.Flat;
+            btnDrawArrow.Image = (Image)resources.GetObject("btnDrawArrow.Image");
+            btnDrawArrow.Location = new Point(120, 13);
+            btnDrawArrow.Name = "btnDrawArrow";
+            btnDrawArrow.Size = new Size(48, 48);
+            btnDrawArrow.TabIndex = 3;
+            btnDrawArrow.UseVisualStyleBackColor = true;
+            btnDrawArrow.Click += btnDrawArrow_Click;
+            // 
+            // btnExit
+            // 
+            btnExit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnExit.FlatAppearance.BorderSize = 0;
+            btnExit.FlatStyle = FlatStyle.Flat;
+            btnExit.Image = (Image)resources.GetObject("btnExit.Image");
+            btnExit.Location = new Point(1451, 13);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(48, 48);
+            btnExit.TabIndex = 101;
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
+            // 
+            // btnDrawStraightLine
+            // 
+            btnDrawStraightLine.FlatAppearance.BorderSize = 0;
+            btnDrawStraightLine.FlatStyle = FlatStyle.Flat;
+            btnDrawStraightLine.Image = (Image)resources.GetObject("btnDrawStraightLine.Image");
+            btnDrawStraightLine.Location = new Point(66, 12);
+            btnDrawStraightLine.Name = "btnDrawStraightLine";
+            btnDrawStraightLine.Size = new Size(48, 48);
+            btnDrawStraightLine.TabIndex = 102;
+            btnDrawStraightLine.UseVisualStyleBackColor = true;
+            btnDrawStraightLine.Click += btnDrawStraightLine_Click;
+            // 
+            // btnHighLighter
+            // 
+            btnHighLighter.FlatAppearance.BorderSize = 0;
+            btnHighLighter.FlatStyle = FlatStyle.Flat;
+            btnHighLighter.Image = (Image)resources.GetObject("btnHighLighter.Image");
+            btnHighLighter.Location = new Point(228, 12);
+            btnHighLighter.Name = "btnHighLighter";
+            btnHighLighter.Size = new Size(48, 48);
+            btnHighLighter.TabIndex = 103;
+            btnHighLighter.UseVisualStyleBackColor = true;
+            btnHighLighter.Click += btnHighLighter_Click;
+            // 
+            // btnCutArea
+            // 
+            btnCutArea.FlatAppearance.BorderSize = 0;
+            btnCutArea.FlatStyle = FlatStyle.Flat;
+            btnCutArea.Image = (Image)resources.GetObject("btnCutArea.Image");
+            btnCutArea.Location = new Point(336, 12);
+            btnCutArea.Name = "btnCutArea";
+            btnCutArea.Size = new Size(48, 48);
+            btnCutArea.TabIndex = 104;
+            btnCutArea.UseVisualStyleBackColor = false;
+            btnCutArea.Click += btnCutArea_Click;
             // 
             // frmAdjustImage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1511, 746);
-            this.Controls.Add(this.btnHighLighter);
-            this.Controls.Add(this.btnDrawStraightLine);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnDrawArrow);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnUndo);
-            this.Controls.Add(this.btnDrawRect);
-            this.Controls.Add(this.btnSaveToClip);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnDrawLine);
-            this.Controls.Add(this.btnClearArea);
-            this.Controls.Add(this.picCapturedImage);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.KeyPreview = true;
-            this.MinimizeBox = false;
-            this.Name = "frmAdjustImage";
-            this.Text = "Capture Screen";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAdjustImage_FormClosed);
-            this.Load += new System.EventHandler(this.frmAdjustImage_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmAdjustImage_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.picCapturedImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBackGround)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picWhite)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picGreen)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picSepia)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picYellow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLime)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLineColor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSkyBlue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picGreen2)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1511, 746);
+            Controls.Add(btnCutArea);
+            Controls.Add(btnHighLighter);
+            Controls.Add(btnDrawStraightLine);
+            Controls.Add(btnExit);
+            Controls.Add(btnDrawArrow);
+            Controls.Add(btnSave);
+            Controls.Add(btnUndo);
+            Controls.Add(btnDrawRect);
+            Controls.Add(btnSaveToClip);
+            Controls.Add(groupBox1);
+            Controls.Add(btnDrawLine);
+            Controls.Add(btnClearArea);
+            Controls.Add(picCapturedImage);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            KeyPreview = true;
+            MinimizeBox = false;
+            Name = "frmAdjustImage";
+            Text = "Capture Screen";
+            WindowState = FormWindowState.Maximized;
+            FormClosed += frmAdjustImage_FormClosed;
+            Load += frmAdjustImage_Load;
+            KeyDown += frmAdjustImage_KeyDown;
+            ((System.ComponentModel.ISupportInitialize)picCapturedImage).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picBackGround).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picWhite).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picGreen).EndInit();
+            groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picGreen2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picSkyBlue).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picSepia).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picYellow).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picLime).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picLineColor).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picRed).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -414,5 +425,6 @@
         private Button btnHighLighter;
         private PictureBox picGreen2;
         private PictureBox picSkyBlue;
+        private Button btnCutArea;
     }
 }
