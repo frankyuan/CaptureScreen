@@ -216,16 +216,16 @@ namespace CaptureScreen
             {
                 picCapturedImage.Refresh();
                 Bitmap tempImg = new(CurrentImage);
-                var originalLocation = new Point() { X = 0, Y = e.Y };
-                var size = new Size() { Width = tempImg.Width, Height = tempImg.Height - e.Y };
-                selectHeight = Math.Abs(e.Y - selectY);
+                var cutAreaY = e.Y > tempImg.Height ? tempImg.Height : e.Y;
+                var originalLocation = new Point() { X = 0, Y = cutAreaY };
+                var size = new Size() { Width = tempImg.Width, Height = tempImg.Height - cutAreaY };
+                selectHeight = Math.Abs(cutAreaY - selectY);
                 var originalRect = new Rectangle(originalLocation, size);
-                var newLocation = new Point() { X = 0, Y = e.Y - selectHeight };
+                var newLocation = new Point() { X = 0, Y = cutAreaY - selectHeight };
                 var newRect = new Rectangle(newLocation, size);
                 
                 using Graphics g = Graphics.FromImage(tempImg);
                 g.DrawImage(CurrentImage, newRect, originalRect, GraphicsUnit.Pixel);
-
                 var rectFToFill = new RectangleF(
                     new PointF() { X = 0, Y = tempImg.Height - selectHeight}, 
                     new SizeF() { Width = tempImg.Width, Height = selectHeight});
