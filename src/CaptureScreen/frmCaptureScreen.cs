@@ -109,7 +109,7 @@ namespace CaptureScreen
         {
             if (e.Button == MouseButtons.Right)
             {
-                ExitApplication();
+                Utils.ExitApplication();
             }
         }
 
@@ -117,7 +117,7 @@ namespace CaptureScreen
         {
             if (e.Button == MouseButtons.Right)
             {
-                ExitApplication();
+                Utils.ExitApplication();
             }
         }
 
@@ -226,13 +226,8 @@ namespace CaptureScreen
         {
             if (key == Keys.Escape)
             {
-                ExitApplication();
+                Utils.ExitApplication();
             }
-        }
-
-        private static void ExitApplication()
-        {
-            Application.Exit();
         }
 
         private void btnScreen1_Click(object sender, EventArgs e)
@@ -269,7 +264,7 @@ namespace CaptureScreen
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            ExitApplication();
+            Utils.ExitApplication();
         }
 
         private void SetMouseEnterCursorStyle()

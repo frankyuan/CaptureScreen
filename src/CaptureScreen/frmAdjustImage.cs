@@ -223,12 +223,12 @@ namespace CaptureScreen
                 var originalRect = new Rectangle(originalLocation, size);
                 var newLocation = new Point() { X = 0, Y = cutAreaY - selectHeight };
                 var newRect = new Rectangle(newLocation, size);
-                
+
                 using Graphics g = Graphics.FromImage(tempImg);
                 g.DrawImage(CurrentImage, newRect, originalRect, GraphicsUnit.Pixel);
                 var rectFToFill = new RectangleF(
-                    new PointF() { X = 0, Y = tempImg.Height - selectHeight}, 
-                    new SizeF() { Width = tempImg.Width, Height = selectHeight});
+                    new PointF() { X = 0, Y = tempImg.Height - selectHeight },
+                    new SizeF() { Width = tempImg.Width, Height = selectHeight });
                 SolidBrush shadowBrush = new(picBackGround.BackColor);
                 g.FillRectangles(shadowBrush, new RectangleF[] { rectFToFill });
                 CurrentImage = tempImg;
@@ -916,6 +916,14 @@ namespace CaptureScreen
         private void RefreshUndoStatus()
         {
             btnUndo.Enabled = imageHistory.Count > 1;
+        }
+
+        private void frmAdjustImage_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Utils.ExitApplication();
+            }
         }
 
         private Pen CreatePen =>

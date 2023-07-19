@@ -383,6 +383,7 @@
             FormClosed += frmAdjustImage_FormClosed;
             Load += frmAdjustImage_Load;
             KeyDown += frmAdjustImage_KeyDown;
+            PreviewKeyDown += frmAdjustImage_PreviewKeyDown;
             ((System.ComponentModel.ISupportInitialize)picCapturedImage).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBackGround).EndInit();
             ((System.ComponentModel.ISupportInitialize)picWhite).EndInit();
