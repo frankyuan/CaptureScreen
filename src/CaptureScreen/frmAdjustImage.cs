@@ -744,6 +744,7 @@ namespace CaptureScreen
         private void btnOpenPaint_Click(object sender, EventArgs e)
         {
             SaveOriginImage();
+            // TODO: add try catch
             Process.Start("mspaint");
             Thread.Sleep(500);
             SendKeys.SendWait("^(v)");
