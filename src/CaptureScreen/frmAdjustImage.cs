@@ -1,4 +1,6 @@
 ﻿using System.Drawing.Drawing2D;
+using System.Diagnostics;
+using System.Threading;
 
 namespace CaptureScreen
 {
@@ -17,6 +19,7 @@ namespace CaptureScreen
         DrawStraightLine,
         DrawHighLighter,
         CutArea,
+        SelectArea,
         Unknown
     }
 
@@ -101,6 +104,7 @@ namespace CaptureScreen
             actionButtonDict[ActionMode.DrawStraightLine] = btnDrawStraightLine;
             actionButtonDict[ActionMode.DrawHighLighter] = btnHighLighter;
             actionButtonDict[ActionMode.CutArea] = btnCutArea;
+            actionButtonDict[ActionMode.SelectArea] = btnSelectArea;
         }
 
         private void picCapturedImage_MouseDown(object sender, MouseEventArgs e)
@@ -133,6 +137,8 @@ namespace CaptureScreen
                 case ActionMode.CutArea:
                     CutArea_MouseDown(e);
                     break;
+                case ActionMode.SelectArea:
+
                 case ActionMode.Unknown:
                     break;
                 default:
@@ -735,6 +741,15 @@ namespace CaptureScreen
             SaveOriginImageAndExit();
         }
 
+        private void btnOpenPaint_Click(object sender, EventArgs e)
+        {
+            SaveOriginImage();
+            Process.Start("mspaint");
+            Thread.Sleep(500);
+            SendKeys.SendWait("^(v)");
+            Application.Exit();
+        }
+
         private void frmAdjustImage_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Return)
@@ -745,8 +760,25 @@ namespace CaptureScreen
 
         private void SaveOriginImageAndExit()
         {
-            Clipboard.SetImage(CurrentImage);
+            SaveOriginImage();
             Application.Exit();
+        }
+
+        private void SaveOriginImage()
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                try
+                {
+                    Clipboard.SetImage(CurrentImage);
+                    break;
+                }
+                catch (Exception err)
+                {
+                    Console.WriteLine(err.Message);
+                    Thread.Sleep(1000);
+                }
+            }
         }
 
         private void frmAdjustImage_FormClosed(object sender, FormClosedEventArgs e)
@@ -788,6 +820,12 @@ namespace CaptureScreen
         {
             SetActionMode(ActionMode.CutArea, sender, e);
         }
+
+        private void btnSelectArea_Click(object sender, EventArgs e)
+        {
+            SetActionMode(ActionMode.SelectArea, sender, e);
+        }
+
 
         private void btnColorPicker_Click(object sender, EventArgs e)
         {

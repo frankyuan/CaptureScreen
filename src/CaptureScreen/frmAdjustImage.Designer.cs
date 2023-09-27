@@ -55,6 +55,8 @@
             btnDrawStraightLine = new Button();
             btnHighLighter = new Button();
             btnCutArea = new Button();
+            btnSelectArea = new Button();
+            btnOpenPaint = new Button();
             ((System.ComponentModel.ISupportInitialize)picCapturedImage).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBackGround).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picWhite).BeginInit();
@@ -153,7 +155,7 @@
             groupBox1.Controls.Add(picWhite);
             groupBox1.Controls.Add(picGreen);
             groupBox1.Controls.Add(picBackGround);
-            groupBox1.Location = new Point(460, -4);
+            groupBox1.Location = new Point(571, -4);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(236, 71);
             groupBox1.TabIndex = 7;
@@ -252,7 +254,7 @@
             btnSaveToClip.FlatAppearance.BorderSize = 0;
             btnSaveToClip.FlatStyle = FlatStyle.Flat;
             btnSaveToClip.Image = (Image)resources.GetObject("btnSaveToClip.Image");
-            btnSaveToClip.Location = new Point(773, 13);
+            btnSaveToClip.Location = new Point(884, 13);
             btnSaveToClip.Name = "btnSaveToClip";
             btnSaveToClip.Size = new Size(48, 48);
             btnSaveToClip.TabIndex = 0;
@@ -276,7 +278,7 @@
             btnUndo.FlatAppearance.BorderSize = 0;
             btnUndo.FlatStyle = FlatStyle.Flat;
             btnUndo.Image = (Image)resources.GetObject("btnUndo.Image");
-            btnUndo.Location = new Point(719, 13);
+            btnUndo.Location = new Point(830, 13);
             btnUndo.Name = "btnUndo";
             btnUndo.Size = new Size(48, 48);
             btnUndo.TabIndex = 100;
@@ -288,7 +290,7 @@
             btnSave.FlatAppearance.BorderSize = 0;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Image = (Image)resources.GetObject("btnSave.Image");
-            btnSave.Location = new Point(827, 13);
+            btnSave.Location = new Point(938, 13);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(48, 48);
             btnSave.TabIndex = 8;
@@ -356,11 +358,37 @@
             btnCutArea.UseVisualStyleBackColor = false;
             btnCutArea.Click += btnCutArea_Click;
             // 
+            // btnSelectArea
+            // 
+            btnSelectArea.FlatAppearance.BorderSize = 0;
+            btnSelectArea.FlatStyle = FlatStyle.Flat;
+            btnSelectArea.Image = (Image)resources.GetObject("btnSelectArea.Image");
+            btnSelectArea.Location = new Point(390, 12);
+            btnSelectArea.Name = "btnSelectArea";
+            btnSelectArea.Size = new Size(48, 48);
+            btnSelectArea.TabIndex = 105;
+            btnSelectArea.UseVisualStyleBackColor = false;
+            btnSelectArea.Click += btnSelectArea_Click;
+            // 
+            // btnOpenPaint
+            // 
+            btnOpenPaint.FlatAppearance.BorderSize = 0;
+            btnOpenPaint.FlatStyle = FlatStyle.Flat;
+            btnOpenPaint.Image = (Image)resources.GetObject("btnOpenPaint.Image");
+            btnOpenPaint.Location = new Point(992, 12);
+            btnOpenPaint.Name = "btnOpenPaint";
+            btnOpenPaint.Size = new Size(48, 48);
+            btnOpenPaint.TabIndex = 106;
+            btnOpenPaint.UseVisualStyleBackColor = true;
+            btnOpenPaint.Click += btnOpenPaint_Click;
+            // 
             // frmAdjustImage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1511, 746);
+            Controls.Add(btnOpenPaint);
+            Controls.Add(btnSelectArea);
             Controls.Add(btnCutArea);
             Controls.Add(btnHighLighter);
             Controls.Add(btnDrawStraightLine);
@@ -427,5 +455,7 @@
         private PictureBox picGreen2;
         private PictureBox picSkyBlue;
         private Button btnCutArea;
+        private Button btnSelectArea;
+        private Button btnOpenPaint;
     }
 }
