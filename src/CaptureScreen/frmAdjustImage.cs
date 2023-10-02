@@ -229,15 +229,18 @@ namespace CaptureScreen
                 var originalRect = new Rectangle(originalLocation, size);
                 var newLocation = new Point() { X = 0, Y = cutAreaY - selectHeight };
                 var newRect = new Rectangle(newLocation, size);
-
                 using Graphics g = Graphics.FromImage(tempImg);
+
+                // Copy the remaining part of the image to the top
                 g.DrawImage(CurrentImage, newRect, originalRect, GraphicsUnit.Pixel);
-                var rectFToFill = new RectangleF(
-                    new PointF() { X = 0, Y = tempImg.Height - selectHeight },
-                    new SizeF() { Width = tempImg.Width, Height = selectHeight });
-                SolidBrush shadowBrush = new(picBackGround.BackColor);
-                g.FillRectangles(shadowBrush, new RectangleF[] { rectFToFill });
-                CurrentImage = tempImg;
+
+                // generate result image after cut area
+                var resultSize = new Size(width: tempImg.Width, height: tempImg.Height - selectHeight);
+                var resultRect = new Rectangle(new Point(0, 0), resultSize);
+                Bitmap resultImg = new(resultSize.Width, resultSize.Height);
+                using Graphics resultGraphs = Graphics.FromImage(resultImg);
+                resultGraphs.DrawImage(tempImg, 0, 0, resultRect, GraphicsUnit.Pixel);
+                CurrentImage = resultImg;
                 picCapturedImage.Image = CurrentImage;
             }
 

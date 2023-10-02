@@ -187,7 +187,7 @@ namespace CaptureScreen
             //create bitmap with selected dimensions
             Bitmap _img = new(capturedWidth, capturedHeight);
             //create graphic variable
-            Graphics g = Graphics.FromImage(_img);
+            using Graphics g = Graphics.FromImage(_img);
             //set graphic attributes
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
             g.PixelOffsetMode = PixelOffsetMode.HighQuality;
