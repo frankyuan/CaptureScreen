@@ -225,7 +225,7 @@
   <data name="btnDrawArrow.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAClSURBVFhH7ZMx
+        vwAADr8BOAVTJAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAClSURBVFhH7ZMx
         DgFRFEWnlWj1lmIFbGBaliPBAliC2QRbsAWdRqHi3OImE6GcR3FPcopfvfPfzG9gjS2OdPgFGv7EGx5w
         gWMsQzfXcEXYB55xiyscPGiP/QB5xx1OcXDm2B/e4QTL0Iq1dg0/4hVnWMoJtXbdXMPLIzaob27KI5b4
         /sOVRnx7auWb+EQiTCJMIkwiTCJMIkwiTCJMIkwizL9ENJcXCh9BAwJUcKgAAAAASUVORK5CYII=
@@ -271,7 +271,7 @@
   <data name="btnCutArea.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAXnsAAF57AEv7tBhAAAAB3RJ
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAXnrAAF56wF9qnYeAAAAB3RJ
         TUUH5QsWDiAhW4wANQAAAwdJREFUWEftljmLVEEURmdcxh1FUVFBu3sQXDERE0FRI5dUMNBARVFwRcFA
         wUBcQRATtz/ggksmmrmg4oImGqioiVvkAoIGoue8uTXzumfe9DB02B8cuup+Vbf61at6VS1NNdVUUrlc
         TkyHvXAe9sAQmAWn4Bycjd9DMD6wnPdsax/77oqYOc2djdNNYdjpGfyBr3ALRsMK+ACf4GP8voAZgeW8
@@ -302,7 +302,7 @@
   <data name="btnOpenPaint.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAPcSURBVFhHvZdZ
+        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAPcSURBVFhHvZdZ
         rE1nGIa3saag5gglQnVITBVEItSVNmqmQquUSBU3UjHEECEipCpiiKIXpkpoXEmQqGjEEDQ1z/M837hz
         Uc+zfutkn5299l7n5Dhv8uR8a5291/r/7/+mnalA1YO78CfU9UZlazxsh2VwHQZBpekDuAado6tMpiv8
         CzOiq0rQBNgWzBI1hsdQK7p6z1oH3wWzlM5A22BWvGqAD+8Cq2EtZKsJPAI/V2HqBEvhJDyH/+BvOAQP

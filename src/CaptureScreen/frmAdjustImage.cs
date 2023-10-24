@@ -1,6 +1,7 @@
 ﻿using System.Drawing.Drawing2D;
 using System.Diagnostics;
 using System.Threading;
+using System.Drawing.Imaging;
 
 namespace CaptureScreen
 {
@@ -138,7 +139,8 @@ namespace CaptureScreen
                     CutArea_MouseDown(e);
                     break;
                 case ActionMode.SelectArea:
-
+                    SelectArea_MouseDown(e);
+                    break;
                 case ActionMode.Unknown:
                     break;
                 default:
@@ -195,6 +197,23 @@ namespace CaptureScreen
             }
         }
 
+        private void SelectArea_MouseDown(MouseEventArgs e)
+        {
+            if (!start)
+            {
+                SeleteAreaStart(e);
+            }
+            else
+            {
+                if (picCapturedImage.Image == null)
+                {
+                    return;
+                }
+
+                SelectAreaEnd(e);
+            }
+        }
+
         private void ClearAreaEnd(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -247,6 +266,43 @@ namespace CaptureScreen
             start = false;
         }
 
+        private void SelectAreaEnd(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                picCapturedImage.Refresh();
+                selectWidth = Math.Abs(e.X - selectX);
+                selectHeight = Math.Abs(e.Y - selectY);
+                //validate if something selected
+                if (selectWidth == 0)
+                {
+                    return;
+                }
+
+                Rectangle rect = new(
+                    Math.Min(selectX, e.X),
+                    Math.Min(selectY, e.Y),
+                    selectWidth,
+                    selectHeight);
+                //create bitmap with original dimensions
+                Bitmap originalImage = new(picCapturedImage.Image, picCapturedImage.Image.Width, picCapturedImage.Image.Height);
+                //create bitmap with selected dimensions
+                Bitmap _img = new(selectWidth, selectHeight);
+                //create graphic variable
+                using Graphics g = Graphics.FromImage(_img);
+                //set graphic attributes
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.DrawImage(originalImage, 0, 0, rect, GraphicsUnit.Pixel);
+
+                CurrentImage = _img;
+                picCapturedImage.Image = CurrentImage;
+            }
+
+            start = false;
+        }
+
         private void ClearAreaStart(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -264,6 +320,22 @@ namespace CaptureScreen
         }
 
         private void CutAreaStart(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                selectX = e.X;
+                selectY = e.Y;
+                selectPen = new Pen(Color.Red, 2)
+                {
+                    DashStyle = DashStyle.Dot
+                };
+            }
+
+            picCapturedImage.Refresh();
+            start = true;
+        }
+
+        private void SeleteAreaStart(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -526,6 +598,9 @@ namespace CaptureScreen
                 case ActionMode.CutArea:
                     CutArea_MouseMove(e);
                     break;
+                case ActionMode.SelectArea:
+                    SelectArea_MouseMove(e);
+                    break;
                 case ActionMode.Unknown:
                     break;
                 default:
@@ -552,6 +627,24 @@ namespace CaptureScreen
         }
 
         private void CutArea_MouseMove(MouseEventArgs e)
+        {
+            if (!start || picCapturedImage.Image == null)
+            {
+                return;
+            }
+
+            picCapturedImage.Refresh();
+            selectWidth = e.X - selectX;
+            selectHeight = e.Y - selectY;
+            picCapturedImage.CreateGraphics().DrawRectangle(
+                selectPen,
+                Math.Min(selectX, e.X),
+                Math.Min(selectY, e.Y),
+                Math.Abs(selectWidth),
+                Math.Abs(selectHeight));
+        }
+
+        private void SelectArea_MouseMove(MouseEventArgs e)
         {
             if (!start || picCapturedImage.Image == null)
             {
@@ -830,7 +923,6 @@ namespace CaptureScreen
             SetActionMode(ActionMode.SelectArea, sender, e);
         }
 
-
         private void btnColorPicker_Click(object sender, EventArgs e)
         {
             SetBackgroundColor();
@@ -859,7 +951,7 @@ namespace CaptureScreen
 
         private void picCapturedImage_MouseEnter(object sender, EventArgs e)
         {
-            var crossModes = new ActionMode[] { ActionMode.CleanArea, ActionMode.DrawRect, ActionMode.CutArea };
+            var crossModes = new ActionMode[] { ActionMode.CleanArea, ActionMode.DrawRect, ActionMode.CutArea, ActionMode.SelectArea };
             var penModes = new ActionMode[] { ActionMode.DrawArrow, ActionMode.DrawHighLighter, ActionMode.DrawLine, ActionMode.DrawStraightLine };
             if (crossModes.Contains(currentActionMode))
             {

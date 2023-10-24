@@ -75,6 +75,7 @@
             // 
             picCapturedImage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             picCapturedImage.BackColor = Color.White;
+            picCapturedImage.BorderStyle = BorderStyle.FixedSingle;
             picCapturedImage.Location = new Point(-1, 71);
             picCapturedImage.Name = "picCapturedImage";
             picCapturedImage.Size = new Size(1514, 679);
