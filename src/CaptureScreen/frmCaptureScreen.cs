@@ -13,6 +13,7 @@ namespace CaptureScreen
         private int selectHeight;
         private Pen selectPen;
         private List<Image> screenImages = new List<Image>();
+        private int currentScreen = 1;
 
         bool start = false;
 
@@ -72,12 +73,14 @@ namespace CaptureScreen
             {
                 btnScreen1.FlatStyle = FlatStyle.Popup;
                 btnScreen1.Image = Resources.screen1Select;
+                currentScreen = 1;
             }
 
             if (screenImages.Count >= 2 && firstImage == screenImages[1] && btnScreen2.Visible)
             {
                 btnScreen2.FlatStyle = FlatStyle.Popup;
                 btnScreen2.Image = Resources.screen2Select;
+                currentScreen = 2;
             }
         }
 
@@ -196,7 +199,7 @@ namespace CaptureScreen
             ////insert image stream into clipboard
             //Clipboard.SetImage(_img);
             this.Hide();
-            frmAdjustImage frmAdjustImage = new(_img);
+            frmAdjustImage frmAdjustImage = new(_img, this);
             frmAdjustImage.Show();
         }
 
@@ -204,14 +207,16 @@ namespace CaptureScreen
         {
             if (HasMultipleMonitors())
             {
-                if (e.KeyCode == Keys.A)
+                if (e.KeyCode == Keys.A || e.KeyCode == Keys.D)
                 {
-                    btnScreen1_Click(sender, e);
-                }
-
-                if (e.KeyCode == Keys.D)
-                {
-                    btnScreen2_Click(sender, e);
+                    if (currentScreen == 1)
+                    {
+                        btnScreen2_Click(sender, e);
+                    }
+                    else
+                    {
+                        btnScreen1_Click(sender, e);
+                    }
                 }
             }
             ExitApplicationWhenKeyDown(e.KeyCode);
@@ -239,6 +244,7 @@ namespace CaptureScreen
             start = false;
             btnScreen1.FlatStyle = FlatStyle.Popup;
             btnScreen1.Image = Resources.screen1Select;
+            currentScreen = 1;
         }
 
         private void btnScreen2_Click(object sender, EventArgs e)
@@ -250,6 +256,7 @@ namespace CaptureScreen
             start = false;
             btnScreen2.FlatStyle = FlatStyle.Popup;
             btnScreen2.Image = Resources.screen2Select;
+            currentScreen = 2;
         }
 
         private void btnControlButton_MouseEnter(object sender, EventArgs e)

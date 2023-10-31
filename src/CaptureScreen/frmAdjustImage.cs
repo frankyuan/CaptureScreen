@@ -47,6 +47,7 @@ namespace CaptureScreen
         #region Variables which control status when drawing line
         private Point lastPoint = Point.Empty;
         #endregion
+        private Form previousForm;
         private Image originalImage;
         private Image currentImage;
 
@@ -67,10 +68,11 @@ namespace CaptureScreen
             }
         }
 
-        public frmAdjustImage(Image img)
+        public frmAdjustImage(Image img, Form form)
         {
             InitializeComponent();
             originalImage = img;
+            previousForm = form;
         }
 
         private void frmAdjustImage_Load(object sender, EventArgs e)
@@ -878,11 +880,6 @@ namespace CaptureScreen
             }
         }
 
-        private void frmAdjustImage_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void btnClearArea_Click(object sender, EventArgs e)
         {
             SetActionMode(ActionMode.CleanArea, sender, e);
@@ -1058,6 +1055,12 @@ namespace CaptureScreen
             {
                 Utils.ExitApplication();
             }
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            previousForm.Show();
         }
 
         private Pen CreatePen =>
