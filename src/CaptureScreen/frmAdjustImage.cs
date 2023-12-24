@@ -244,6 +244,11 @@ namespace CaptureScreen
                 picCapturedImage.Refresh();
                 Bitmap tempImg = new(CurrentImage);
                 var cutAreaY = e.Y > tempImg.Height ? tempImg.Height : e.Y;
+                if (selectY > cutAreaY)
+                {
+                    (selectY, cutAreaY) = (cutAreaY, selectY);
+                }
+
                 var originalLocation = new Point() { X = 0, Y = cutAreaY };
                 var size = new Size() { Width = tempImg.Width, Height = tempImg.Height - cutAreaY };
                 selectHeight = Math.Abs(cutAreaY - selectY);
