@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>Resources\screen-new-3.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\screen-new-4.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\screen-new-3.ico" />
+    <Content Include="Resources\screen-new-4.ico" />
   </ItemGroup>
 
   <ItemGroup>
