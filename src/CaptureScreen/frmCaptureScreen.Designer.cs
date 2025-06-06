@@ -41,10 +41,10 @@
             picCaptureScreen.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             picCaptureScreen.BackColor = SystemColors.Control;
             picCaptureScreen.Location = new Point(0, 6);
-            picCaptureScreen.Margin = new Padding(6, 6, 6, 6);
+            picCaptureScreen.Margin = new Padding(6);
             picCaptureScreen.Name = "picCaptureScreen";
             picCaptureScreen.Size = new Size(2944, 1839);
-            picCaptureScreen.SizeMode = PictureBoxSizeMode.Zoom;
+            picCaptureScreen.SizeMode = PictureBoxSizeMode.StretchImage;
             picCaptureScreen.TabIndex = 0;
             picCaptureScreen.TabStop = false;
             picCaptureScreen.MouseDown += picCaptureScreen_MouseDown;
@@ -59,7 +59,7 @@
             btnScreen1.FlatStyle = FlatStyle.Flat;
             btnScreen1.Image = (Image)resources.GetObject("btnScreen1.Image");
             btnScreen1.Location = new Point(2550, 26);
-            btnScreen1.Margin = new Padding(6, 6, 6, 6);
+            btnScreen1.Margin = new Padding(6);
             btnScreen1.Name = "btnScreen1";
             btnScreen1.Size = new Size(89, 102);
             btnScreen1.TabIndex = 15;
@@ -76,7 +76,7 @@
             btnScreen2.FlatStyle = FlatStyle.Flat;
             btnScreen2.Image = (Image)resources.GetObject("btnScreen2.Image");
             btnScreen2.Location = new Point(2650, 26);
-            btnScreen2.Margin = new Padding(6, 6, 6, 6);
+            btnScreen2.Margin = new Padding(6);
             btnScreen2.Name = "btnScreen2";
             btnScreen2.Size = new Size(89, 102);
             btnScreen2.TabIndex = 14;
@@ -93,7 +93,7 @@
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Image = (Image)resources.GetObject("btnExit.Image");
             btnExit.Location = new Point(2834, 26);
-            btnExit.Margin = new Padding(6, 6, 6, 6);
+            btnExit.Margin = new Padding(6);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(89, 102);
             btnExit.TabIndex = 102;
@@ -114,7 +114,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmCaptureScreen";
