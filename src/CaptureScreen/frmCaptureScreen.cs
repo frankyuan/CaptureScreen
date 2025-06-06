@@ -65,7 +65,7 @@ namespace CaptureScreen
             }
 
             var firstImage = screenImages[defaultScreenIndex];
-            picCaptureScreen.Size = new Size(firstImage.Width, firstImage.Height);
+            //picCaptureScreen.Size = new Size(firstImage.Width, firstImage.Height);
             picCaptureScreen.Image = firstImage;
             this.Show();
             Cursor = Cursors.Cross;
@@ -239,7 +239,7 @@ namespace CaptureScreen
         {
             ResetScreenButtonStyle();
             var image = screenImages[0];
-            picCaptureScreen.Size = new Size(image.Width, image.Height);
+            //picCaptureScreen.Size = new Size(image.Width, image.Height);
             picCaptureScreen.Image = image;
             start = false;
             btnScreen1.FlatStyle = FlatStyle.Popup;
@@ -251,7 +251,7 @@ namespace CaptureScreen
         {
             ResetScreenButtonStyle();
             var image = screenImages[1];
-            picCaptureScreen.Size = new Size(image.Width, image.Height);
+            //picCaptureScreen.Size = new Size(image.Width, image.Height);
             picCaptureScreen.Image = image;
             start = false;
             btnScreen2.FlatStyle = FlatStyle.Popup;
