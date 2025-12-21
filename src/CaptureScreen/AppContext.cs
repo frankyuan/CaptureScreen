@@ -23,15 +23,21 @@ namespace CaptureScreen
             trayIcon = new NotifyIcon();
             trayIcon.Text = "CaptureScreen (Ctrl + Alt + A)";
             
-            // Try to load an icon. If Resources doesn't have one, use system default or error.
-            // Using a generic icon for now if specific one fails, but let's try to assume Resources exists as seen in file listing.
-            // If Resources.Icon is not available, we can use SystemIcons.
+            // Extract the application icon from the executable
             try {
-               // Assuming the project has an icon based on frmCaptureScreen.Designer.cs usage
-               // But usually Resources returns Bitmap. We need Icon.
-               // Let's use SystemIcons.Application as safe fallback or try to extract.
-               trayIcon.Icon = SystemIcons.Application; 
-            } catch { }
+               // Get the icon from the current application's executable
+               // The ApplicationIcon is embedded into the .exe file during compilation
+               string exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule?.FileName ?? "";
+               if (!string.IsNullOrEmpty(exePath) && System.IO.File.Exists(exePath)) {
+                   trayIcon.Icon = Icon.ExtractAssociatedIcon(exePath);
+               } else {
+                   // Fallback to system icon if exe path not found
+                   trayIcon.Icon = SystemIcons.Application;
+               }
+            } catch { 
+               // Fallback to system icon on any error
+               trayIcon.Icon = SystemIcons.Application;
+            }
 
             trayIcon.ContextMenuStrip = trayMenu;
             trayIcon.Visible = true;
