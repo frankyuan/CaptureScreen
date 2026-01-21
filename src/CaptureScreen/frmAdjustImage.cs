@@ -1,7 +1,8 @@
-﻿using System.Drawing.Drawing2D;
+﻿using System.ComponentModel;
 using System.Diagnostics;
-using System.Threading;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Threading;
 
 namespace CaptureScreen
 {
@@ -53,6 +54,7 @@ namespace CaptureScreen
 
         bool start = false;
 
+        [DefaultValue(false)]
         public Image CurrentImage
         {
             get => currentImage;
