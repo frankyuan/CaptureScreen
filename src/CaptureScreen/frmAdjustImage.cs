@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Threading;
 using System.Drawing.Imaging;
-using System.ComponentModel;
 
 namespace CaptureScreen
 {
@@ -54,7 +53,6 @@ namespace CaptureScreen
 
         bool start = false;
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Image CurrentImage
         {
             get => currentImage;
@@ -853,7 +851,7 @@ namespace CaptureScreen
             Process.Start("mspaint");
             Thread.Sleep(500);
             SendKeys.SendWait("^(v)");
-            this.Close();
+            Application.Exit();
         }
 
         private void frmAdjustImage_KeyDown(object sender, KeyEventArgs e)
@@ -867,7 +865,7 @@ namespace CaptureScreen
         private void SaveOriginImageAndExit()
         {
             SaveOriginImage();
-            this.Close();
+            Application.Exit();
         }
 
         private void SaveOriginImage()
@@ -939,7 +937,7 @@ namespace CaptureScreen
             if (result == DialogResult.OK)
             {
                 picCapturedImage.Image.Save(saveFileDialog1.FileName);
-                this.Close();
+                Application.Exit();
             }
         }
 
@@ -975,7 +973,7 @@ namespace CaptureScreen
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void CancelCurrentStep(MouseEventArgs e)
@@ -1060,7 +1058,7 @@ namespace CaptureScreen
         {
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                Utils.ExitApplication();
             }
         }
 

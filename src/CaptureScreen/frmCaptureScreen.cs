@@ -27,7 +27,7 @@ namespace CaptureScreen
             btnScreen1.Visible = HasMultipleMonitors();
             btnScreen2.Visible = HasMultipleMonitors();
             ResetScreenButtonStyle();
-            // CaptureAllScreens(); // Moved to explicit call
+            CaptureAllScreens();
         }
 
         private static bool HasMultipleMonitors()
@@ -35,9 +35,9 @@ namespace CaptureScreen
             return Screen.AllScreens.Count() > 1;
         }
 
-        public void InitCapture()
+        private void CaptureAllScreens()
         {
-            // this.Hide(); // Not needed if called before Show
+            this.Hide();
             var defaultScreenIndex = -1;
             for (int i = 0; i < Screen.AllScreens.Count(); i++)
             {
@@ -67,8 +67,7 @@ namespace CaptureScreen
             var firstImage = screenImages[defaultScreenIndex];
             //picCaptureScreen.Size = new Size(firstImage.Width, firstImage.Height);
             picCaptureScreen.Image = firstImage;
-            
-            // this.Show(); // Managed by caller
+            this.Show();
             Cursor = Cursors.Cross;
             if (screenImages.Count >= 1 && firstImage == screenImages[0] && btnScreen1.Visible)
             {
@@ -113,7 +112,7 @@ namespace CaptureScreen
         {
             if (e.Button == MouseButtons.Right)
             {
-                this.Close();
+                Utils.ExitApplication();
             }
         }
 
@@ -121,7 +120,7 @@ namespace CaptureScreen
         {
             if (e.Button == MouseButtons.Right)
             {
-                this.Close();
+                Utils.ExitApplication();
             }
         }
 
@@ -220,19 +219,19 @@ namespace CaptureScreen
                     }
                 }
             }
-            CloseFormWhenKeyDown(e.KeyCode);
+            ExitApplicationWhenKeyDown(e.KeyCode);
         }
 
         private void picCaptureScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            CloseFormWhenKeyDown(e.KeyCode);
+            ExitApplicationWhenKeyDown(e.KeyCode);
         }
 
-        private void CloseFormWhenKeyDown(Keys key)
+        private static void ExitApplicationWhenKeyDown(Keys key)
         {
             if (key == Keys.Escape)
             {
-                this.Close();
+                Utils.ExitApplication();
             }
         }
 
@@ -272,7 +271,7 @@ namespace CaptureScreen
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Utils.ExitApplication();
         }
 
         private void SetMouseEnterCursorStyle()

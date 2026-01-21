@@ -26,7 +26,7 @@ namespace CaptureScreen
                     process.Kill();
                 }
             }
-            Application.Run(new AppContext());
+            Application.Run(new frmCaptureScreen());
         }
     }
 }
