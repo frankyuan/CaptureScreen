@@ -853,7 +853,7 @@ namespace CaptureScreen
             Process.Start("mspaint");
             Thread.Sleep(500);
             SendKeys.SendWait("^(v)");
-            Application.Exit();
+            Utils.ReturnToTray();
         }
 
         private void frmAdjustImage_KeyDown(object sender, KeyEventArgs e)
@@ -867,7 +867,7 @@ namespace CaptureScreen
         private void SaveOriginImageAndExit()
         {
             SaveOriginImage();
-            Application.Exit();
+            Utils.ReturnToTray();
         }
 
         private void SaveOriginImage()
@@ -939,7 +939,7 @@ namespace CaptureScreen
             if (result == DialogResult.OK)
             {
                 picCapturedImage.Image.Save(saveFileDialog1.FileName);
-                Application.Exit();
+                Utils.ReturnToTray();
             }
         }
 
@@ -975,7 +975,7 @@ namespace CaptureScreen
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Utils.ReturnToTray();
         }
 
         private void CancelCurrentStep(MouseEventArgs e)
@@ -1060,7 +1060,7 @@ namespace CaptureScreen
         {
             if (e.KeyCode == Keys.Escape)
             {
-                Utils.ExitApplication();
+                Utils.ReturnToTray();
             }
         }
 

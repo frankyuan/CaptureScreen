@@ -1,6 +1,5 @@
 using CaptureScreen.Properties;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 
 namespace CaptureScreen
 {
@@ -22,12 +21,45 @@ namespace CaptureScreen
             InitializeComponent();
         }
 
+        public void LoadScreens(List<Image> capturedScreens)
+        {
+            ReleaseScreens();
+            screenImages = capturedScreens;
+            start = false;
+            selectWidth = 0;
+            selectHeight = 0;
+            if (!IsHandleCreated)
+            {
+                return;
+            }
+
+            btnScreen1.Visible = HasMultipleMonitors();
+            btnScreen2.Visible = HasMultipleMonitors();
+            ResetScreenButtonStyle();
+            ShowCapturedScreens();
+        }
+
+        public void ReleaseScreens()
+        {
+            if (picCaptureScreen.Image != null)
+            {
+                picCaptureScreen.Image = null;
+            }
+
+            foreach (Image image in screenImages)
+            {
+                image.Dispose();
+            }
+
+            screenImages = new List<Image>();
+        }
+
         private void frmCaptureScreen_Load(object sender, EventArgs e)
         {
             btnScreen1.Visible = HasMultipleMonitors();
             btnScreen2.Visible = HasMultipleMonitors();
             ResetScreenButtonStyle();
-            CaptureAllScreens();
+            ShowCapturedScreens();
         }
 
         private static bool HasMultipleMonitors()
@@ -35,39 +67,30 @@ namespace CaptureScreen
             return Screen.AllScreens.Count() > 1;
         }
 
-        private void CaptureAllScreens()
+        private void ShowCapturedScreens()
         {
-            this.Hide();
-            var defaultScreenIndex = -1;
+            if (screenImages.Count == 0)
+            {
+                return;
+            }
+
+            var defaultScreenIndex = 0;
             for (int i = 0; i < Screen.AllScreens.Count(); i++)
             {
-                var screen = Screen.AllScreens[i];
-                if (screen == Screen.PrimaryScreen)
+                if (Screen.AllScreens[i] == Screen.PrimaryScreen)
                 {
                     defaultScreenIndex = i;
+                    break;
                 }
+            }
 
-                Bitmap printscreen = new(screen.Bounds.Width, screen.Bounds.Height);
-                //Create the Graphic Variable with screen Dimensions
-                var graphics = Graphics.FromImage(printscreen);
-                //Copy Image from the screen
-                graphics.CopyFromScreen(
-                    screen.Bounds.X,
-                    screen.Bounds.Y,
-                    0,
-                    0,
-                    screen.Bounds.Size, CopyPixelOperation.SourceCopy);
-                //Create a temporal memory stream for the image
-                using MemoryStream memoryStream = new();
-                printscreen.Save(memoryStream, ImageFormat.Bmp);
-                var image = Image.FromStream(memoryStream);
-                screenImages.Add(image);
+            if (defaultScreenIndex >= screenImages.Count)
+            {
+                defaultScreenIndex = 0;
             }
 
             var firstImage = screenImages[defaultScreenIndex];
-            //picCaptureScreen.Size = new Size(firstImage.Width, firstImage.Height);
             picCaptureScreen.Image = firstImage;
-            this.Show();
             Cursor = Cursors.Cross;
             if (screenImages.Count >= 1 && firstImage == screenImages[0] && btnScreen1.Visible)
             {
@@ -112,7 +135,7 @@ namespace CaptureScreen
         {
             if (e.Button == MouseButtons.Right)
             {
-                Utils.ExitApplication();
+                Utils.ReturnToTray();
             }
         }
 
@@ -120,7 +143,7 @@ namespace CaptureScreen
         {
             if (e.Button == MouseButtons.Right)
             {
-                Utils.ExitApplication();
+                Utils.ReturnToTray();
             }
         }
 
@@ -231,7 +254,7 @@ namespace CaptureScreen
         {
             if (key == Keys.Escape)
             {
-                Utils.ExitApplication();
+                Utils.ReturnToTray();
             }
         }
 
@@ -271,7 +294,7 @@ namespace CaptureScreen
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Utils.ExitApplication();
+            Utils.ReturnToTray();
         }
 
         private void SetMouseEnterCursorStyle()
